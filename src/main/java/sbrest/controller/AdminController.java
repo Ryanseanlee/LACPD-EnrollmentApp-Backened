@@ -43,6 +43,7 @@ import sbrest.signapi.AgreementEvents;
 import sbrest.signapi.Agreements;
 
 @RestController
+@CrossOrigin(origins= "*")
 @RequestMapping("/admin")
 public class AdminController {
 //These functions are for the admin user

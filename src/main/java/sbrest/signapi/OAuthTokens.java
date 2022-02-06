@@ -29,14 +29,14 @@ public class OAuthTokens {
 	 * a refresh token in OAUTH_REFRESH_TOKEN variable below to refresh the OAuth
 	 * access token.
 	 */
-	private final static String OAUTH_ACCESS_TOKEN = "";
+	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhBonLi8N70kcR6ASg2GBJC45TKvA7etoQN9YgTnwpAqWflBgp7Tws91y3al-6XOd3lxwZ-FnAkPHqOK_9iH3uoJ";
 
 	/**
 	 * TODO Provide refresh token here. This will be used to refresh the OAuth
 	 * access token. If refresh token is not provided then a new OAuth access token
 	 * will be generated with new refresh token.
 	 */
-	private final static String OAUTH_REFRESH_TOKEN = "3AAABLblqZhBqIMVIHXmIVCo8AKV0BGfltLJFHDp08PU2CsYcltic7aEsLPMRCxNohBA35mPjXac*";
+	private final static String OAUTH_REFRESH_TOKEN = "3AAABLblqZhBO08eVaxgGOV0dIDDGI3D1oacFUbzqygSXlFZPWfxprlNrbMv0kGijKgsJXqoZ6yc*";
 
 	/**
 	 * Fetches the access token for the specified user.
@@ -70,8 +70,8 @@ public class OAuthTokens {
 		HashMap<String, String> headers = new HashMap<String, String>();
 		headers.put("Content-Type", "application/x-www-form-urlencoded");
 
-		String requestBody = "code=CBNCKBAAHBCAABAA9-ergMOskDe84KYlH5l5sGKGaCGyNE9_" + "&client_id=CBJCHBCAABAAbdOJinH8YyWRMugJuWD77xsFM8gFaev_" 
-				+ "&client_secret=LNnwSiZov_hznKE6z74_ijB-xFI1w_dw" + "&redirect_uri=https://google.com"
+		String requestBody = "code=CBNCKBAAHBCAABAAXvzxxQtgTJ483IfVb72KuTnRUAxSzWn6" + "&client_id=CBJCHBCAABAAItp3iIQaUf6790eU62yW4dY8i5oU48EH" 
+				+ "&client_secret=16jI676sFsResJ16PPqbmD4DA8sk_Pfi" + "&redirect_uri=https://google.com"
 				 + "&grant_type=authorization_code";
 
 		// Invoke API and get JSON response.
@@ -99,8 +99,8 @@ public class OAuthTokens {
 		headers.put("Content-Type", "application/x-www-form-urlencoded");
 
 		String requestBody = "refresh_token=" + OAUTH_REFRESH_TOKEN
-				+ "&client_id=CBJCHBCAABAAbdOJinH8YyWRMugJuWD77xsFM8gFaev_"
-				+ "&client_secret=LNnwSiZov_hznKE6z74_ijB-xFI1w_dw" + "&grant_type=refresh_token";
+				+ "&client_id=CBJCHBCAABAAItp3iIQaUf6790eU62yW4dY8i5oU48EH"
+				+ "&client_secret=16jI676sFsResJ16PPqbmD4DA8sk_Pfi" + "&grant_type=refresh_token";
 
 		// Invoke API and get JSON response.
 		JSONObject responseJSON = null;
