@@ -41,6 +41,7 @@ import sbrest.model.dao.FormDao;
 import sbrest.model.dao.ServiceRequestDao;
 import sbrest.signapi.AgreementEvents;
 import sbrest.signapi.Agreements;
+//import sbrest.signapi.Agreements;
 
 @RestController
 @CrossOrigin(origins= "*")
@@ -211,8 +212,8 @@ public class AdminController {
 				case "departmentNumber":
 					s.setDepartmentNumber((String) patch.get(key));
 					break;
-				case "companyName":
-					s.setCompanyName((String) patch.get(key));
+				case "ContractorCompanyName":
+					s.setContractorCompanyName((String) patch.get(key));
 					break;
 				case "companyEmailAddress":
 					s.setCompanyEmailAddress((String) patch.get(key));
@@ -259,11 +260,11 @@ public class AdminController {
 				case "countyPhoneNumber":
 					s.setCountyPhoneNumber((String) patch.get(key));
 					break;
-				case "contractWorkOrderNumber":
-					s.setContractWorkOrderNumber((String) patch.get(key));
+				case "ContractorWorkOrder":
+					s.setContractorWorkOrder((String) patch.get(key));
 					break;
-				case "contractExpirationDate":
-					s.setContractExpirationDate((String) patch.get(key));
+				case "ContractorExperationDate":
+					s.setContractorExperationDate((String) patch.get(key));
 					break;
 				case "ibmLogOnId":
 					s.setIbmLogOnId((String) patch.get(key));
@@ -328,8 +329,8 @@ public class AdminController {
 				case "unixAccountNumber":
 					s.setUnixAccountNumber((String) patch.get(key));
 					break;
-				case "billingAccountNumber":
-					s.setBillingAccountNumber((String) patch.get(key));
+				case "BillingAccount":
+					s.setBillingAccount((String) patch.get(key));
 					break;
 				case "securIdVpn":
 					s.setSecurIdVpn((boolean) patch.get(key));
@@ -370,8 +371,8 @@ public class AdminController {
 				case "otherEmailDomain":
 					s.setOtherEmailDomain((String) patch.get(key));
 					break;
-				case "businessJustification":
-					s.setBusinessJustification((String) patch.get(key));
+				case "BusinessJustification1":
+					s.setBusinessJustification1((String) patch.get(key));
 					break;
 				case "defaultCountyWidePolicy":
 					s.setDefaultCountyWidePolicy((boolean) patch.get(key));
@@ -461,7 +462,7 @@ public class AdminController {
 			}
 
 			if (patch.keySet().contains("isComplete") || patch.keySet().contains("complete")) {
-				checkCompleteness(s);	
+				checkCompleteness(s);
 			}
 			
 			s = serviceRequestDao.saveServiceRequest(s);
