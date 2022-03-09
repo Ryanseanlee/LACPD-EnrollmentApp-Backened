@@ -1,5 +1,7 @@
 package sbrest.model.dao.jpa;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,9 +19,17 @@ public class AdminDaoImpl implements AdminDao{
 	
 	@Override
 	@Transactional
-	public Admin getAdmin() {
-		return (Admin) entityManager.createQuery("from Admin").getResultList().get(0);
+	public Admin getAdmin(String email) {
+		return (Admin) entityManager.createQuery("SELECT c FROM Admin c WHERE c.email LIKE :em")
+				.setParameter("em", email)
+				.getResultList().get(0);
 	}
+
+	@Override
+    public List<Admin> getAdmin() {
+		return entityManager.createQuery("from Admin", Admin.class)
+                .getResultList();
+    }
 
 	//TO SAVE CHANGES TO PASSWORD
 	@Override
@@ -28,11 +38,6 @@ public class AdminDaoImpl implements AdminDao{
     	return entityManager.merge(admin);
     }
 
-	
-	
-	
-	
-	
 //WHICH getAdmin() METHOD TO USE?
 //	@Override
 //	public Admin getAdmin(String password) {
