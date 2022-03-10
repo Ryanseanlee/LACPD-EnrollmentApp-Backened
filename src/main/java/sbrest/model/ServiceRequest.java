@@ -26,13 +26,11 @@ public class ServiceRequest {
 	private String requestStatus;
 	private boolean isComplete;
 	private String agreementId;
-	private boolean newRegistration;
-	private boolean deletePriorRegistration;
-	private boolean updatePriorRegistration;
 	private boolean replaceLostToken;
 	private boolean addLogonId;
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
+	private boolean EmployeeContractor;
 	
 	@Column(length = 5000) 
 	private ArrayList<String> eventHistory;
@@ -111,6 +109,12 @@ public class ServiceRequest {
 	private String groupName;
 	@Column(length = 150)
 	private String oldGroup;
+	@Column(length = 150)
+	private String APS_AO;
+	@Column(length = 150)
+	private String DMV_SYSTEM_CODE;
+	@Column(length = 150)
+	private String JAI_SYSTEM_LOCATION;
 	private boolean unixAddLogonId;
 	private boolean unixChangeLogonId;
 	private boolean unixDeleteLogonId;
@@ -120,36 +124,42 @@ public class ServiceRequest {
 	private String unixApplication;
 	@Column(length = 150)
 	private String unixAccessGroup;
+	private boolean NewToken;
+	private boolean ReplaceLostStolenToken;
+	private boolean ReplaceDefectiveToken;
+	private boolean RenewToken;
 	@Column(length = 150)
-	private String unixAccountNumber;
+	private String ExperationDate;
+	private boolean TokenlessAuth;
+	private boolean HardTokenVPN;
+	private boolean SoftwareToken;
 	@Column(length = 150)
 	private String billingAccountNumber;
-	private boolean securIdVpn;
-	private boolean adaptiveAuthenticationVpn;
-	private boolean internetApplication;
-	private boolean exchangeEmail;
-	private boolean emailEncryption;
-	private boolean laCountyGovAccess;
-	private boolean tokenlessAuthentication;
-	private boolean lacMobileWifiAccess;
-	private boolean cherwellSms;
-	private boolean windowsRightsMgmt;
-	private boolean gmailAccess;
-	private boolean yahooMailAccess;
-	private boolean otherEmailAccess;
-	@Column(length = 100)
-	private String otherEmailDomain;
+	private boolean IOS;
+	private boolean Android;
+	private boolean Computer;
+	private boolean newRegistration;
+	private boolean deletePriorRegistration;
+	private boolean updatePriorRegistration;
+	private boolean EmployeeWorkforce;
+	private boolean ContractorWorkforce1;
+	@Column(length = 150)
+	private String employeeContractor;
+	@Column(length = 150)
+	private String ContractorCompanyName;
+	@Column(length = 150)
+	private String ContractorWorkOrder;
+	@Column(length = 150)
+	private String ContractorExperationDate;
+	private boolean O365Email;
+	private boolean LACMobile;
+	private boolean LACounty;
+	private boolean CountywidePolicyB;
+	private boolean CountywidePolicyA;
+	private boolean AllWebmail;
+	private boolean StreamingMedia;
 	@Column(length = 250)
 	private String businessJustification;
-	private boolean defaultCountyWidePolicy;
-	private boolean departmentPolicyRule0;
-	private boolean departmentPolicyRule1;
-	private boolean departmentPolicyRule2;
-	private boolean departmentPolicyRule3;
-	private boolean departmentPolicyRule4;
-	private boolean socialNetworkingFacebook;
-	private boolean socialNetworkingTwitter;
-	private boolean socialNetworkingLinkedIn;
 	
 	// Added boolean to determine if request is submitted. 
 	// Note: This differs from isComplete. User first submits request, then
@@ -244,13 +254,19 @@ public class ServiceRequest {
 		this.systemApplication = "";
 		this.groupName = "";
 		this.oldGroup = "";
+		this.APS_AO = "";
+		this.DMV_SYSTEM_CODE = "";
+		this.JAI_SYSTEM_LOCATION = "";
 		this.unixLogOnId = "";
 		this.unixApplication = "";
 		this.unixAccessGroup = "";
-		this.unixAccountNumber = "";
+		this.ExperationDate = "";
 		this.billingAccountNumber = "";
-		this.otherEmailDomain = "";
 		this.businessJustification = "";
+		this.employeeContractor = "";
+		this.ContractorCompanyName = "";
+		this.ContractorWorkOrder = "";
+		this.ContractorExperationDate = "";
 	}
 
 	public String getCreateDate() {
@@ -259,6 +275,14 @@ public class ServiceRequest {
 
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
+	}
+	
+	public boolean getEmployeeContractor() {
+		return EmployeeContractor;
+	}
+
+	public void setEmployeeContractor(boolean EmployeeContractor) {
+		this.EmployeeContractor = EmployeeContractor;
 	}
 
 	public String getSubmitDate() {
@@ -701,14 +725,195 @@ public class ServiceRequest {
 		this.unixAccessGroup = unixAccessGroup;
 	}
 
-	public String getUnixAccountNumber() {
-		return unixAccountNumber;
+	public String getExperationDate() {
+		return ExperationDate;
 	}
 
-	public void setUnixAccountNumber(String unixAccountNumber) {
-		this.unixAccountNumber = unixAccountNumber;
+	public void setExperationDate(String ExperationDate) {
+		this.ExperationDate = ExperationDate;
 	}
 
+	public String getAPS_AO() {
+		return APS_AO;
+	}
+
+	public void setAPS_AO(String aPS_AO) {
+		APS_AO = aPS_AO;
+	}
+
+	public String getDMV_SYSTEM_CODE() {
+		return DMV_SYSTEM_CODE;
+	}
+
+	public void setDMV_SYSTEM_CODE(String dMV_SYSTEM_CODE) {
+		DMV_SYSTEM_CODE = dMV_SYSTEM_CODE;
+	}
+
+	public String getJAI_SYSTEM_LOCATION() {
+		return JAI_SYSTEM_LOCATION;
+	}
+
+	public void setJAI_SYSTEM_LOCATION(String jAI_SYSTEM_LOCATION) {
+		JAI_SYSTEM_LOCATION = jAI_SYSTEM_LOCATION;
+	}
+
+	public boolean isNewToken() {
+		return NewToken;
+	}
+
+	public void setNewToken(boolean newToken) {
+		NewToken = newToken;
+	}
+
+	public boolean isReplaceLostStolenToken() {
+		return ReplaceLostStolenToken;
+	}
+
+	public void setReplaceLostStolenToken(boolean replaceLostStolenToken) {
+		ReplaceLostStolenToken = replaceLostStolenToken;
+	}
+
+	public boolean isReplaceDefectiveToken() {
+		return ReplaceDefectiveToken;
+	}
+
+	public void setReplaceDefectiveToken(boolean replaceDefectiveToken) {
+		ReplaceDefectiveToken = replaceDefectiveToken;
+	}
+
+	public boolean isRenewToken() {
+		return RenewToken;
+	}
+
+	public void setRenewToken(boolean renewToken) {
+		RenewToken = renewToken;
+	}
+
+	public boolean isTokenlessAuth() {
+		return TokenlessAuth;
+	}
+
+	public void setTokenlessAuth(boolean tokenlessAuth) {
+		TokenlessAuth = tokenlessAuth;
+	}
+
+	public boolean isHardTokenVPN() {
+		return HardTokenVPN;
+	}
+
+	public void setHardTokenVPN(boolean hardTokenVPN) {
+		HardTokenVPN = hardTokenVPN;
+	}
+
+	public boolean isSoftwareToken() {
+		return SoftwareToken;
+	}
+
+	public void setSoftwareToken(boolean softwareToken) {
+		SoftwareToken = softwareToken;
+	}
+
+	public boolean isIOS() {
+		return IOS;
+	}
+
+	public void setIOS(boolean iOS) {
+		IOS = iOS;
+	}
+
+	public boolean isAndroid() {
+		return Android;
+	}
+
+	public void setAndroid(boolean android) {
+		Android = android;
+	}
+
+	public boolean isComputer() {
+		return Computer;
+	}
+
+	public void setComputer(boolean computer) {
+		Computer = computer;
+	}
+
+	public boolean isEmployeeWorkforce() {
+		return EmployeeWorkforce;
+	}
+
+	public void setEmployeeWorkforce(boolean employeeWorkforce) {
+		EmployeeWorkforce = employeeWorkforce;
+	}
+
+	public boolean isContractorWorkforce1() {
+		return ContractorWorkforce1;
+	}
+
+	public void setContractorWorkforce1(boolean contractorWorkforce1) {
+		ContractorWorkforce1 = contractorWorkforce1;
+	}
+
+	public boolean isO365Email() {
+		return O365Email;
+	}
+
+	public void setO365Email(boolean o365Email) {
+		O365Email = o365Email;
+	}
+
+	public boolean isLACMobile() {
+		return LACMobile;
+	}
+
+	public void setLACMobile(boolean lACMobile) {
+		LACMobile = lACMobile;
+	}
+
+	public boolean isLACounty() {
+		return LACounty;
+	}
+
+	public void setLACounty(boolean lACounty) {
+		LACounty = lACounty;
+	}
+
+	public boolean isCountywidePolicyB() {
+		return CountywidePolicyB;
+	}
+
+	public void setCountywidePolicyB(boolean countywidePolicyB) {
+		CountywidePolicyB = countywidePolicyB;
+	}
+
+	public boolean isCountywidePolicyA() {
+		return CountywidePolicyA;
+	}
+
+	public void setCountywidePolicyA(boolean countywidePolicyA) {
+		CountywidePolicyA = countywidePolicyA;
+	}
+
+	public boolean isAllWebmail() {
+		return AllWebmail;
+	}
+
+	public void setAllWebmail(boolean allWebmail) {
+		AllWebmail = allWebmail;
+	}
+
+	public boolean isStreamingMedia() {
+		return StreamingMedia;
+	}
+
+	public void setStreamingMedia(boolean streamingMedia) {
+		StreamingMedia = streamingMedia;
+	}
+
+	public void setEmployeeContractor(String employeeContractor) {
+		this.employeeContractor = employeeContractor;
+	}
+	// new privates
+	
 	public String getBillingAccountNumber() {
 		return billingAccountNumber;
 	}
@@ -717,117 +922,45 @@ public class ServiceRequest {
 		this.billingAccountNumber = billingAccountNumber;
 	}
 
-	public boolean isSecurIdVpn() {
-		return securIdVpn;
+	public String getemployeeContractor() {
+		return employeeContractor;
 	}
 
-	public void setSecurIdVpn(boolean securIdVpn) {
-		this.securIdVpn = securIdVpn;
+	public void setemployeeContractor(String employeeContractor) {
+		this.employeeContractor = employeeContractor;
+	}
+	
+	public String getContractorCompanyName() {
+		return ContractorCompanyName;
 	}
 
-	public boolean isAdaptiveAuthenticationVpn() {
-		return adaptiveAuthenticationVpn;
+	public void setContractorCompanyName(String ContractorCompanyName) {
+		this.ContractorCompanyName = ContractorCompanyName;
+	}
+	
+	public String getContractorWorkOrder() {
+		return ContractorWorkOrder;
 	}
 
-	public void setAdaptiveAuthenticationVpn(boolean adaptiveAuthenticationVpn) {
-		this.adaptiveAuthenticationVpn = adaptiveAuthenticationVpn;
+	public void setContractorWorkOrder(String ContractorWorkOrder) {
+		this.ContractorWorkOrder = ContractorWorkOrder;
+	}
+	
+	public String getContractorExperationDate() {
+		return ContractorExperationDate;
 	}
 
-	public boolean isInternetApplication() {
-		return internetApplication;
+	public void setContractorExperationDate(String ContractorExperationDate) {
+		this.ContractorExperationDate = ContractorExperationDate;
 	}
+	
+	
+	
+	
+	
+	
 
-	public void setInternetApplication(boolean internetApplication) {
-		this.internetApplication = internetApplication;
-	}
-
-	public boolean isExchangeEmail() {
-		return exchangeEmail;
-	}
-
-	public void setExchangeEmail(boolean exchangeEmail) {
-		this.exchangeEmail = exchangeEmail;
-	}
-
-	public boolean isEmailEncryption() {
-		return emailEncryption;
-	}
-
-	public void setEmailEncryption(boolean emailEncryption) {
-		this.emailEncryption = emailEncryption;
-	}
-
-	public boolean isLaCountyGovAccess() {
-		return laCountyGovAccess;
-	}
-
-	public void setLaCountyGovAccess(boolean laCountyGovAccess) {
-		this.laCountyGovAccess = laCountyGovAccess;
-	}
-
-	public boolean isTokenlessAuthentication() {
-		return tokenlessAuthentication;
-	}
-
-	public void setTokenlessAuthentication(boolean tokenlessAuthentication) {
-		this.tokenlessAuthentication = tokenlessAuthentication;
-	}
-
-	public boolean isLacMobileWifiAccess() {
-		return lacMobileWifiAccess;
-	}
-
-	public void setLacMobileWifiAccess(boolean lacMobileWifiAccess) {
-		this.lacMobileWifiAccess = lacMobileWifiAccess;
-	}
-
-	public boolean isCherwellSms() {
-		return cherwellSms;
-	}
-
-	public void setCherwellSms(boolean cherwellSms) {
-		this.cherwellSms = cherwellSms;
-	}
-
-	public boolean isWindowsRightsMgmt() {
-		return windowsRightsMgmt;
-	}
-
-	public void setWindowsRightsMgmt(boolean windowsRightsMgmt) {
-		this.windowsRightsMgmt = windowsRightsMgmt;
-	}
-
-	public boolean isGmailAccess() {
-		return gmailAccess;
-	}
-
-	public void setGmailAccess(boolean gmailAccess) {
-		this.gmailAccess = gmailAccess;
-	}
-
-	public boolean isYahooMailAccess() {
-		return yahooMailAccess;
-	}
-
-	public void setYahooMailAccess(boolean yahooMailAccess) {
-		this.yahooMailAccess = yahooMailAccess;
-	}
-
-	public boolean isOtherEmailAccess() {
-		return otherEmailAccess;
-	}
-
-	public void setOtherEmailAccess(boolean otherEmailAccess) {
-		this.otherEmailAccess = otherEmailAccess;
-	}
-
-	public String getOtherEmailDomain() {
-		return otherEmailDomain;
-	}
-
-	public void setOtherEmailDomain(String otherEmailDomain) {
-		this.otherEmailDomain = otherEmailDomain;
-	}
+	
 
 	public String getBusinessJustification() {
 		return businessJustification;
@@ -835,78 +968,6 @@ public class ServiceRequest {
 
 	public void setBusinessJustification(String businessJustification) {
 		this.businessJustification = businessJustification;
-	}
-
-	public boolean isDefaultCountyWidePolicy() {
-		return defaultCountyWidePolicy;
-	}
-
-	public void setDefaultCountyWidePolicy(boolean defaultCountyWidePolicy) {
-		this.defaultCountyWidePolicy = defaultCountyWidePolicy;
-	}
-
-	public boolean isDepartmentPolicyRule0() {
-		return departmentPolicyRule0;
-	}
-
-	public void setDepartmentPolicyRule0(boolean departmentPolicyRule0) {
-		this.departmentPolicyRule0 = departmentPolicyRule0;
-	}
-
-	public boolean isDepartmentPolicyRule1() {
-		return departmentPolicyRule1;
-	}
-
-	public void setDepartmentPolicyRule1(boolean departmentPolicyRule1) {
-		this.departmentPolicyRule1 = departmentPolicyRule1;
-	}
-
-	public boolean isDepartmentPolicyRule2() {
-		return departmentPolicyRule2;
-	}
-
-	public void setDepartmentPolicyRule2(boolean departmentPolicyRule2) {
-		this.departmentPolicyRule2 = departmentPolicyRule2;
-	}
-
-	public boolean isDepartmentPolicyRule3() {
-		return departmentPolicyRule3;
-	}
-
-	public void setDepartmentPolicyRule3(boolean departmentPolicyRule3) {
-		this.departmentPolicyRule3 = departmentPolicyRule3;
-	}
-
-	public boolean isDepartmentPolicyRule4() {
-		return departmentPolicyRule4;
-	}
-
-	public void setDepartmentPolicyRule4(boolean departmentPolicyRule4) {
-		this.departmentPolicyRule4 = departmentPolicyRule4;
-	}
-
-	public boolean isSocialNetworkingFacebook() {
-		return socialNetworkingFacebook;
-	}
-
-	public void setSocialNetworkingFacebook(boolean socialNetworkingFacebook) {
-		this.socialNetworkingFacebook = socialNetworkingFacebook;
-	}
-
-	public boolean isSocialNetworkingTwitter() {
-		return socialNetworkingTwitter;
-	}
-
-	public void setSocialNetworkingTwitter(boolean socialNetworkingTwitter) {
-		this.socialNetworkingTwitter = socialNetworkingTwitter;
-	}
-
-	public boolean isSocialNetworkingLinkedIn() {
-		return socialNetworkingLinkedIn;
-	}
-
-	public void setSocialNetworkingLinkedIn(boolean socialNetworkingLinkedIn) {
-		this.socialNetworkingLinkedIn = socialNetworkingLinkedIn;
 	}
 
 	public boolean isComplete() {
