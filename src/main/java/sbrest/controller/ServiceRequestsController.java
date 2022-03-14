@@ -770,7 +770,7 @@ public class ServiceRequestsController {
 			s.setSubmitDate(d.format(currentDate));
 			s.getEventHistory().add("(" + s.getSubmitDate() + ") Request submitted for Admin review");
 			
-			String adminEmail = adminDao.getAdmin().getEmail();
+			String adminEmail = "lacpdformalerts@gmail.com";
 			String subject = "New Request Submitted (#" + s.getRequestNumber() + ")";
 			String text = "A new service request was submitted by " + s.getFirstName() + " " + s.getLastName()
 					+ ". The request number is "+ s.getRequestNumber() +".\nLog in to review the request at " + "http://localhost:4200/admin"

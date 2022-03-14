@@ -6,12 +6,25 @@ public class RequestStatusResponse {
 	private String requestStatus;
 	private String firstName;
 	private String lastName;
+	private boolean isEmployee;
+	private String submitDate;
+	private boolean isComplete;
 
-	public RequestStatusResponse(Integer requestNumber, String requestStatus, String firstName, String lastName) {
+	public RequestStatusResponse(
+			Integer requestNumber, 
+			String requestStatus, 
+			String firstName, 
+			String lastName, 
+			boolean isEmployee,
+			String submitDate, 
+			boolean isComplete) {
 		this.requestNumber = requestNumber;
 		this.requestStatus = requestStatus;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.setEmployee(isEmployee);
+		this.setSubmitDate(submitDate);
+		this.setComplete(isComplete);
 	}
 
 	public Integer getRequestNumber() {
@@ -45,4 +58,30 @@ public class RequestStatusResponse {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	public boolean isEmployee() {
+		return isEmployee;
+	}
+
+	public void setEmployee(boolean isEmployee) {
+		this.isEmployee = isEmployee;
+	}
+
+	public String getSubmitDate() {
+		return submitDate;
+	}
+
+	public void setSubmitDate(String submitDate) {
+		this.submitDate = submitDate;
+	}
+
+	public boolean isComplete() {
+		return isComplete;
+	}
+
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+	
+	
 }

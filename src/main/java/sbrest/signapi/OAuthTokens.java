@@ -20,7 +20,7 @@ public class OAuthTokens {
 	private final static String OAUTH_REFRESH_TOKEN_ENDPOINT = "/refresh";
 	private final static String BEARER = "Bearer ";
 
-	public final static String OAUTH_BASE_URL = "https://api.na3.adobesign.com/oauth";
+	public final static String OAUTH_BASE_URL = "https://api.na3.adobesign.com/oauth/v2";
 
 	/**
 	 * TODO Provide an OAuth access token or integration key. If not provided then a
@@ -29,7 +29,7 @@ public class OAuthTokens {
 	 * a refresh token in OAUTH_REFRESH_TOKEN variable below to refresh the OAuth
 	 * access token.
 	 */
-	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhBonLi8N70kcR6ASg2GBJC45TKvA7etoQN9YgTnwpAqWflBgp7Tws91y3al-6XOd3lxwZ-FnAkPHqOK_9iH3uoJ";
+	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhDh0c9xmcYCqIhtQNNTRlD3J2KYTYvJxewJV8SOfMDjs1TuHKhBomTdMz_Ci5k39NSKhy1cohlBeq30rrQCij9i";
 
 	/**
 	 * TODO Provide refresh token here. This will be used to refresh the OAuth
