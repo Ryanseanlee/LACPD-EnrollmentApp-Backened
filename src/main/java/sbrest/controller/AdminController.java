@@ -127,36 +127,38 @@
 		}
 		
 		//Admin user can change the password
-		@CrossOrigin(origins= "*")
-		@PatchMapping("/reset_password")
-		@ResponseStatus(HttpStatus.NO_CONTENT)
-		public void update
-		(
-		// @RequestHeader("email") String email,
-//		@RequestHeader("op") String oldPassword, 
-//		@RequestHeader("np") String newPassword
-		) {
-			
-			// get password from database, then compare to user input
-			//If password matches one in database return request status, else 403 error forbidden
-			String dbPassword = adminDao.getAdmin("ivalen13@calstatela.edu").getPassword(); //database
-			
-			// testing only backend || no frontend
-			String oldPassword = "1";
-			String newPassword = "2";
-			
-			System.out.println(dbPassword);
-			System.out.println(oldPassword);
-			
-			if (dbPassword.equals(oldPassword)) {
-				Admin originalAdmin = adminDao.getAdmin("ivalen13@calstatela.edu");
-				originalAdmin.setPassword(newPassword);
-				originalAdmin = adminDao.saveAdmin(originalAdmin);	
-			}else {
-				throw new ResponseStatusException(HttpStatus.FORBIDDEN,
-						"User does not have authorization to view this page");
-			}
-		}
+        @CrossOrigin(origins= "*")
+        @PatchMapping("/reset_password")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        public void update
+        (
+        @RequestHeader("email") String email,
+        @RequestHeader("password") String oldPassword, 
+        @RequestHeader("new-password") String newPassword
+        ) {
+
+            // get password from database, then compare to user input
+            //If password matches one in database return request status, else 403 error forbidden
+            String dbPassword = adminDao.getAdmin(email).getPassword(); //database
+
+            // testing only backend || no frontend
+//            String oldPassword = "1";
+//            String newPassword = "2";
+
+            System.out.println(dbPassword);
+            System.out.println(oldPassword);
+
+            System.out.println(newPassword);
+
+            if (dbPassword.equals(oldPassword)) {
+                Admin originalAdmin = adminDao.getAdmin(email);
+                originalAdmin.setPassword(newPassword);
+                originalAdmin = adminDao.saveAdmin(originalAdmin);
+            }else {
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+                        "User does not have authorization to view this page");
+            }
+        }
 		
 		//Admin user can review a submitted request and edit field values
 		@CrossOrigin(origins= "*")
