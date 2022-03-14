@@ -13,7 +13,7 @@ public class Agreements {
 		// URL to invoke the agreements end point.
 		String accessToken = OAuthTokens.getOauthAccessToken();
 		String url = "https://api.na3.adobesign.com:443/api/rest/v6/agreements";
-		
+
 		String email = "";
 		String agreementName = "";
 		String documentId = "";
@@ -33,7 +33,7 @@ public class Agreements {
 			workflowId = "CBJCHBCAABAAeVPAheCwImVRVaGUdxo2HMboedZrXFkN";
 			fileLabel = "PD Contractor Forms";
 		}
-		
+
 
 		// Create HTTP header list
 		HashMap<String, String> headers = new HashMap<String, String>();
@@ -49,21 +49,21 @@ public class Agreements {
 
 		JSONObject requestJson = new JSONObject();
 		ArrayList<JSONObject> fileInfos = new ArrayList<JSONObject>();
-		
+
 		JSONObject fileInfo = new JSONObject();
 		fileInfo.put("libraryDocumentId", documentId);
-		
+
 		fileInfo.put("label", fileLabel);
-		
-		
+
+
 		fileInfos.add(fileInfo);
 		requestJson.put("fileInfos", fileInfos);
 		requestJson.put("name", agreementName);
 		requestJson.put("state", "IN_PROCESS");
 		requestJson.put("signatureType", "ESIGN");
-		
+
 		requestJson.put("workflowId", workflowId);
-		
+
 		ArrayList<JSONObject> participantSetsInfo = new ArrayList<JSONObject>();
 
 		// Add 1st participant (Requester)
@@ -155,12 +155,12 @@ public class Agreements {
 		requestJson.put("mergeFieldInfo", mergeFieldInfo);
 
 		responseJson = (JSONObject) OAuthTokens.makeApiCall(url, "POST", headers, requestJson.toJSONString());
-		
+
 
 		String agreementId = responseJson.get("id").toString();
 		return agreementId;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static ArrayList<JSONObject> populateTemplate(ServiceRequest serviceRequest) {
 		ArrayList<JSONObject> fieldJsonArray = new ArrayList<JSONObject>();
@@ -459,8 +459,8 @@ public class Agreements {
 		}
 
 		JSONObject businessJustification = new JSONObject();
-		businessJustification.put("fieldName", "businessJustification");
-		businessJustification.put("defaultValue", serviceRequest.getBusinessJustification());
+		businessJustification.put("fieldName", "BusinessJustification1");
+		businessJustification.put("defaultValue", serviceRequest.getBusinessJustification1());
 		fieldJsonArray.add(businessJustification);
 		//output += "{ \"fieldName\": \"businessJustification\", \"defaultValue\": \"" + serviceRequest.getBusinessJustification() + "\"}, ";
 
@@ -629,8 +629,8 @@ public class Agreements {
 		//output += "{ \"fieldName\": \"unixAccountNumber\", \"defaultValue\": \"" + serviceRequest.getUnixAccountNumber() + "\"}, ";
 
 		JSONObject billingAccountNumber = new JSONObject();
-		billingAccountNumber.put("fieldName", "billingAccountNumber");
-		billingAccountNumber.put("defaultValue", serviceRequest.getBillingAccountNumber());
+		billingAccountNumber.put("fieldName", "BillingAccount");
+		billingAccountNumber.put("defaultValue", serviceRequest.getBillingAccount());
 		fieldJsonArray.add(billingAccountNumber);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
 
@@ -766,13 +766,13 @@ public class Agreements {
 
 			JSONObject companyName1 = new JSONObject();
 			companyName1.put("fieldName", "companyName1");
-			companyName1.put("defaultValue", serviceRequest.getCompanyName());
+			companyName1.put("defaultValue", serviceRequest.getContractorCompanyName());
 			fieldJsonArray.add(companyName1);
 			//output += "{ \"fieldName\": \"companyName1\", \"defaultValue\": \"" + serviceRequest.getCompanyName() + "\"}, ";
 
 			JSONObject companyName2 = new JSONObject();
 			companyName2.put("fieldName", "companyName2");
-			companyName2.put("defaultValue", serviceRequest.getCompanyName());
+			companyName2.put("defaultValue", serviceRequest.getContractorCompanyName());
 			fieldJsonArray.add(companyName2);
 			//output += "{ \"fieldName\": \"companyName2\", \"defaultValue\": \"" + serviceRequest.getCompanyName() + "\"}, ";
 
@@ -874,37 +874,37 @@ public class Agreements {
 
 			JSONObject contractWorkOrderNumber1 = new JSONObject();
 			contractWorkOrderNumber1.put("fieldName", "contractWorkOrderNumber1");
-			contractWorkOrderNumber1.put("defaultValue", serviceRequest.getContractWorkOrderNumber());
+			contractWorkOrderNumber1.put("defaultValue", serviceRequest.getContractorWorkOrder());
 			fieldJsonArray.add(contractWorkOrderNumber1);
 			//output += "{ \"fieldName\": \"contractWorkOrderNumber1\", \"defaultValue\": \"" + serviceRequest.getContractWorkOrderNumber() + "\"}, ";
 
 			JSONObject contractWorkOrderNumber2 = new JSONObject();
 			contractWorkOrderNumber2.put("fieldName", "contractWorkOrderNumber2");
-			contractWorkOrderNumber2.put("defaultValue", serviceRequest.getContractWorkOrderNumber());
+			contractWorkOrderNumber2.put("defaultValue", serviceRequest.getContractorWorkOrder());
 			fieldJsonArray.add(contractWorkOrderNumber2);
 			//output += "{ \"fieldName\": \"contractWorkOrderNumber2\", \"defaultValue\": \"" + serviceRequest.getContractWorkOrderNumber() + "\"}, ";
 
 			JSONObject contractWorkOrderNumber3 = new JSONObject();
 			contractWorkOrderNumber3.put("fieldName", "contractWorkOrderNumber3");
-			contractWorkOrderNumber3.put("defaultValue", serviceRequest.getContractWorkOrderNumber());
+			contractWorkOrderNumber3.put("defaultValue", serviceRequest.getContractorWorkOrder());
 			fieldJsonArray.add(contractWorkOrderNumber3);
 			//output += "{ \"fieldName\": \"contractWorkOrderNumber3\", \"defaultValue\": \"" + serviceRequest.getContractWorkOrderNumber() + "\"}, ";
 
 			JSONObject contractWorkOrderNumber4 = new JSONObject();
 			contractWorkOrderNumber4.put("fieldName", "contractWorkOrderNumber4");
-			contractWorkOrderNumber4.put("defaultValue", serviceRequest.getContractWorkOrderNumber());
+			contractWorkOrderNumber4.put("defaultValue", serviceRequest.getContractorWorkOrder());
 			fieldJsonArray.add(contractWorkOrderNumber4);
 			//output += "{ \"fieldName\": \"contractWorkOrderNumber4\", \"defaultValue\": \"" + serviceRequest.getContractWorkOrderNumber() + "\"}, ";
 
 			JSONObject contractExpirationDate1 = new JSONObject();
 			contractExpirationDate1.put("fieldName", "contractExpirationDate1");
-			contractExpirationDate1.put("defaultValue", serviceRequest.getContractExpirationDate());
+			contractExpirationDate1.put("defaultValue", serviceRequest.getContractorExperationDate());
 			fieldJsonArray.add(contractExpirationDate1);
 			//output += "{ \"fieldName\": \"contractExpirationDate1\", \"defaultValue\": \"" + serviceRequest.getContractExpirationDate() + "\"}, ";
 
 			JSONObject contractExpirationDate2 = new JSONObject();
 			contractExpirationDate2.put("fieldName", "contractExpirationDate2");
-			contractExpirationDate2.put("defaultValue", serviceRequest.getContractExpirationDate());
+			contractExpirationDate2.put("defaultValue", serviceRequest.getContractorExperationDate());
 			fieldJsonArray.add(contractExpirationDate2);
 			//output += "{ \"fieldName\": \"contractExpirationDate2\", \"defaultValue\": \"" + serviceRequest.getContractExpirationDate() + "\"}, ";
 
@@ -932,118 +932,118 @@ public class Agreements {
 			fieldJsonArray.add(countyPhoneNumber2);
 			//output += "{ \"fieldName\": \"countyPhoneNumber2\", \"defaultValue\": \"" + serviceRequest.getCountyPhoneNumber() + "\"}, ";
 		}
-		
+
 		if (serviceRequest.getManagerEmail() != null) {
 			JSONObject managerEmail = new JSONObject();
 			managerEmail.put("fieldName", "managerEmail");
 			managerEmail.put("defaultValue", serviceRequest.getManagerEmail());
 			fieldJsonArray.add(managerEmail);
 		}
-		
+
 		String managerName = serviceRequest.getManagerFirstName() + " " + serviceRequest.getManagerLastName();
 		JSONObject managerNameJson = new JSONObject();
 		managerNameJson.put("fieldName", "managerName");
 		managerNameJson.put("defaultValue", managerName);
 		fieldJsonArray.add(managerNameJson);
-		
+
 		if (serviceRequest.getManagerPhone() != null) {
 			JSONObject managerPhone = new JSONObject();
 			managerPhone.put("fieldName", "managerPhone");
 			managerPhone.put("defaultValue", serviceRequest.getManagerPhone());
 			fieldJsonArray.add(managerPhone);
 		}
-		
+
 		if (serviceRequest.getManagerTitle() != null) {
 			JSONObject managerTitle = new JSONObject();
 			managerTitle.put("fieldName", "managerTitle");
 			managerTitle.put("defaultValue", serviceRequest.getManagerTitle());
 			fieldJsonArray.add(managerTitle);
 		}
-		
+
 		if (serviceRequest.getDivChiefManagerEmail() != null) {
 			JSONObject divChiefManagerEmail = new JSONObject();
 			divChiefManagerEmail.put("fieldName", "divChiefManagerEmail");
 			divChiefManagerEmail.put("defaultValue", serviceRequest.getDivChiefManagerEmail());
 			fieldJsonArray.add(divChiefManagerEmail);
 		}
-		
+
 		if (serviceRequest.getDivChiefManagerName() != null) {
 			JSONObject divChiefManagerName = new JSONObject();
 			divChiefManagerName.put("fieldName", "divChiefManagerName");
 			divChiefManagerName.put("defaultValue", serviceRequest.getDivChiefManagerName());
 			fieldJsonArray.add(divChiefManagerName);
 		}
-		
+
 		if (serviceRequest.getDivChiefManagerPhone() != null) {
 			JSONObject divChiefManagerPhone = new JSONObject();
 			divChiefManagerPhone.put("fieldName", "divChiefManagerPhone");
 			divChiefManagerPhone.put("defaultValue", serviceRequest.getDivChiefManagerPhone());
 			fieldJsonArray.add(divChiefManagerPhone);
 		}
-		
+
 		if (serviceRequest.getDepartmentHeadEmail() != null) {
 			JSONObject departmentHeadEmail = new JSONObject();
 			departmentHeadEmail.put("fieldName", "departmentHeadEmail");
 			departmentHeadEmail.put("defaultValue", serviceRequest.getDepartmentHeadEmail());
 			fieldJsonArray.add(departmentHeadEmail);
 		}
-		
+
 		if (serviceRequest.getDepartmentHeadName() != null) {
 			JSONObject departmentHeadName = new JSONObject();
 			departmentHeadName.put("fieldName", "departmentHeadName");
 			departmentHeadName.put("defaultValue", serviceRequest.getDepartmentHeadName());
 			fieldJsonArray.add(departmentHeadName);
 		}
-		
+
 		if (serviceRequest.getDepartmentHeadPhone() != null) {
 			JSONObject departmentHeadPhone = new JSONObject();
 			departmentHeadPhone.put("fieldName", "departmentHeadPhone");
 			departmentHeadPhone.put("defaultValue", serviceRequest.getDepartmentHeadPhone());
 			fieldJsonArray.add(departmentHeadPhone);
 		}
-		
+
 		if (serviceRequest.getDeptInfoSecurityOfficerEmail() != null) {
 			JSONObject deptInfoSecurityOfficerEmail = new JSONObject();
 			deptInfoSecurityOfficerEmail.put("fieldName", "deptInfoSecurityOfficerEmail");
 			deptInfoSecurityOfficerEmail.put("defaultValue", serviceRequest.getDeptInfoSecurityOfficerEmail());
 			fieldJsonArray.add(deptInfoSecurityOfficerEmail);
 		}
-		
+
 		if (serviceRequest.getDeptInfoSecurityOfficerName() != null) {
 			JSONObject deptInfoSecurityOfficerName = new JSONObject();
 			deptInfoSecurityOfficerName.put("fieldName", "deptInfoSecurityOfficerName");
 			deptInfoSecurityOfficerName.put("defaultValue", serviceRequest.getDeptInfoSecurityOfficerName());
 			fieldJsonArray.add(deptInfoSecurityOfficerName);
 		}
-		
+
 		if (serviceRequest.getDeptInfoSecurityOfficerPhone() != null) {
 			JSONObject deptInfoSecurityOfficerPhone = new JSONObject();
 			deptInfoSecurityOfficerPhone.put("fieldName", "deptInfoSecurityOfficerPhone");
 			deptInfoSecurityOfficerPhone.put("defaultValue", serviceRequest.getDeptInfoSecurityOfficerPhone());
 			fieldJsonArray.add(deptInfoSecurityOfficerPhone);
 		}
-		
+
 		if (serviceRequest.getApplicationCoordinatorEmail() != null) {
 			JSONObject applicationCoordinatorEmail = new JSONObject();
 			applicationCoordinatorEmail.put("fieldName", "applicationCoordinatorEmail");
 			applicationCoordinatorEmail.put("defaultValue", serviceRequest.getApplicationCoordinatorEmail());
 			fieldJsonArray.add(applicationCoordinatorEmail);
 		}
-		
+
 		if (serviceRequest.getApplicationCoordinatorName() != null) {
 			JSONObject applicationCoordinatorName = new JSONObject();
 			applicationCoordinatorName.put("fieldName", "applicationCoordinatorName");
 			applicationCoordinatorName.put("defaultValue", serviceRequest.getApplicationCoordinatorName());
 			fieldJsonArray.add(applicationCoordinatorName);
 		}
-		
+
 		if (serviceRequest.getApplicationCoordinatorPhone() != null) {
 			JSONObject applicationCoordinatorPhone = new JSONObject();
 			applicationCoordinatorPhone.put("fieldName", "applicationCoordinatorPhone");
 			applicationCoordinatorPhone.put("defaultValue", serviceRequest.getApplicationCoordinatorPhone());
 			fieldJsonArray.add(applicationCoordinatorPhone);
 		}
-		
+
 
 		return fieldJsonArray;
 	}
