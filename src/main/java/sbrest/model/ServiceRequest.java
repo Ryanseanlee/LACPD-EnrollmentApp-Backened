@@ -30,7 +30,8 @@ public class ServiceRequest {
 	private boolean addLogonId;
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
-	private boolean EmployeeContractor;
+	private boolean employeeCheck;
+	private boolean contractorCheck;
 	
 	@Column(length = 5000) 
 	private ArrayList<String> eventHistory;
@@ -277,12 +278,18 @@ public class ServiceRequest {
 		this.createDate = createDate;
 	}
 	
-	public boolean getEmployeeContractor() {
-		return EmployeeContractor;
+	public boolean getemployeeCheck() {
+		return employeeCheck;
+	}
+	public boolean getcontractorCheck() {
+		return contractorCheck;
 	}
 
-	public void setEmployeeContractor(boolean EmployeeContractor) {
-		this.EmployeeContractor = EmployeeContractor;
+	public void setEmployeeCheck(boolean employeeCheck) {
+		this.employeeCheck = employeeCheck;
+	}
+	public void setContractorCheck(boolean contractorCheck) {
+		this.contractorCheck = contractorCheck;
 	}
 
 	public String getSubmitDate() {
