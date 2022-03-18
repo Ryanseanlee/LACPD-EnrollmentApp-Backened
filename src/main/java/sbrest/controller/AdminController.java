@@ -337,9 +337,6 @@
 				case "CountywidePolicyB":
 					s.setCountywidePolicyB((boolean) patch.get(key));
 					break;
-				case "EmployeeContractor":
-					s.setEmployeeContractor((boolean) patch.get(key));
-					break;
 				case "EmployeeWorkforce":
 					s.setEmployeeWorkforce((boolean) patch.get(key));
 					break;
@@ -347,13 +344,13 @@
 					s.setHardTokenVPN((boolean) patch.get(key));
 					break;
 				case "IOS":
-					s.setIOS((boolean) patch.get(key));
+					s.setiOS((boolean) patch.get(key));
 					break;
 				case "LACMobile":
-					s.setLACMobile((boolean) patch.get(key));
+					s.setLacMobile((boolean) patch.get(key));
 					break;
 				case "LACounty":
-					s.setLACounty((boolean) patch.get(key));
+					s.setLaCounty((boolean) patch.get(key));
 					break;
 				case "NewToken":
 					s.setNewToken((boolean) patch.get(key));

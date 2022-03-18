@@ -101,7 +101,6 @@ public class ServiceRequestsController {
 		originalServiceRequest.setAddLogonId(s.isAddLogonId());
 		originalServiceRequest.setChangeLogonId(s.isChangeLogonId());
 		originalServiceRequest.setDeleteLogonId(s.isDeleteLogonId());
-		originalServiceRequest.setemployeeContractor(s.getemployeeContractor());
 		originalServiceRequest.setLastName(s.getLastName());
 		originalServiceRequest.setFirstName(s.getFirstName());
 		originalServiceRequest.setMiddleInitial(s.getMiddleInitial());
@@ -158,7 +157,7 @@ public class ServiceRequestsController {
 		originalServiceRequest.setHardTokenVPN(s.isHardTokenVPN());
 		originalServiceRequest.setSoftwareToken(s.isSoftwareToken());
 		originalServiceRequest.setBillingAccountNumber(s.getBillingAccountNumber());
-		originalServiceRequest.setIOS(s.isIOS());
+		originalServiceRequest.setiOS(s.isiOS());
 		originalServiceRequest.setAndroid(s.isAndroid());
 		originalServiceRequest.setComputer(s.isComputer());
 		originalServiceRequest.setNewRegistration(s.isNewRegistration());
@@ -166,13 +165,12 @@ public class ServiceRequestsController {
 		originalServiceRequest.setUpdatePriorRegistration(s.isUpdatePriorRegistration());
 		originalServiceRequest.setEmployeeWorkforce(s.isEmployeeWorkforce());
 		originalServiceRequest.setContractorWorkforce1(s.isContractorWorkforce1());
-		originalServiceRequest.setemployeeContractor(s.getemployeeContractor());
 		originalServiceRequest.setContractorCompanyName(s.getContractorCompanyName());
 		originalServiceRequest.setContractorWorkOrder(s.getContractorWorkOrder());
 		originalServiceRequest.setContractorExperationDate(s.getContractorExperationDate());
 		originalServiceRequest.setO365Email(s.isO365Email());
-		originalServiceRequest.setLACMobile(s.isLACMobile());
-		originalServiceRequest.setLACounty(s.isLACounty());
+		originalServiceRequest.setLacMobile(s.isLacMobile());
+		originalServiceRequest.setLaCounty(s.isLaCounty());
 		originalServiceRequest.setCountywidePolicyB(s.isCountywidePolicyB());
 		originalServiceRequest.setCountywidePolicyA(s.isCountywidePolicyA());
 		originalServiceRequest.setAllWebmail(s.isAllWebmail());
@@ -404,7 +402,7 @@ public class ServiceRequestsController {
 				s.setBillingAccountNumber((String) patch.get(key));
 				break;
 			case "IOS":
-				s.setIOS((boolean) patch.get(key));
+				s.setiOS((boolean) patch.get(key));
 				break;
 			case "Android":
 				s.setAndroid((boolean) patch.get(key));
@@ -427,9 +425,6 @@ public class ServiceRequestsController {
 			case "ContractorWorkforce1":
 				s.setContractorWorkforce1((boolean) patch.get(key));
 				break;
-			case "employeeContractor":
-				s.setemployeeContractor((String) patch.get(key));
-				break;
 			case "ContractorCompanyName":
 				s.setContractorCompanyName((String) patch.get(key));
 				break;
@@ -440,10 +435,10 @@ public class ServiceRequestsController {
 				s.setO365Email((boolean) patch.get(key));
 				break;
 			case "LACMobile":
-				s.setLACMobile((boolean) patch.get(key));
+				s.setLacMobile((boolean) patch.get(key));
 				break;
 			case "LACounty":
-				s.setLACounty((boolean) patch.get(key));
+				s.setLaCounty((boolean) patch.get(key));
 				break;
 			case "CountywidePolicyB":
 				s.setCountywidePolicyB((boolean) patch.get(key));

@@ -30,6 +30,7 @@ public class ServiceRequest {
 	private boolean addLogonId;
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
+	
 	private boolean employeeCheck;
 	private boolean contractorCheck;
 	
@@ -125,39 +126,37 @@ public class ServiceRequest {
 	private String unixApplication;
 	@Column(length = 150)
 	private String unixAccessGroup;
-	private boolean NewToken;
-	private boolean ReplaceLostStolenToken;
-	private boolean ReplaceDefectiveToken;
-	private boolean RenewToken;
+	private boolean newToken;
+	private boolean replaceLostStolenToken;
+	private boolean replaceDefectiveToken;
+	private boolean renewToken;
 	@Column(length = 150)
-	private String ExperationDate;
-	private boolean TokenlessAuth;
-	private boolean HardTokenVPN;
-	private boolean SoftwareToken;
+	private String experationDate;
+	private boolean tokenlessAuth;
+	private boolean hardTokenVPN;
+	private boolean softwareToken;
 	@Column(length = 150)
 	private String billingAccountNumber;
-	private boolean IOS;
-	private boolean Android;
-	private boolean Computer;
+	private boolean iOS;
+	private boolean android;
+	private boolean computer;
 	private boolean newRegistration;
 	private boolean deletePriorRegistration;
 	private boolean updatePriorRegistration;
-	private boolean EmployeeWorkforce;
-	private boolean ContractorWorkforce1;
+	private boolean employeeWorkforce;
+	private boolean contractorWorkforce1;
 	@Column(length = 150)
-	private String employeeContractor;
+	private String contractorCompanyName;
 	@Column(length = 150)
-	private String ContractorCompanyName;
+	private String contractorWorkOrder;
 	@Column(length = 150)
-	private String ContractorWorkOrder;
-	@Column(length = 150)
-	private String ContractorExperationDate;
+	private String contractorExperationDate;
 	private boolean O365Email;
-	private boolean LACMobile;
-	private boolean LACounty;
-	private boolean CountywidePolicyB;
-	private boolean CountywidePolicyA;
-	private boolean AllWebmail;
+	private boolean lacMobile;
+	private boolean laCounty;
+	private boolean countywidePolicyB;
+	private boolean countywidePolicyA;
+	private boolean allWebmail;
 	private boolean StreamingMedia;
 	@Column(length = 250)
 	private String businessJustification;
@@ -261,13 +260,12 @@ public class ServiceRequest {
 		this.unixLogOnId = "";
 		this.unixApplication = "";
 		this.unixAccessGroup = "";
-		this.ExperationDate = "";
+		this.experationDate = "";
 		this.billingAccountNumber = "";
 		this.businessJustification = "";
-		this.employeeContractor = "";
-		this.ContractorCompanyName = "";
-		this.ContractorWorkOrder = "";
-		this.ContractorExperationDate = "";
+		this.contractorCompanyName = "";
+		this.contractorWorkOrder = "";
+		this.contractorExperationDate = "";
 	}
 
 	public String getCreateDate() {
@@ -278,16 +276,18 @@ public class ServiceRequest {
 		this.createDate = createDate;
 	}
 	
-	public boolean getemployeeCheck() {
+	public boolean isEmployeeCheck() {
 		return employeeCheck;
-	}
-	public boolean getcontractorCheck() {
-		return contractorCheck;
 	}
 
 	public void setEmployeeCheck(boolean employeeCheck) {
 		this.employeeCheck = employeeCheck;
 	}
+
+	public boolean isContractorCheck() {
+		return contractorCheck;
+	}
+
 	public void setContractorCheck(boolean contractorCheck) {
 		this.contractorCheck = contractorCheck;
 	}
@@ -733,12 +733,13 @@ public class ServiceRequest {
 	}
 
 	public String getExperationDate() {
-		return ExperationDate;
+		return experationDate;
 	}
 
-	public void setExperationDate(String ExperationDate) {
-		this.ExperationDate = ExperationDate;
+	public void setExperationDate(String experationDate) {
+		this.experationDate = experationDate;
 	}
+
 
 	public String getAPS_AO() {
 		return APS_AO;
@@ -765,101 +766,117 @@ public class ServiceRequest {
 	}
 
 	public boolean isNewToken() {
-		return NewToken;
+		return newToken;
 	}
 
 	public void setNewToken(boolean newToken) {
-		NewToken = newToken;
+		this.newToken = newToken;
 	}
 
 	public boolean isReplaceLostStolenToken() {
-		return ReplaceLostStolenToken;
+		return replaceLostStolenToken;
 	}
 
 	public void setReplaceLostStolenToken(boolean replaceLostStolenToken) {
-		ReplaceLostStolenToken = replaceLostStolenToken;
+		this.replaceLostStolenToken = replaceLostStolenToken;
 	}
 
 	public boolean isReplaceDefectiveToken() {
-		return ReplaceDefectiveToken;
+		return replaceDefectiveToken;
 	}
 
 	public void setReplaceDefectiveToken(boolean replaceDefectiveToken) {
-		ReplaceDefectiveToken = replaceDefectiveToken;
+		this.replaceDefectiveToken = replaceDefectiveToken;
 	}
 
 	public boolean isRenewToken() {
-		return RenewToken;
+		return renewToken;
 	}
 
 	public void setRenewToken(boolean renewToken) {
-		RenewToken = renewToken;
+		this.renewToken = renewToken;
 	}
 
+
 	public boolean isTokenlessAuth() {
-		return TokenlessAuth;
+		return tokenlessAuth;
 	}
 
 	public void setTokenlessAuth(boolean tokenlessAuth) {
-		TokenlessAuth = tokenlessAuth;
+		this.tokenlessAuth = tokenlessAuth;
 	}
 
 	public boolean isHardTokenVPN() {
-		return HardTokenVPN;
+		return hardTokenVPN;
 	}
 
 	public void setHardTokenVPN(boolean hardTokenVPN) {
-		HardTokenVPN = hardTokenVPN;
+		this.hardTokenVPN = hardTokenVPN;
 	}
 
 	public boolean isSoftwareToken() {
-		return SoftwareToken;
+		return softwareToken;
 	}
 
 	public void setSoftwareToken(boolean softwareToken) {
-		SoftwareToken = softwareToken;
+		this.softwareToken = softwareToken;
 	}
 
-	public boolean isIOS() {
-		return IOS;
+	public boolean isiOS() {
+		return iOS;
 	}
 
-	public void setIOS(boolean iOS) {
-		IOS = iOS;
+	public void setiOS(boolean iOS) {
+		this.iOS = iOS;
 	}
 
 	public boolean isAndroid() {
-		return Android;
+		return android;
 	}
 
 	public void setAndroid(boolean android) {
-		Android = android;
+		this.android = android;
 	}
 
 	public boolean isComputer() {
-		return Computer;
+		return computer;
 	}
 
 	public void setComputer(boolean computer) {
-		Computer = computer;
+		this.computer = computer;
 	}
 
 	public boolean isEmployeeWorkforce() {
-		return EmployeeWorkforce;
+		return employeeWorkforce;
 	}
 
 	public void setEmployeeWorkforce(boolean employeeWorkforce) {
-		EmployeeWorkforce = employeeWorkforce;
+		this.employeeWorkforce = employeeWorkforce;
 	}
 
 	public boolean isContractorWorkforce1() {
-		return ContractorWorkforce1;
+		return contractorWorkforce1;
 	}
 
 	public void setContractorWorkforce1(boolean contractorWorkforce1) {
-		ContractorWorkforce1 = contractorWorkforce1;
+		this.contractorWorkforce1 = contractorWorkforce1;
 	}
 
+	public boolean isLacMobile() {
+		return lacMobile;
+	}
+
+	public void setLacMobile(boolean lacMobile) {
+		this.lacMobile = lacMobile;
+	}
+
+	public boolean isLaCounty() {
+		return laCounty;
+	}
+
+	public void setLaCounty(boolean laCounty) {
+		this.laCounty = laCounty;
+	}
 	public boolean isO365Email() {
 		return O365Email;
 	}
@@ -867,46 +884,30 @@ public class ServiceRequest {
 	public void setO365Email(boolean o365Email) {
 		O365Email = o365Email;
 	}
-
-	public boolean isLACMobile() {
-		return LACMobile;
-	}
-
-	public void setLACMobile(boolean lACMobile) {
-		LACMobile = lACMobile;
-	}
-
-	public boolean isLACounty() {
-		return LACounty;
-	}
-
-	public void setLACounty(boolean lACounty) {
-		LACounty = lACounty;
-	}
-
 	public boolean isCountywidePolicyB() {
-		return CountywidePolicyB;
+		return countywidePolicyB;
 	}
 
 	public void setCountywidePolicyB(boolean countywidePolicyB) {
-		CountywidePolicyB = countywidePolicyB;
+		this.countywidePolicyB = countywidePolicyB;
 	}
 
 	public boolean isCountywidePolicyA() {
-		return CountywidePolicyA;
+		return countywidePolicyA;
 	}
 
 	public void setCountywidePolicyA(boolean countywidePolicyA) {
-		CountywidePolicyA = countywidePolicyA;
+		this.countywidePolicyA = countywidePolicyA;
 	}
 
 	public boolean isAllWebmail() {
-		return AllWebmail;
+		return allWebmail;
 	}
 
 	public void setAllWebmail(boolean allWebmail) {
-		AllWebmail = allWebmail;
+		this.allWebmail = allWebmail;
 	}
+	
 
 	public boolean isStreamingMedia() {
 		return StreamingMedia;
@@ -914,10 +915,6 @@ public class ServiceRequest {
 
 	public void setStreamingMedia(boolean streamingMedia) {
 		StreamingMedia = streamingMedia;
-	}
-
-	public void setEmployeeContractor(String employeeContractor) {
-		this.employeeContractor = employeeContractor;
 	}
 	// new privates
 	
@@ -929,46 +926,30 @@ public class ServiceRequest {
 		this.billingAccountNumber = billingAccountNumber;
 	}
 
-	public String getemployeeContractor() {
-		return employeeContractor;
-	}
-
-	public void setemployeeContractor(String employeeContractor) {
-		this.employeeContractor = employeeContractor;
-	}
-	
 	public String getContractorCompanyName() {
-		return ContractorCompanyName;
+		return contractorCompanyName;
 	}
 
-	public void setContractorCompanyName(String ContractorCompanyName) {
-		this.ContractorCompanyName = ContractorCompanyName;
+	public void setContractorCompanyName(String contractorCompanyName) {
+		this.contractorCompanyName = contractorCompanyName;
 	}
-	
+
 	public String getContractorWorkOrder() {
-		return ContractorWorkOrder;
+		return contractorWorkOrder;
 	}
 
-	public void setContractorWorkOrder(String ContractorWorkOrder) {
-		this.ContractorWorkOrder = ContractorWorkOrder;
+	public void setContractorWorkOrder(String contractorWorkOrder) {
+		this.contractorWorkOrder = contractorWorkOrder;
 	}
-	
+
 	public String getContractorExperationDate() {
-		return ContractorExperationDate;
+		return contractorExperationDate;
 	}
 
-	public void setContractorExperationDate(String ContractorExperationDate) {
-		this.ContractorExperationDate = ContractorExperationDate;
+	public void setContractorExperationDate(String contractorExperationDate) {
+		this.contractorExperationDate = contractorExperationDate;
 	}
 	
-	
-	
-	
-	
-	
-
-	
-
 	public String getBusinessJustification() {
 		return businessJustification;
 	}

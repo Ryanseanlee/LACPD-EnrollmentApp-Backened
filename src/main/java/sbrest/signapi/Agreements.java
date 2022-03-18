@@ -487,7 +487,7 @@ public class Agreements {
 		fieldJsonArray.add(billingAccountNumber);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
 
-		if (serviceRequest.isIOS()) {
+		if (serviceRequest.isiOS()) {
 			JSONObject IOS = new JSONObject();
 			IOS.put("fieldName", "TokenlessAuth");
 			IOS.put("defaultValue", "Checked");
@@ -531,12 +531,12 @@ public class Agreements {
 		
 		JSONObject ContractorWorkOrder = new JSONObject();
 		ContractorWorkOrder.put("fieldName", "ContractorWorkOrder");
-		ContractorWorkOrder.put("defaultValue", serviceRequest.getContractorCompanyName());
+		ContractorWorkOrder.put("defaultValue", serviceRequest.getContractorWorkOrder());
 		fieldJsonArray.add(ContractorWorkOrder);
 		
 		JSONObject ContractorExperationDate = new JSONObject();
 		ContractorExperationDate.put("fieldName", "ContractorExperationDate");
-		ContractorExperationDate.put("defaultValue", serviceRequest.getContractExpirationDate());
+		ContractorExperationDate.put("defaultValue", serviceRequest.getContractorExperationDate());
 		fieldJsonArray.add(ContractorExperationDate);
 		
 		if (serviceRequest.isO365Email()) {
@@ -547,14 +547,14 @@ public class Agreements {
 			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
 		
-		if (serviceRequest.isLACMobile()) {
+		if (serviceRequest.isLacMobile()) {
 			JSONObject LACMobile = new JSONObject();
 			LACMobile.put("fieldName", "LACMobile");
 			LACMobile.put("defaultValue", "Checked");
 			fieldJsonArray.add(LACMobile);
 			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
-		if (serviceRequest.isLACounty()) {
+		if (serviceRequest.isLaCounty()) {
 			JSONObject LACounty = new JSONObject();
 			LACounty.put("fieldName", "LACounty");
 			LACounty.put("defaultValue", "Checked");
@@ -576,10 +576,10 @@ public class Agreements {
 			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
 		if (serviceRequest.isAllWebmail()) {
-			JSONObject AllWebmail = new JSONObject();
-			AllWebmail.put("fieldName", "AllWebmail");
-			AllWebmail.put("defaultValue", "Checked");
-			fieldJsonArray.add(AllWebmail);
+			JSONObject allWebmail = new JSONObject();
+			allWebmail.put("fieldName", "AllWebmail");
+			allWebmail.put("defaultValue", "Checked");
+			fieldJsonArray.add(allWebmail);
 			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
 		if (serviceRequest.isStreamingMedia()) {
