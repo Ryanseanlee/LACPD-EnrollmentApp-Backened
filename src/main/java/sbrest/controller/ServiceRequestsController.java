@@ -31,7 +31,7 @@ import sbrest.model.dao.AdminDao;
 import sbrest.model.dao.ServiceRequestDao;
 import sbrest.service.SendEmail;
 import sbrest.signapi.AgreementEvents;
-//import sbrest.signapi.Agreements;
+import sbrest.signapi.Agreements;
 
 @RestController
 @RequestMapping("/service_requests")
@@ -94,7 +94,7 @@ public class ServiceRequestsController {
 		originalServiceRequest.setSubmitDate(s.getSubmitDate());
 		originalServiceRequest.setEmployee(s.isEmployee());
 		originalServiceRequest.setRequestStatus(s.getRequestStatus());
-		originalServiceRequest.setNewRegistration(s.isNewRegistration());
+		originalServiceRequest.setAgreementId(s.getAgreementId());
 		originalServiceRequest.setDeletePriorRegistration(s.isDeletePriorRegistration());
 		originalServiceRequest.setUpdatePriorRegistration(s.isUpdatePriorRegistration());
 		originalServiceRequest.setReplaceLostToken(s.isReplaceLostToken());
@@ -107,7 +107,7 @@ public class ServiceRequestsController {
 		originalServiceRequest.setEmployeeNumber(s.getEmployeeNumber());
 		originalServiceRequest.setDepartmentName(s.getDepartmentName());
 		originalServiceRequest.setDepartmentNumber(s.getDepartmentNumber());
-		originalServiceRequest.setContractorCompanyName(s.getContractorCompanyName());
+		originalServiceRequest.setCompanyName(s.getCompanyName());
 		originalServiceRequest.setCompanyEmailAddress(s.getCompanyEmailAddress());
 		originalServiceRequest.setCountyEmailAddress(s.getCountyEmailAddress());
 		originalServiceRequest.setEmployeeEmailAddress(s.getEmployeeEmailAddress());
@@ -123,8 +123,8 @@ public class ServiceRequestsController {
 		originalServiceRequest.setCompanyZip(s.getCompanyZip());
 		originalServiceRequest.setCompanyPhoneNumber(s.getCompanyPhoneNumber());
 		originalServiceRequest.setCountyPhoneNumber(s.getCountyPhoneNumber());
-		originalServiceRequest.setContractorWorkOrder(s.getContractorWorkOrder());
-		originalServiceRequest.setContractorExperationDate(s.getContractorExperationDate());
+		originalServiceRequest.setContractWorkOrderNumber(s.getContractWorkOrderNumber());
+		originalServiceRequest.setContractExpirationDate(s.getContractExpirationDate());
 		originalServiceRequest.setIbmLogOnId(s.getIbmLogOnId());
 		originalServiceRequest.setMajorGroupCode(s.getMajorGroupCode());
 		originalServiceRequest.setLsoGroupCode(s.getLsoGroupCode());
@@ -139,115 +139,49 @@ public class ServiceRequestsController {
 		originalServiceRequest.setSystemApplication(s.getSystemApplication());
 		originalServiceRequest.setGroupName(s.getGroupName());
 		originalServiceRequest.setOldGroup(s.getOldGroup());
+		originalServiceRequest.setAPS_AO(s.getAPS_AO());
+		originalServiceRequest.setDMV_SYSTEM_CODE(s.getDMV_SYSTEM_CODE());
+		originalServiceRequest.setJAI_SYSTEM_LOCATION(s.getJAI_SYSTEM_LOCATION());
 		originalServiceRequest.setUnixAddLogonId(s.isUnixAddLogonId());
 		originalServiceRequest.setUnixChangeLogonId(s.isUnixChangeLogonId());
 		originalServiceRequest.setUnixDeleteLogonId(s.isUnixDeleteLogonId());
 		originalServiceRequest.setUnixLogOnId(s.getUnixLogOnId());
 		originalServiceRequest.setUnixApplication(s.getUnixApplication());
 		originalServiceRequest.setUnixAccessGroup(s.getUnixAccessGroup());
-		originalServiceRequest.setUnixAccountNumber(s.getUnixAccountNumber());
-		originalServiceRequest.setBillingAccount(s.getBillingAccount());
-		originalServiceRequest.setSecurIdVpn(s.isSecurIdVpn());
-		originalServiceRequest.setAdaptiveAuthenticationVpn(s.isAdaptiveAuthenticationVpn());
-		originalServiceRequest.setInternetApplication(s.isInternetApplication());
-		originalServiceRequest.setExchangeEmail(s.isExchangeEmail());
-		originalServiceRequest.setEmailEncryption(s.isEmailEncryption());
-		originalServiceRequest.setLaCountyGovAccess(s.isLaCountyGovAccess());
-		originalServiceRequest.setTokenlessAuthentication(s.isTokenlessAuthentication());
-		originalServiceRequest.setLacMobileWifiAccess(s.isLacMobileWifiAccess());
-		originalServiceRequest.setCherwellSms(s.isCherwellSms());
-		originalServiceRequest.setWindowsRightsMgmt(s.isWindowsRightsMgmt());
-		originalServiceRequest.setGmailAccess(s.isGmailAccess());
-		originalServiceRequest.setYahooMailAccess(s.isYahooMailAccess());
-		originalServiceRequest.setOtherEmailDomain(s.getOtherEmailDomain());
-		originalServiceRequest.setBusinessJustification1(s.getBusinessJustification1());
-		originalServiceRequest.setDefaultCountyWidePolicy(s.isDefaultCountyWidePolicy());
-		originalServiceRequest.setDepartmentPolicyRule0(s.isDepartmentPolicyRule0());
-		originalServiceRequest.setDepartmentPolicyRule1(s.isDepartmentPolicyRule1());
-		originalServiceRequest.setDepartmentPolicyRule2(s.isDepartmentPolicyRule2());
-		originalServiceRequest.setDepartmentPolicyRule3(s.isDepartmentPolicyRule3());
-		originalServiceRequest.setDepartmentPolicyRule4(s.isDepartmentPolicyRule4());
-		originalServiceRequest.setSocialNetworkingFacebook(s.isSocialNetworkingFacebook());
-		originalServiceRequest.setSocialNetworkingTwitter(s.isSocialNetworkingTwitter());
-		originalServiceRequest.setSocialNetworkingLinkedIn(s.isSocialNetworkingLinkedIn());
+		originalServiceRequest.setNewToken(s.isNewToken());
+		originalServiceRequest.setReplaceLostStolenToken(s.isReplaceLostStolenToken());
+		originalServiceRequest.setReplaceDefectiveToken(s.isReplaceDefectiveToken());
+		originalServiceRequest.setRenewToken(s.isRenewToken());
+		originalServiceRequest.setExperationDate(s.getExperationDate());
+		originalServiceRequest.setTokenlessAuth(s.isTokenlessAuth());
+		originalServiceRequest.setHardTokenVPN(s.isHardTokenVPN());
+		originalServiceRequest.setSoftwareToken(s.isSoftwareToken());
+		originalServiceRequest.setBillingAccountNumber(s.getBillingAccountNumber());
+		originalServiceRequest.setiOS(s.isiOS());
+		originalServiceRequest.setAndroid(s.isAndroid());
+		originalServiceRequest.setComputer(s.isComputer());
+		originalServiceRequest.setNewRegistration(s.isNewRegistration());
+		originalServiceRequest.setDeletePriorRegistration(s.isDeletePriorRegistration());
+		originalServiceRequest.setUpdatePriorRegistration(s.isUpdatePriorRegistration());
+		originalServiceRequest.setEmployeeWorkforce(s.isEmployeeWorkforce());
+		originalServiceRequest.setContractorWorkforce1(s.isContractorWorkforce1());
+		originalServiceRequest.setContractorCompanyName(s.getContractorCompanyName());
+		originalServiceRequest.setContractorWorkOrder(s.getContractorWorkOrder());
+		originalServiceRequest.setContractorExperationDate(s.getContractorExperationDate());
+		originalServiceRequest.setO365Email(s.isO365Email());
+		originalServiceRequest.setLacMobile(s.isLacMobile());
+		originalServiceRequest.setLaCounty(s.isLaCounty());
+		originalServiceRequest.setCountywidePolicyB(s.isCountywidePolicyB());
+		originalServiceRequest.setCountywidePolicyA(s.isCountywidePolicyA());
+		originalServiceRequest.setAllWebmail(s.isAllWebmail());
+		originalServiceRequest.setStreamingMedia(s.isStreamingMedia());
+		originalServiceRequest.setBusinessJustification(s.getBusinessJustification());
 		originalServiceRequest.setSubmitted(s.isSubmitted());
 		originalServiceRequest.setManagerFirstName(s.getManagerFirstName());
 		originalServiceRequest.setManagerLastName(s.getManagerLastName());
 		originalServiceRequest.setManagerEmail(s.getManagerEmail());
 		originalServiceRequest.setManagerPhone(s.getManagerPhone());
 		originalServiceRequest.setManagerTitle(s.getManagerTitle());
-		originalServiceRequest.setAllWebmail(s.isAllWebmail());
-		originalServiceRequest.setAndroid(s.isAndroid());
-		originalServiceRequest.setBusinessJustification2(s.getBusinessJustification2());
-		originalServiceRequest.setContractorWorkforce1(s.isContractorWorkforce1());
-		originalServiceRequest.setCountyDepartmentName(s.getCountyDepartmentName());
-		originalServiceRequest.setCountyWorkforceId1(s.getCountyWorkforceId1());
-		originalServiceRequest.setCountyWorkforceName1(s.getCountyWorkforceName1());
-		originalServiceRequest.setCountywidePolicyA(s.isCountywidePolicyA());
-		originalServiceRequest.setCountywidePolicyB(s.isCountywidePolicyB());
-		originalServiceRequest.setDepartmentCoord1(s.getDepartmentCoord1());
-		originalServiceRequest.setDepartmentInfo(s.getDepartmentInfo());
-		originalServiceRequest.setEmailAddress(s.getEmailAddress());
-		originalServiceRequest.setEmployeeContractor(s.getEmployeeContractor());
-		originalServiceRequest.setEmployeeWorkforce(s.isEmployeeWorkforce());
-		originalServiceRequest.setHardTokenVPN(s.isHardTokenVPN());
-		originalServiceRequest.setIOS(s.isIOS());
-		originalServiceRequest.setLACMobile(s.isLACMobile());
-		originalServiceRequest.setLACounty(s.isLACounty());
-		originalServiceRequest.setManagerName1(s.getManagerName1());
-		originalServiceRequest.setManagerName2(s.getManagerName2());
-		originalServiceRequest.setManagerName3(s.getManagerName3());
-		originalServiceRequest.setManagerTitle1(s.getManagerTitle1());
-		originalServiceRequest.setName1(s.getName1());
-		originalServiceRequest.setNewRequest(s.isNewRequest());
-		originalServiceRequest.setNewToken(s.isNewToken());
-		originalServiceRequest.setO365Email(s.isO365Email());
-		originalServiceRequest.setOnlineAccess(s.isOnlineAccess());
-		originalServiceRequest.setPhone1(s.getPhone1());
-		originalServiceRequest.setPhone2(s.getPhone2());
-		originalServiceRequest.setPhone3(s.getPhone3());
-		originalServiceRequest.setPhone4(s.getPhone4());
-		originalServiceRequest.setPhone5(s.getPhone5());
-		originalServiceRequest.setPhone6(s.getPhone6());
-		originalServiceRequest.setRenewToken(s.isRenewToken());
-		originalServiceRequest.setReplaceDefectiveToken(s.isReplaceDefectiveToken());
-		originalServiceRequest.setReplaceLostStolenToken(s.isReplaceLostStolenToken());
-		originalServiceRequest.setSoftwareToken(s.isSoftwareToken());
-		originalServiceRequest.setStreamingMedia(s.isStreamingMedia());
-		originalServiceRequest.setTokenlessAuth(s.isTokenlessAuth());
-		originalServiceRequest.setTsoAccess(s.isTsoAccess());
-		originalServiceRequest.setUpdateRequest(s.isUpdateRequest());
-		originalServiceRequest.setAccessGroup1(s.getAccessGroup1());
-		originalServiceRequest.setAddNewLoginId(s.isAddNewLoginId());
-		originalServiceRequest.setApplication1(s.getApplication1());
-		originalServiceRequest.setAps(s.getAps());
-		originalServiceRequest.setBinNumber(s.getBinNumber());
-		//originalServiceRequest.setCountyDepartmetnNumber(s.getCountyDepartmetnNumber());
-		originalServiceRequest.setDateOfRequest(s.getDateOfRequest());
-		originalServiceRequest.setDeleteLoginId1(s.isDeleteLoginId1());
-		originalServiceRequest.setDeleteLoginId2(s.isDeleteLoginId2());
-		originalServiceRequest.setDigitLSOGroupCode(s.getDigitLSOGroupCode());
-		originalServiceRequest.setDigitMajorGroupCode(s.getDigitMajorGroupCode());
-		originalServiceRequest.setDigitTSOGrpCode(s.getDigitTSOGrpCode());
-		originalServiceRequest.setDmv(s.getDmv());
-		originalServiceRequest.setEmployeeContractor(s.getEmployeeContractor());
-		originalServiceRequest.setGrpName1(s.getGrpName1());
-		originalServiceRequest.setGrpName2(s.getGrpName2());
-		originalServiceRequest.setGrpName3(s.getGrpName3());
-		originalServiceRequest.setJai(s.getJai());
-		originalServiceRequest.setLastNamefirstNameMi(s.getLastNamefirstNameMi());
-		originalServiceRequest.setLoginId1(s.getLoginId1());
-		originalServiceRequest.setLoginId2(s.getLoginId2());
-		originalServiceRequest.setNewLoginId(s.isNewLoginId());
-		originalServiceRequest.setOldGrp1(s.getOldGrp1());
-		originalServiceRequest.setOldGrp2(s.getOldGrp2());
-		originalServiceRequest.setOldGrp3(s.getOldGrp3());
-		originalServiceRequest.setSystemApplication1(s.getSystemApplication1());
-		originalServiceRequest.setSystemApplication2(s.getSystemApplication2());
-		originalServiceRequest.setSystemApplication3(s.getSystemApplication3());
-		originalServiceRequest.setUpdateLoginId1(s.isUpdateLoginId1());
-		originalServiceRequest.setUpdateLoginId2(s.isUpdateLoginId2());
-		originalServiceRequest.setWorkPhoneNumber(s.getWorkPhoneNumber());
 
 		checkSubmitted(originalServiceRequest);
 		
@@ -317,8 +251,8 @@ public class ServiceRequestsController {
 			case "departmentNumber":
 				s.setDepartmentNumber((String) patch.get(key));
 				break;
-			case "ContractorCompanyName":
-				s.setContractorCompanyName((String) patch.get(key));
+			case "companyName":
+				s.setCompanyName((String) patch.get(key));
 				break;
 			case "companyEmailAddress":
 				s.setCompanyEmailAddress((String) patch.get(key));
@@ -365,11 +299,11 @@ public class ServiceRequestsController {
 			case "countyPhoneNumber":
 				s.setCountyPhoneNumber((String) patch.get(key));
 				break;
-			case "ContractorWorkOrder":
-				s.setContractorWorkOrder((String) patch.get(key));
+			case "contractWorkOrderNumber":
+				s.setContractWorkOrderNumber((String) patch.get(key));
 				break;
-			case "ContractorExperationDate":
-				s.setContractorExperationDate((String) patch.get(key));
+			case "contractExpirationDate":
+				s.setContractExpirationDate((String) patch.get(key));
 				break;
 			case "ibmLogOnId":
 				s.setIbmLogOnId((String) patch.get(key));
@@ -413,6 +347,15 @@ public class ServiceRequestsController {
 			case "oldGroup":
 				s.setOldGroup((String) patch.get(key));
 				break;
+			case "APS_AO":
+				s.setAPS_AO((String) patch.get(key));
+				break;
+			case "DMV_SYSTEM_CODE":
+				s.setDMV_SYSTEM_CODE((String) patch.get(key));
+				break;
+			case "JAI_SYSTEM_LOCATION":
+				s.setJAI_SYSTEM_LOCATION((String) patch.get(key));
+				break;
 			case "unixAddLogonId":
 				s.setUnixAddLogonId((boolean) patch.get(key));
 				break;
@@ -431,80 +374,86 @@ public class ServiceRequestsController {
 			case "unixAccessGroup":
 				s.setUnixAccessGroup((String) patch.get(key));
 				break;
-			case "unixAccountNumber":
-				s.setUnixAccountNumber((String) patch.get(key));
+			case "NewToken":
+				s.setNewToken((boolean) patch.get(key));
 				break;
-			case "BillingAccount":
-				s.setBillingAccount((String) patch.get(key));
+			case "ReplaceLostStolenToken":
+				s.setReplaceLostStolenToken((boolean) patch.get(key));
 				break;
-			case "securIdVpn":
-				s.setSecurIdVpn((boolean) patch.get(key));
+			case "ReplaceDefectiveToken":
+				s.setReplaceDefectiveToken((boolean) patch.get(key));
 				break;
-			case "adaptiveAuthenticationVpn":
-				s.setAdaptiveAuthenticationVpn((boolean) patch.get(key));
+			case "RenewToken":
+				s.setRenewToken((boolean) patch.get(key));
 				break;
-			case "internetApplication":
-				s.setInternetApplication((boolean) patch.get(key));
+			case "ExperationDate":
+				s.setExperationDate((String) patch.get(key));
 				break;
-			case "exchangeEmail":
-				s.setExchangeEmail((boolean) patch.get(key));
+			case "TokenlessAuth":
+				s.setTokenlessAuth((boolean) patch.get(key));
 				break;
-			case "emailEncryption":
-				s.setEmailEncryption((boolean) patch.get(key));
+			case "HardTokenVPN":
+				s.setHardTokenVPN((boolean) patch.get(key));
 				break;
-			case "laCountyGovAccess":
-				s.setLaCountyGovAccess((boolean) patch.get(key));
+			case "SoftwareToken":
+				s.setSoftwareToken((boolean) patch.get(key));
 				break;
-			case "tokenlessAuthentication":
-				s.setTokenlessAuthentication((boolean) patch.get(key));
+			case "billingAccountNumber":
+				s.setBillingAccountNumber((String) patch.get(key));
 				break;
-			case "lacMobileWifiAccess":
-				s.setLacMobileWifiAccess((boolean) patch.get(key));
+			case "IOS":
+				s.setiOS((boolean) patch.get(key));
 				break;
-			case "cherwellSms":
-				s.setCherwellSms((boolean) patch.get(key));
+			case "Android":
+				s.setAndroid((boolean) patch.get(key));
 				break;
-			case "windowsRightsMgmt":
-				s.setWindowsRightsMgmt((boolean) patch.get(key));
+			case "Computer":
+				s.setComputer((boolean) patch.get(key));
 				break;
-			case "gmailAccess":
-				s.setGmailAccess((boolean) patch.get(key));
+			case "NewRegistration":
+				s.setNewRegistration((boolean) patch.get(key));
 				break;
-			case "yahooMailAccess":
-				s.setYahooMailAccess((boolean) patch.get(key));
+			case "DeletePriorRegistration":
+				s.setDeletePriorRegistration((boolean) patch.get(key));
 				break;
-			case "otherEmailDomain":
-				s.setOtherEmailDomain((String) patch.get(key));
+			case "UpdatePriorRegistration":
+				s.setUpdatePriorRegistration((boolean) patch.get(key));
 				break;
-			case "BusinessJustification1":
-				s.setBusinessJustification1((String) patch.get(key));
+			case "EmployeeWorkforce":
+				s.setEmployeeWorkforce((boolean) patch.get(key));
 				break;
-			case "defaultCountyWidePolicy":
-				s.setDefaultCountyWidePolicy((boolean) patch.get(key));
+			case "ContractorWorkforce1":
+				s.setContractorWorkforce1((boolean) patch.get(key));
 				break;
-			case "departmentPolicyRule0":
-				s.setDepartmentPolicyRule0((boolean) patch.get(key));
+			case "ContractorCompanyName":
+				s.setContractorCompanyName((String) patch.get(key));
 				break;
-			case "departmentPolicyRule1":
-				s.setDepartmentPolicyRule1((boolean) patch.get(key));
+			case "ContractorExperationDate":
+				s.setContractorExperationDate((String) patch.get(key));
 				break;
-			case "departmentPolicyRule2":
-				s.setDepartmentPolicyRule2((boolean) patch.get(key));
+			case "O365Email":
+				s.setO365Email((boolean) patch.get(key));
 				break;
-			case "departmentPolicyRule3":
-				s.setDepartmentPolicyRule3((boolean) patch.get(key));
+			case "LACMobile":
+				s.setLacMobile((boolean) patch.get(key));
 				break;
-			case "departmentPolicyRule4":
-				s.setDepartmentPolicyRule4((boolean) patch.get(key));
+			case "LACounty":
+				s.setLaCounty((boolean) patch.get(key));
 				break;
-			case "socialNetworkingFacebook":
-				s.setSocialNetworkingFacebook((boolean) patch.get(key));
+			case "CountywidePolicyB":
+				s.setCountywidePolicyB((boolean) patch.get(key));
 				break;
-			case "socialNetworkingTwitter":
-				s.setSocialNetworkingTwitter((boolean) patch.get(key));
+			case "CountywidePolicyA":
+				s.setCountywidePolicyA((boolean) patch.get(key));
 				break;
-			case "socialNetworkingLinkedIn":
-				s.setSocialNetworkingLinkedIn((boolean) patch.get(key));
+			case "AllWebmail":
+				s.setAllWebmail((boolean) patch.get(key));
+				break;
+			case "StreamingMedia":
+				s.setStreamingMedia((boolean) patch.get(key));
+				break;
+			case "businessJustification":
+				s.setBusinessJustification((String) patch.get(key));
 				break;
 			case "isSubmitted":
 				s.setSubmitted((boolean) patch.get(key));
@@ -524,221 +473,6 @@ public class ServiceRequestsController {
 			case "managerEmail":
 				s.setManagerEmail((String) patch.get(key));
 				break;
-            case "AllWebmail":
-					s.setAllWebmail((boolean) patch.get(key));
-					break;
- 			case "Android":
-					s.setAndroid((boolean) patch.get(key));
-					break;
-            case "BusinessJustification2":
-					s.setBusinessJustification2((String) patch.get(key));
-					break;
-		    case "ContractorWorkforce1":
-					s.setContractorWorkforce1((boolean) patch.get(key));
-					break;
-            case "CountyDepartmentName":
-					s.setCountyDepartmentName((String) patch.get(key));
-					break;
-			case "CountyWorkforceId1":
-					s.setCountyWorkforceId1((String) patch.get(key));
-					break;
-	        case "CountyWorkforceName1":
-					s.setCountyWorkforceName1((String) patch.get(key));
-					break;
-	        case "CountywidePolicyA":
-					s.setCountywidePolicyA((boolean) patch.get(key));
-					break;
-		     case "CountywidePolicyB":
-					s.setCountywidePolicyB((boolean) patch.get(key));
-					break;
-		      case "DepartmentCoord1":
-					s.setDepartmentCoord1((String) patch.get(key));
-					break;
-			   case "DepartmentInfo":
-					s.setDepartmentInfo((String) patch.get(key));
-					break;
-				case "EmailAddress":
-					s.setEmailAddress((String) patch.get(key));
-					break;
-				case "EmployeeContractor":
-					s.setEmployeeContractor((String) patch.get(key));
-					break;
-				case "EmployeeWorkforce":
-					s.setEmployeeWorkforce((boolean) patch.get(key));
-					break;
-				case "HardTokenVPN":
-					s.setHardTokenVPN((boolean) patch.get(key));
-					break;
-				case "IOS":
-					s.setIOS((boolean) patch.get(key));
-					break;
-				case "LACMobile":
-					s.setLACMobile((boolean) patch.get(key));
-					break;
-				case "LACounty":
-					s.setLACounty((boolean) patch.get(key));
-					break;
-				case "ManagerName1":
-					s.setManagerName1((String) patch.get(key));
-					break;
-				case "ManagerName2":
-					s.setManagerName2((String) patch.get(key));
-					break;
-				case "ManagerName3":
-					s.setManagerName3((String) patch.get(key));
-					break;
-				case "ManagerTitle1":
-					s.setManagerTitle1((String) patch.get(key));
-					break;
-				case "Name1":
-					s.setName1((String) patch.get(key));
-					break;
-				case "NewRequest":
-					s.setNewRequest((boolean) patch.get(key));
-					break;
-				case "NewToken":
-					s.setNewToken((boolean) patch.get(key));
-					break;
-				case "O365Email":
-					s.setO365Email((boolean) patch.get(key));
-					break;
-				case "OnlineAccess":
-					s.setOnlineAccess((boolean) patch.get(key));
-					break;
-				case "Phone1":
-					s.setPhone1((String) patch.get(key));
-					break;
-				case "Phone2":
-					s.setPhone2((String) patch.get(key));
-					break;
-				case "Phone3":
-					s.setPhone3((String) patch.get(key));
-					break;
-				case "Phone4":
-					s.setPhone4((String) patch.get(key));
-					break;
-				case "Phone5":
-					s.setPhone5((String) patch.get(key));
-					break;
-				case "Phone6":
-					s.setPhone6((String) patch.get(key));
-					break;
-				case "RenewToken":
-					s.setRenewToken((boolean) patch.get(key));
-					break;
-				case "ReplaceDefectiveToken":
-					s.setReplaceDefectiveToken((boolean) patch.get(key));
-					break;
-				case "ReplaceLostStolenToken":
-					s.setReplaceLostStolenToken((boolean) patch.get(key));
-					break;
-				case "SoftwareToken":
-					s.setSoftwareToken((boolean) patch.get(key));
-					break;
-				case "StreamingMedia":
-					s.setStreamingMedia((boolean) patch.get(key));
-					break;
-				case "TokenlessAuth":
-					s.setTokenlessAuth((boolean) patch.get(key));
-					break;
-				case "TsoAccess":
-					s.setTsoAccess((boolean) patch.get(key));
-					break;
-				case "UpdateRequest":
-					s.setUpdateRequest((boolean) patch.get(key));
-					break;
-				case "accessGroup1":
-					s.setAccessGroup1((String) patch.get(key));
-					break;
-				case "addNewLoginId":
-					s.setAddNewLoginId((boolean) patch.get(key));
-					break;
-				case "application1":
-					s.setApplication1((String) patch.get(key));
-					break;
-				case "aps":
-					s.setAps((String) patch.get(key));
-					break;
-				//case "countyDepartmetnNumber":
-					//.s.setCountyDepartmetnNumber((String) patch.get(key));
-					//.key;
-				case "dateOfRequest":
-					s.setDateOfRequest((String) patch.get(key));
-					break;
-				case "deleteLoginId1":
-					s.setDeleteLoginId1((boolean) patch.get(key));
-					break;
-				case "deleteLoginId2":
-					s.setDeleteLoginId2((boolean) patch.get(key));
-					break;
-				case "digitLSOGroupCode":
-					s.setDigitLSOGroupCode((String) patch.get(key));
-					break;
-				case "digitMajorGroupCode":
-					s.setDigitMajorGroupCode((String) patch.get(key));
-					break;
-				case "digitTSOGrpCode":
-					s.setDigitTSOGrpCode((String) patch.get(key));
-					break;
-				case "dmv":
-					s.setDmv((String) patch.get(key));
-					break;
-				case "employeeContractor":
-					s.setEmployeeContractor((String) patch.get(key));
-					break;
-				case "grpName1":
-					s.setGrpName1((String) patch.get(key));
-					break;
-				case "grpName2":
-					s.setGrpName2((String) patch.get(key));
-					break;
-				case "grpName3":
-					s.setGrpName3((String) patch.get(key));
-					break;
-
-				case "jai":
-					s.setJai((String) patch.get(key));
-					break;
-				case "lastNamefirstNameMi":
-					s.setLastNamefirstNameMi((String) patch.get(key));
-					break;
-				case "loginIdw":
-					s.setLoginId1((String) patch.get(key));
-					break;
-				case "loginId2":
-					s.setLoginId2((String) patch.get(key));
-					break;
-				case "newLoginId":
-					s.setNewLoginId((boolean) patch.get(key));
-					break;
-				case "oldGrp1":
-					s.setOldGrp1((String) patch.get(key));
-					break;
-				case "oldGrp2":
-					s.setOldGrp2((String) patch.get(key));
-					break;
-				case "oldGrp3":
-					s.setOldGrp3((String) patch.get(key));
-					break;
-				case "systemApplication1":
-					s.setSystemApplication1((String) patch.get(key));
-					break;
-				case "systemApplication2":
-					s.setSystemApplication2((String) patch.get(key));
-					break;
-				case "systemApplication3":
-					s.setSystemApplication3((String) patch.get(key));
-					break;
-
-				case "updateLoginId1":
-					s.setUpdateLoginId1((boolean) patch.get(key));
-					break;
-				case "updateLoginId2":
-					s.setUpdateLoginId2((boolean) patch.get(key));
-					break;
-				case "workPhoneNumber":
-					s.setWorkPhoneNumber((String) patch.get(key));
-					break;
 			default:
 				break;
 
@@ -770,7 +504,8 @@ public class ServiceRequestsController {
 			s.setSubmitDate(d.format(currentDate));
 			s.getEventHistory().add("(" + s.getSubmitDate() + ") Request submitted for Admin review");
 			
-			String adminEmail = "lacpdformalerts@gmail.com";
+			// IRV need email
+			String adminEmail = adminDao.getAdmin("ivalen13@calstatela.edu").getEmail();
 			String subject = "New Request Submitted (#" + s.getRequestNumber() + ")";
 			String text = "A new service request was submitted by " + s.getFirstName() + " " + s.getLastName()
 					+ ". The request number is "+ s.getRequestNumber() +".\nLog in to review the request at " + "http://localhost:4200/admin"
