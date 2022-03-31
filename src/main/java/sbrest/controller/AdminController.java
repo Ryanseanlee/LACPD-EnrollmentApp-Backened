@@ -70,6 +70,12 @@
 			String dbPassword = adminDao.getAdmin(email).getPassword();
 			String dbUsername = adminDao.getAdmin(email).getEmail();
 			
+			// IRV
+			// Test the adminDao.createAdmin(String, String), works :)
+			// adminDao.createAdmin("h", "h");
+			
+			// IRV
+			// print dbpassword and dbusername in console
 			// System.out.println(dbPassword + " " + dbUsername);
 			
 			// compares user inputed email and password 
@@ -159,6 +165,32 @@
                         "User does not have authorization to view this page");
             }
         }
+        
+        // IRV
+		// Admin user can create new admin
+        @CrossOrigin(origins= "*")
+        @PatchMapping("/Create_User")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        public void upgrade
+        (
+		@RequestHeader("email") String email,
+		@RequestHeader("password") String password,
+        @RequestHeader("newemail") String newEmail,
+        @RequestHeader("newpassword") String newPassword
+        ) {
+
+            // get password from database, then compare to user input
+            //If password matches one in database return request status, else 403 error forbidden
+            String dbPassword = adminDao.getAdmin(email).getPassword(); //database
+
+            if (dbPassword.equals(password)) {
+                adminDao.createAdmin(newEmail, newPassword);
+            }else {
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN,
+                        "User does not have authorization to view this page");
+            }
+        }  
+        
 		
 		//Admin user can review a submitted request and edit field values
 		@CrossOrigin(origins= "*")
@@ -183,10 +215,204 @@
 		if (dbPassword.equals(password)) {			
 			for (String key : patch.keySet()) {
 				switch (key) {
+					//TODO
+				      // Form specific data
+				 //     submitted: isSubmitted,
+				case "isSubmitted":
+					s.setSubmitted((boolean) patch.get(key));
+					break;
+				//      employee: true, // Since it is the employee form
+				case "employee":
+					s.setEmployee((boolean) patch.get(key));
+					break;
 				
+				      // Personal Information\
+//				      createDate: data.personalInformation.createDate,
 				case "createDate":
 					s.setCreateDate((String) patch.get(key));
+					break;      
+//				      lastName: data.personalInformation.lastName,
+				case "lastName":
+					s.setLastName((String) patch.get(key));
 					break;
+//				      firstName: data.personalInformation.firstName,
+				case "firstName":
+					s.setLastName((String) patch.get(key));
+					break;
+//				      middleInitial: data.personalInformation.middleInitial,
+				case "middleInitial":
+					s.setMiddleInitial((String) patch.get(key));
+					break;
+//				      employeeEmailAddress: data.personalInformation.emailAddress,
+				case "employeeEmailAddress":
+					s.setEmployeeEmailAddress((String) patch.get(key));
+					break;
+//				      phoneNumber: data.personalInformation.phoneNumber,
+				case "phoneNumber":
+					s.setPhoneNumber((String) patch.get(key));
+					break;
+//				      workPhoneNumber: data.personalInformation.workPhoneNumber,
+				case "workPhoneNumber":
+					s.setWorkPhoneNumber((String) patch.get(key));
+					break;
+//				      employeeNumber: data.personalInformation.employeeNumber,
+				case "employeeNumber":
+					s.setEmployeeNumber((String) patch.get(key));
+					break;
+//				      countyDepartmentName: data.personalInformation.countyDepartmentName,
+				case "countyDepartmentName":
+					s.setCountyDepartmentName((String) patch.get(key));
+					break;
+//				      countyDepartmentNumber: data.personalInformation.countyDepartmentNumber,
+				case "countyDepartmentNumber":
+					s.setCountyDepartmentNumber((String) patch.get(key));
+					break;
+//				      contractorName: data.personalInformation.contractorName,
+				case "contractorName":
+					s.setContractorName((String) patch.get(key));
+					break;
+//				      workOrderNumberInput: data.personalInformation.workOrderNumberInput,
+				case "workOrderNumberInput":
+					s.setWorkOrderNumberInput((String) patch.get(key));
+					break;
+//				      expirationDate: data.personalInformation.expirationDate,
+				case "expirationDate":
+					s.setExpirationDate((String) patch.get(key));
+					break;
+//
+//				      // Address Information
+//				      businessStreetAddress: data.addressInformation.address,
+				case "businessStreetAddress":
+					s.setBusinessStreetAddress((String) patch.get(key));
+					break;
+//				      businessCity: data.addressInformation.city,
+				case "businessCity":
+					s.setBusinessCity((String) patch.get(key));
+					break;
+//				      businessState: data.addressInformation.state,
+				case "businessState":
+					s.setBusinessState((String) patch.get(key));
+					break;
+//				      businessZip: data.addressInformation.zipCode,
+				case "businessZip":
+					s.setBusinessZip((String) patch.get(key));
+					break;
+//
+//				      // Internet Access
+//				      countyWidePolicyA: data.internetAccess.countyWidePolicyA,
+				case "countyWidePolicyA":
+					s.setCountywidePolicyA((boolean) patch.get(key));
+					break;
+//				      countyWidePolicyB: data.internetAccess.countyWidePolicyB,
+				case "countyWidePolicyB":
+					s.setCountywidePolicyB((boolean) patch.get(key));
+					break;
+//				      allWebmail: data.internetAccess.allWebmail,
+				case "allWebmail":
+					s.setAllWebmail((boolean) patch.get(key));
+					break;
+//				      streamMedia: data.internetAccess.streamMedia,
+						// note: did not change this to setStreamMedia 
+				case "streamMedia":
+					s.setStreamingMedia((boolean) patch.get(key));
+					break;
+//				      justification: data.internetAccess.justification,
+					// note: did not change this to justification
+				case "justification":
+					s.setBusinessJustification((String) patch.get(key));
+					break;
+					// boolean???
+//				      // defaultCountyWidePolicy: data.internetAccess.applyDefaultCountyWidePolicy,
+//				case "defaultCountyWidePolicy":
+//					s.setDefaultCountyWidePolicy
+//				      // departmentPolicyRule0: data.internetAccess.departmentPolicyRule0,
+//				      // departmentPolicyRule1: data.internetAccess.departmentPolicyRule1,
+//				      // departmentPolicyRule2: data.internetAccess.departmentPolicyRule2,
+//				      // departmentPolicyRule3: data.internetAccess.departmentPolicyRule3,
+//				      // departmentPolicyRule4: data.internetAccess.departmentPolicyRule4,
+//				      // socialNetworkingFacebook: data.internetAccess.socialNetworkingFacebook,
+//				      // socialNetworkingTwitter: data.internetAccess.socialNetworkingTwitter,
+//				      // socialNetworkingLinkedIn: data.internetAccess.socialNetworkingLinkedIn,
+//
+//				      // Access Information
+//				      ibmLogOnId: data.accessInformation.ibmLogonId,
+				case "ibmLogOnId":
+					s.setIbmLogOnId((String) patch.get(key));
+					break;
+//				      majorGroupCode: data.accessInformation.majorGroupCode,
+				case "majorGroupCode":
+					s.setMajorGroupCode((String) patch.get(key));
+					break;
+//				      lsoGroupCode: data.accessInformation.lsoGroupCode,
+				case "lsoGroupCode":
+					s.setLsoGroupCode((String) patch.get(key));
+					break;
+//				      securityAuthorization: data.accessInformation.securityAuthorization,
+				case "securityAuthorization":
+					s.setSecurityAuthorization((String) patch.get(key));
+					break;
+//				      unixLogOnId: data.accessInformation.unixLogonId,
+				case "unixLogOnId":
+					s.setUnixLogOnId((String) patch.get(key));
+					break;
+//				      unixApplication: data.accessInformation.application,
+				case "unixApplication":
+					s.setUnixApplication((String) patch.get(key));
+					break;
+//				      unixAccessGroup: data.accessInformation.accessGroup,
+				case "unixAccessGroup":
+					s.setUnixAccessGroup((String) patch.get(key));
+					break;
+//				      unixAccountNumber: data.accessInformation.accountNumber,
+				case "unixAccountNumber":
+					s.setUnixAccountNumber((String) patch.get(key));
+					break;
+//				      billingAccountNumber: data.accessInformation.billingAccountNumber,
+				case "billingAccountNumber":
+					s.setBillingAccountNumber((String) patch.get(key));
+				break;
+		
+//				      // FIXME: On server side accessType(securid) might be misssing
+//				      // Additional Information
+				// IRV
+				// did not fix these to a different name // Assuming these are Boolean
+//				      laCountyGovAccess: data.additionalInformation.laCountyGovAccess,
+				case "laCountGovAccess":
+					s.setLaCounty((boolean) patch.get(key));
+					break;
+//				      lacMobileWifiAccess: data.additionalInformation.lacMobileWifiAccess,
+				case "lacMobileWifiAccess":
+					s.setLacMobile((boolean) patch.get(key));
+					break;
+//				      o365Email: data.additionalInformation.o365Email,
+				case "o365Email":
+					s.setO365Email((boolean) patch.get(key));
+					break;
+				
+				
+//				      // TODO: Add managerTitle
+//				      // Mananger Information
+					
+//				      managerFirstName: data.managerInformation.managerFirstName,
+				case "managerFirstName":
+					s.setManagerFirstName((String) patch.get(key));
+					break;
+//				      managerLastName: data.managerInformation.managerLastName,
+				case "managerLastName":
+					s.setManagerLastName((String) patch.get(key));
+					break;
+//				      managerEmail: data.managerInformation.managerEmail,
+				case "managerEmail":
+					s.setManagerEmail((String) patch.get(key));
+					break;
+//				      managerPhone: data.managerInformation.managerPhoneNumber,
+				case "managerPhone":
+					s.setManagerPhone((String) patch.get(key));
+					break;
+//				    };
+					
+					
+/*	Original form
 				case "submitDate":
 					s.setSubmitDate((String) patch.get(key));
 					break;
@@ -652,6 +878,7 @@
 					
 				default:
 					break;
+					*/
 
 
 					}

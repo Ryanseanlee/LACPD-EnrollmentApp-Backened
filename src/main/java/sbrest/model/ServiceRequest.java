@@ -25,14 +25,12 @@ public class ServiceRequest {
 	private boolean isEmployee;
 	private String requestStatus;
 	private boolean isComplete;
+
 	private String agreementId;
 	private boolean replaceLostToken;
 	private boolean addLogonId;
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
-	
-	private boolean employeeCheck;
-	private boolean contractorCheck;
 	
 	@Column(length = 5000) 
 	private ArrayList<String> eventHistory;
@@ -46,9 +44,11 @@ public class ServiceRequest {
 	@Column(length = 50)
 	private String employeeNumber;
 	@Column(length = 100)
-	private String departmentName;
+	// IRV new entry
+	private String countyDepartmentName;
 	@Column(length = 50)
-	private String departmentNumber;
+	// IRV new entry
+	private String countyDepartmentNumber;
 	@Column(length = 100)
 	private String companyName;
 	@Column(length = 100)
@@ -66,7 +66,7 @@ public class ServiceRequest {
 	@Column(length = 20)
 	private String businessZip;
 	@Column(length = 20)
-	private String businessPhoneNumber;
+	private String phoneNumber;
 	@Column(length = 150)
 	private String workMailingAddress;
 	@Column(length = 100)
@@ -78,13 +78,12 @@ public class ServiceRequest {
 	@Column(length = 20)
 	private String companyZip;
 	@Column(length = 20)
-	private String companyPhoneNumber;
-	@Column(length = 20)
-	private String countyPhoneNumber;
+	private String workPhoneNumber;
 	@Column(length = 50)
 	private String contractWorkOrderNumber;
+	// IRV edited field
 	@Column(length = 20)
-	private String contractExpirationDate;
+	private String expirationDate;
 	@Column(length = 50)
 	private String ibmLogOnId;
 	@Column(length = 150)
@@ -206,6 +205,16 @@ public class ServiceRequest {
 	private String applicationCoordinatorEmail;
 	@Column(length = 20)
 	private String applicationCoordinatorPhone;
+
+	// IRV new fields
+	@Column(length = 150)
+	private String contractorName;
+	@Column(length = 50)
+	private String workOrderNumberInput;
+	@Column(length = 150)
+	private String unixAccountNumber;
+
+
 	
 
 	public ServiceRequest() {
@@ -222,8 +231,8 @@ public class ServiceRequest {
 		this.firstName = "";
 		this.middleInitial = "";
 		this.employeeNumber = "";
-		this.departmentName = "";
-		this.departmentNumber = "";
+		this.countyDepartmentName = "";
+		this.countyDepartmentNumber = "";
 		this.companyName = "";
 		this.companyEmailAddress = "";
 		this.countyEmailAddress = "";
@@ -232,16 +241,17 @@ public class ServiceRequest {
 		this.businessCity = "";
 		this.businessState = "";
 		this.businessZip = "";
-		this.businessPhoneNumber = "";
+		// IRV new entry
+		this.phoneNumber = "";
 		this.workMailingAddress = "";
 		this.companyStreetAddress = "";
 		this.companyCity = "";
 		this.companyState = "";
 		this.companyZip = "";
-		this.companyPhoneNumber = "";
-		this.countyPhoneNumber = "";
+		// IRV new entry
+		this.workPhoneNumber = "";
 		this.contractWorkOrderNumber = "";
-		this.contractExpirationDate = "";
+		this.expirationDate = "";
 		this.ibmLogOnId = "";
 		this.majorGroupCode = "";
 		this.lsoGroupCode = "";
@@ -266,7 +276,40 @@ public class ServiceRequest {
 		this.contractorCompanyName = "";
 		this.contractorWorkOrder = "";
 		this.contractorExperationDate = "";
+
+		// entries for new fields
+		this.contractorName = "";
+		this.workOrderNumberInput = "";
+		this.unixAccountNumber = "";
 	}
+
+	// IRV new field functions
+
+	public String setUnixAccountNumber() {
+		return unixAccessGroup;
+	}
+
+	public void setUnixAccountNumber(String unixAccountNumber) {
+		this.unixAccountNumber = unixAccountNumber;
+	}
+
+	public String getWorkOrderNumberInput() {
+		return workOrderNumberInput;
+	}
+
+	public void setWorkOrderNumberInput(String workOrderNumberInput) {
+		this.workOrderNumberInput = workOrderNumberInput;
+	}
+
+	public String getContractorName() {
+		return contractorName;
+	}
+
+	public void setContractorName(String contractorName) {
+		this.contractorName = contractorName;
+	}
+
+	// new field end
 
 	public String getCreateDate() {
 		return createDate;
@@ -276,21 +319,21 @@ public class ServiceRequest {
 		this.createDate = createDate;
 	}
 	
-	public boolean isEmployeeCheck() {
-		return employeeCheck;
-	}
+//	public boolean isEmployeeCheck() {
+//		return employeeCheck;
+//	}
+//
+//	public void setEmployeeCheck(boolean employeeCheck) {
+//		this.employeeCheck = employeeCheck;
+//	}
 
-	public void setEmployeeCheck(boolean employeeCheck) {
-		this.employeeCheck = employeeCheck;
-	}
-
-	public boolean isContractorCheck() {
-		return contractorCheck;
-	}
-
-	public void setContractorCheck(boolean contractorCheck) {
-		this.contractorCheck = contractorCheck;
-	}
+//	public boolean isContractorCheck() {
+//		return contractorCheck;
+//	}
+//
+//	public void setContractorCheck(boolean contractorCheck) {
+//		this.contractorCheck = contractorCheck;
+//	}
 
 	public String getSubmitDate() {
 		return submitDate;
@@ -412,20 +455,20 @@ public class ServiceRequest {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public String getDepartmentName() {
-		return departmentName;
+	public String getCountyDepartmentName() {
+		return countyDepartmentName;
 	}
 
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setCountyDepartmentName(String countyDepartmentName) {
+		this.countyDepartmentName = countyDepartmentName;
 	}
 
-	public String getDepartmentNumber() {
-		return departmentNumber;
+	public String getCountyDepartmentNumber() {
+		return countyDepartmentNumber;
 	}
 
-	public void setDepartmentNumber(String departmentNumber) {
-		this.departmentNumber = departmentNumber;
+	public void setCountyDepartmentNumber(String departmentNumber) {
+		this.countyDepartmentNumber = countyDepartmentNumber;
 	}
 
 	public String getCompanyName() {
@@ -492,12 +535,12 @@ public class ServiceRequest {
 		this.businessZip = businessZip;
 	}
 
-	public String getBusinessPhoneNumber() {
-		return businessPhoneNumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setBusinessPhoneNumber(String businessPhoneNumber) {
-		this.businessPhoneNumber = businessPhoneNumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getWorkMailingAddress() {
@@ -540,20 +583,12 @@ public class ServiceRequest {
 		this.companyZip = companyZip;
 	}
 
-	public String getCompanyPhoneNumber() {
-		return companyPhoneNumber;
+	public String getWorkPhoneNumber() {
+		return workPhoneNumber;
 	}
 
-	public void setCompanyPhoneNumber(String companyPhoneNumber) {
-		this.companyPhoneNumber = companyPhoneNumber;
-	}
-
-	public String getCountyPhoneNumber() {
-		return countyPhoneNumber;
-	}
-
-	public void setCountyPhoneNumber(String countyPhoneNumber) {
-		this.countyPhoneNumber = countyPhoneNumber;
+	public void setWorkPhoneNumber(String workPhoneNumber) {
+		this.workPhoneNumber = workPhoneNumber;
 	}
 
 	public String getContractWorkOrderNumber() {
@@ -564,12 +599,12 @@ public class ServiceRequest {
 		this.contractWorkOrderNumber = contractWorkOrderNumber;
 	}
 
-	public String getContractExpirationDate() {
-		return contractExpirationDate;
+	public String getExpirationDate() {
+		return expirationDate;
 	}
 
-	public void setContractExpirationDate(String contractExpirationDate) {
-		this.contractExpirationDate = contractExpirationDate;
+	public void setExpirationDate(String contractExpirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public String getIbmLogOnId() {

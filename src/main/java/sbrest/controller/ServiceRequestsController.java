@@ -105,8 +105,6 @@ public class ServiceRequestsController {
 		originalServiceRequest.setFirstName(s.getFirstName());
 		originalServiceRequest.setMiddleInitial(s.getMiddleInitial());
 		originalServiceRequest.setEmployeeNumber(s.getEmployeeNumber());
-		originalServiceRequest.setDepartmentName(s.getDepartmentName());
-		originalServiceRequest.setDepartmentNumber(s.getDepartmentNumber());
 		originalServiceRequest.setCompanyName(s.getCompanyName());
 		originalServiceRequest.setCompanyEmailAddress(s.getCompanyEmailAddress());
 		originalServiceRequest.setCountyEmailAddress(s.getCountyEmailAddress());
@@ -115,16 +113,12 @@ public class ServiceRequestsController {
 		originalServiceRequest.setBusinessCity(s.getBusinessCity());
 		originalServiceRequest.setBusinessState(s.getBusinessState());
 		originalServiceRequest.setBusinessZip(s.getBusinessZip());
-		originalServiceRequest.setBusinessPhoneNumber(s.getBusinessPhoneNumber());
 		originalServiceRequest.setWorkMailingAddress(s.getWorkMailingAddress());
 		originalServiceRequest.setCompanyStreetAddress(s.getCompanyStreetAddress());
 		originalServiceRequest.setCompanyCity(s.getCompanyCity());
 		originalServiceRequest.setCompanyState(s.getCompanyState());
 		originalServiceRequest.setCompanyZip(s.getCompanyZip());
-		originalServiceRequest.setCompanyPhoneNumber(s.getCompanyPhoneNumber());
-		originalServiceRequest.setCountyPhoneNumber(s.getCountyPhoneNumber());
 		originalServiceRequest.setContractWorkOrderNumber(s.getContractWorkOrderNumber());
-		originalServiceRequest.setContractExpirationDate(s.getContractExpirationDate());
 		originalServiceRequest.setIbmLogOnId(s.getIbmLogOnId());
 		originalServiceRequest.setMajorGroupCode(s.getMajorGroupCode());
 		originalServiceRequest.setLsoGroupCode(s.getLsoGroupCode());
@@ -245,12 +239,6 @@ public class ServiceRequestsController {
 			case "employeeNumber":
 				s.setEmployeeNumber((String) patch.get(key));
 				break;
-			case "departmentName":
-				s.setDepartmentName((String) patch.get(key));
-				break;
-			case "departmentNumber":
-				s.setDepartmentNumber((String) patch.get(key));
-				break;
 			case "companyName":
 				s.setCompanyName((String) patch.get(key));
 				break;
@@ -275,9 +263,6 @@ public class ServiceRequestsController {
 			case "businessZip":
 				s.setBusinessZip((String) patch.get(key));
 				break;
-			case "businessPhoneNumber":
-				s.setBusinessPhoneNumber((String) patch.get(key));
-				break;
 			case "workMailingAddress":
 				s.setWorkMailingAddress((String) patch.get(key));
 				break;
@@ -293,17 +278,8 @@ public class ServiceRequestsController {
 			case "companyZip":
 				s.setCompanyZip((String) patch.get(key));
 				break;
-			case "companyPhoneNumber":
-				s.setCompanyPhoneNumber((String) patch.get(key));
-				break;
-			case "countyPhoneNumber":
-				s.setCountyPhoneNumber((String) patch.get(key));
-				break;
 			case "contractWorkOrderNumber":
 				s.setContractWorkOrderNumber((String) patch.get(key));
-				break;
-			case "contractExpirationDate":
-				s.setContractExpirationDate((String) patch.get(key));
 				break;
 			case "ibmLogOnId":
 				s.setIbmLogOnId((String) patch.get(key));
