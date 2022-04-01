@@ -261,13 +261,13 @@ public class Agreements {
 
 		JSONObject departmentName3 = new JSONObject();
 		departmentName3.put("fieldName", "departmentNumber3");
-		departmentName3.put("defaultValue", serviceRequest.getDepartmentName());
+		departmentName3.put("defaultValue", serviceRequest.getCountyDepartmentName());
 		fieldJsonArray.add(departmentName3);
 		//output += "{ \"fieldName\": \"departmentNumber3\", \"defaultValue\": \"" + serviceRequest.getDepartmentNumber() + "\"}, ";
 
 		JSONObject companyPhoneNumber5 = new JSONObject();
 		companyPhoneNumber5.put("fieldName", "companyPhoneNumber5");
-		companyPhoneNumber5.put("defaultValue", serviceRequest.getCompanyPhoneNumber());
+		companyPhoneNumber5.put("defaultValue", serviceRequest.getWorkPhoneNumber());
 		fieldJsonArray.add(companyPhoneNumber5);
 		//output += "{ \"fieldName\": \"companyPhoneNumber5\", \"defaultValue\": \"" + serviceRequest.getCompanyPhoneNumber() + "\"}, ";
 
