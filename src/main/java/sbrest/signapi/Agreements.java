@@ -20,18 +20,18 @@ public class Agreements {
 		String workflowId = "";
 		String fileLabel = "";
 		if (serviceRequest.isEmployee()) {
-			email = serviceRequest.getEmployeeEmailAddress();
-			agreementName = "PD Employee Agreement";
-			documentId = "CBJCHBCAABAA0pFVPoxF34OjYxufbH42-pwMBVNbkE4L";
-			workflowId = "CBJCHBCAABAAEHNe0UYWSVEoluFqkY6tz3bw8XwWwoXl";
-			fileLabel = "PD Employee Forms";
+			email = serviceRequest.getEmailAddress();
+			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
+			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
+			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+			fileLabel = "[NEW FORMS] Employee/Contractor";
 		}
 		else {
-			email = serviceRequest.getCompanyEmailAddress();
-			agreementName = "PD Contractor Agreement";
-			documentId = "CBJCHBCAABAA1fprefTPFkmJwDbNeEIYvRWebof8Eb8B";
-			workflowId = "CBJCHBCAABAAs8I5FBkEK7YwAbFT3thhIR7cqfXJs39Q";
-			fileLabel = "PD Contractor Forms";
+			email = serviceRequest.getEmailAddress();
+			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
+			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
+			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+			fileLabel = "[NEW FORMS] Employee/Contractor";
 		}
 		
 
@@ -249,13 +249,13 @@ public class Agreements {
 		
 		JSONObject companyEmailAddress3 = new JSONObject();
 		companyEmailAddress3.put("fieldName", "companyEmailAddress3");
-		companyEmailAddress3.put("defaultValue", serviceRequest.getCompanyEmailAddress());
+		companyEmailAddress3.put("defaultValue", serviceRequest.getEmailAddress());
 		fieldJsonArray.add(companyEmailAddress3);
 		//output += "{ \"fieldName\": \"companyEmailAddress3\", \"defaultValue\": \"" + serviceRequest.getCompanyEmailAddress() + "\"}, ";
 
 		JSONObject companyName2 = new JSONObject();
 		companyName2.put("fieldName", "companyName2");
-		companyName2.put("defaultValue", serviceRequest.getCompanyName());
+		companyName2.put("defaultValue", serviceRequest.getContractorName());
 		fieldJsonArray.add(companyName2);
 		//output += "{ \"fieldName\": \"companyName2\", \"defaultValue\": \"" + serviceRequest.getCompanyName() + "\"}, ";
 
@@ -279,7 +279,7 @@ public class Agreements {
 
 		JSONObject ibmLogOnId = new JSONObject();
 		ibmLogOnId.put("fieldName", "ibmLogOnId");
-		ibmLogOnId.put("defaultValue", serviceRequest.getIbmLogOnId());
+		ibmLogOnId.put("defaultValue", serviceRequest.getIbmLogonId());
 		fieldJsonArray.add(ibmLogOnId);
 		//output += "{ \"fieldName\": \"ibmLogOnId\", \"defaultValue\": \"" + serviceRequest.getIbmLogOnId() + "\"}, ";
 
@@ -455,7 +455,7 @@ public class Agreements {
 		
 		JSONObject ExperationDate = new JSONObject();
 		ExperationDate.put("fieldName", "billingAccountNumber");
-		ExperationDate.put("defaultValue", serviceRequest.getExperationDate());
+		ExperationDate.put("defaultValue", serviceRequest.getExpirationDate());
 		fieldJsonArray.add(ExperationDate);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
 		
