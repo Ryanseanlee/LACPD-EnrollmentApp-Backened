@@ -200,6 +200,11 @@ public class ServiceRequest {
 		
 		this.billingAccountNumber = "";
 		
+		//additional information
+		this.o360Email = false;
+		this.laCountyGovAccess = false;
+		this.lacMobileWifiAccess = false;
+		
 	}
 
 	

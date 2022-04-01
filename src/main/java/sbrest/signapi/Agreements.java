@@ -19,20 +19,12 @@ public class Agreements {
 		String documentId = "";
 		String workflowId = "";
 		String fileLabel = "";
-		if (serviceRequest.isEmployee()) {
-			email = serviceRequest.getEmailAddress();
-			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
-			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
-			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
-			fileLabel = "[NEW FORMS] Employee/Contractor";
-		}
-		else {
-			email = serviceRequest.getEmailAddress();
-			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
-			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
-			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
-			fileLabel = "[NEW FORMS] Employee/Contractor";
-		}
+		email = serviceRequest.getEmailAddress();
+		agreementName = "[NEW FORMS] Employee/Contractor Agreement";
+		documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
+		workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+		fileLabel = "[NEW FORMS] Employee/Contractor";
+		
 		
 
 		// Create HTTP header list
@@ -271,12 +263,6 @@ public class Agreements {
 		fieldJsonArray.add(companyPhoneNumber5);
 		//output += "{ \"fieldName\": \"companyPhoneNumber5\", \"defaultValue\": \"" + serviceRequest.getCompanyPhoneNumber() + "\"}, ";
 
-		JSONObject workMailingAddress = new JSONObject();
-		workMailingAddress.put("fieldName", "workMailingAddress");
-		workMailingAddress.put("defaultValue", serviceRequest.getWorkMailingAddress());
-		fieldJsonArray.add(workMailingAddress);
-		//output += "{ \"fieldName\": \"workMailingAddress\", \"defaultValue\": \"" + serviceRequest.getWorkMailingAddress() + "\"}, ";
-
 		JSONObject ibmLogOnId = new JSONObject();
 		ibmLogOnId.put("fieldName", "ibmLogOnId");
 		ibmLogOnId.put("defaultValue", serviceRequest.getIbmLogonId());
@@ -297,189 +283,43 @@ public class Agreements {
 		
 		JSONObject securityAuthorization = new JSONObject();
 		securityAuthorization.put("fieldName", "securityAuthorization");
-		securityAuthorization.put("defaultValue", serviceRequest.getLsoGroupCode());
+		securityAuthorization.put("defaultValue", serviceRequest.getSecurityAuthorization());
 		fieldJsonArray.add(securityAuthorization);
 		//output += "{ \"fieldName\": \"lsoGroupCode\", \"defaultValue\": \"" + serviceRequest.getLsoGroupCode() + "\"}, ";
 
-		if (serviceRequest.isTsoAccess()) {
-			JSONObject tsoAccess = new JSONObject();
-			tsoAccess.put("fieldName", "tsoAccess");
-			tsoAccess.put("defaultValue", "Checked");
-			fieldJsonArray.add(tsoAccess);
-			//output += "{ \"fieldName\": \"tsoAccess\", \"defaultValue\": \"Checked\"}, ";
-		}
-
-		JSONObject tsoGroupCode = new JSONObject();
-		tsoGroupCode.put("fieldName", "tsoGroupCode");
-		tsoGroupCode.put("defaultValue", serviceRequest.getTsoGroupCode());
-		fieldJsonArray.add(tsoGroupCode);
-		//output += "{ \"fieldName\": \"tsoGroupCode\", \"defaultValue\": \"" + serviceRequest.getTsoGroupCode() + "\"}, ";
 		
-		JSONObject binNumber = new JSONObject();
-		binNumber.put("fieldName", "binNumber");
-		binNumber.put("defaultValue", serviceRequest.getBinNumber());
-		fieldJsonArray.add(binNumber);
-		//output += "{ \"fieldName\": \"binNumber\", \"defaultValue\": \"" + serviceRequest.getBinNumber() + "\"}, ";
-
-		JSONObject subGroup1 = new JSONObject();
-		subGroup1.put("fieldName", "subGroup1");
-		subGroup1.put("defaultValue", serviceRequest.getSubGroup1());
-		fieldJsonArray.add(subGroup1);
-		//output += "{ \"fieldName\": \"subGroup1\", \"defaultValue\": \"" + serviceRequest.getSubGroup1() + "\"}, ";
-
-		JSONObject subGroup2 = new JSONObject();
-		subGroup2.put("fieldName", "subGroup2");
-		subGroup2.put("defaultValue", serviceRequest.getSubGroup2());
-		fieldJsonArray.add(subGroup2);
-		//output += "{ \"fieldName\": \"subGroup2\", \"defaultValue\": \"" + serviceRequest.getSubGroup2() + "\"}, ";
-
-		JSONObject subGroup3 = new JSONObject();
-		subGroup3.put("fieldName", "subGroup3");
-		subGroup3.put("defaultValue", serviceRequest.getSubGroup3());
-		fieldJsonArray.add(subGroup3);
-		//output += "{ \"fieldName\": \"subGroup3\", \"defaultValue\": \"" + serviceRequest.getSubGroup3() + "\"}, ";
-
-		if (serviceRequest.isOnlineAccess()) {
-			JSONObject onlineAccess = new JSONObject();
-			onlineAccess.put("fieldName", "onlineAccess");
-			onlineAccess.put("defaultValue", "Checked");
-			fieldJsonArray.add(onlineAccess);
-			//output += "{ \"fieldName\": \"onlineAccess\", \"defaultValue\": \"Checked\"}, ";
-		}
-
-		JSONObject systemApplication1 = new JSONObject();
-		systemApplication1.put("fieldName", "systemApplication1");
-		systemApplication1.put("defaultValue", serviceRequest.getSystemApplication());
-		fieldJsonArray.add(systemApplication1);
-		//output += "{ \"fieldName\": \"systemApplication1\", \"defaultValue\": \"" + serviceRequest.getSystemApplication() + "\"}, ";
-
-		JSONObject groupName1 = new JSONObject();
-		groupName1.put("fieldName", "groupName1");
-		groupName1.put("defaultValue", serviceRequest.getGroupName());
-		fieldJsonArray.add(groupName1);
-		//output += "{ \"fieldName\": \"groupName1\", \"defaultValue\": \"" + serviceRequest.getGroupName() + "\"}, ";
-
-		JSONObject oldGroup1 = new JSONObject();
-		oldGroup1.put("fieldName", "oldGroup1");
-		oldGroup1.put("defaultValue", serviceRequest.getOldGroup());
-		fieldJsonArray.add(oldGroup1);
-		//output += "{ \"fieldName\": \"oldGroup1\", \"defaultValue\": \"" + serviceRequest.getOldGroup() + "\"}, ";
-		
-		JSONObject APS_AO = new JSONObject();
-		APS_AO.put("fieldName", "APS_AO");
-		APS_AO.put("defaultValue", serviceRequest.getAPS_AO());
-		fieldJsonArray.add(APS_AO);
-		//output += "{ \"fieldName\": \"oldGroup1\", \"defaultValue\": \"" + serviceRequest.getOldGroup() + "\"}, ";
-
-		JSONObject DMV_SYSTEM_CODE = new JSONObject();
-		DMV_SYSTEM_CODE.put("fieldName", "DMV_SYSTEM_CODE");
-		DMV_SYSTEM_CODE.put("defaultValue", serviceRequest.getDMV_SYSTEM_CODE());
-		fieldJsonArray.add(DMV_SYSTEM_CODE);
-		//output += "{ \"fieldName\": \"oldGroup1\", \"defaultValue\": \"" + serviceRequest.getOldGroup() + "\"}, ";
-
-		JSONObject JAI_SYSTEM_LOCATION = new JSONObject();
-		JAI_SYSTEM_LOCATION.put("fieldName", "JAI_SYSTEM_LOCATION");
-		JAI_SYSTEM_LOCATION.put("defaultValue", serviceRequest.getJAI_SYSTEM_LOCATION());
-		fieldJsonArray.add(JAI_SYSTEM_LOCATION);
-		//output += "{ \"fieldName\": \"oldGroup1\", \"defaultValue\": \"" + serviceRequest.getOldGroup() + "\"}, ";
-
-
-		if (serviceRequest.isUnixAddLogonId()) {
-			JSONObject unixAddLogonId = new JSONObject();
-			unixAddLogonId.put("fieldName", "unixAddLogonId");
-			unixAddLogonId.put("defaultValue", "Checked");
-			fieldJsonArray.add(unixAddLogonId);
-			//output += "{ \"fieldName\": \"unixAddLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isUnixChangeLogonId()) {
-			JSONObject unixChangeLogonId = new JSONObject();
-			unixChangeLogonId.put("fieldName", "unixChangeLogonId");
-			unixChangeLogonId.put("defaultValue", "Checked");
-			fieldJsonArray.add(unixChangeLogonId);
-			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isUnixDeleteLogonId()) {
-			JSONObject unixDeleteLogonId = new JSONObject();
-			unixDeleteLogonId.put("fieldName", "unixDeleteLogonId");
-			unixDeleteLogonId.put("defaultValue", "Checked");
-			fieldJsonArray.add(unixDeleteLogonId);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-
 		JSONObject unixLogOnId = new JSONObject();
 		unixLogOnId.put("fieldName", "unixLogOnId");
-		unixLogOnId.put("defaultValue", serviceRequest.getUnixLogOnId());
+		unixLogOnId.put("defaultValue", serviceRequest.getUnixLogonId());
 		fieldJsonArray.add(unixLogOnId);
 		//output += "{ \"fieldName\": \"unixLogOnId\", \"defaultValue\": \"" + serviceRequest.getUnixLogOnId() + "\"}, ";
 
 		JSONObject unixApplication = new JSONObject();
 		unixApplication.put("fieldName", "unixApplication");
-		unixApplication.put("defaultValue", serviceRequest.getUnixApplication());
+		unixApplication.put("defaultValue", serviceRequest.getApplication());
 		fieldJsonArray.add(unixApplication);
 		//output += "{ \"fieldName\": \"unixApplication\", \"defaultValue\": \"" + serviceRequest.getUnixApplication() + "\"}, ";
 
 		JSONObject unixAccessGroup = new JSONObject();
 		unixAccessGroup.put("fieldName", "unixAccessGroup");
-		unixAccessGroup.put("defaultValue", serviceRequest.getUnixAccessGroup());
+		unixAccessGroup.put("defaultValue", serviceRequest.getAccessGroup());
 		fieldJsonArray.add(unixAccessGroup);
 		//output += "{ \"fieldName\": \"unixAccessGroup\", \"defaultValue\": \"" + serviceRequest.getUnixAccessGroup() + "\"}, ";
 		
-		if (serviceRequest.isNewToken()) {
-			JSONObject NewToken = new JSONObject();
-			NewToken.put("fieldName", "NewToken");
-			NewToken.put("defaultValue", "Checked");
-			fieldJsonArray.add(NewToken);
-			//output += "{ \"fieldName\": \"unixAddLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isReplaceLostStolenToken()) {
+	
+		if (serviceRequest.isReplaceLostToken()) {
 			JSONObject ReplaceLostStolenToken = new JSONObject();
 			ReplaceLostStolenToken.put("fieldName", "ReplaceLostStolenToken");
 			ReplaceLostStolenToken.put("defaultValue", "Checked");
 			fieldJsonArray.add(ReplaceLostStolenToken);
 			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
-		if (serviceRequest.isReplaceDefectiveToken()) {
-			JSONObject ReplaceDefectiveToken = new JSONObject();
-			ReplaceDefectiveToken.put("fieldName", "ReplaceDefectiveToken");
-			ReplaceDefectiveToken.put("defaultValue", "Checked");
-			fieldJsonArray.add(ReplaceDefectiveToken);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isRenewToken()) {
-			JSONObject RenewToken = new JSONObject();
-			RenewToken.put("fieldName", "RenewToken");
-			RenewToken.put("defaultValue", "Checked");
-			fieldJsonArray.add(RenewToken);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
 		
 		JSONObject ExperationDate = new JSONObject();
-		ExperationDate.put("fieldName", "billingAccountNumber");
+		ExperationDate.put("fieldName", "ExperationDate");
 		ExperationDate.put("defaultValue", serviceRequest.getExpirationDate());
 		fieldJsonArray.add(ExperationDate);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
-		
-		if (serviceRequest.isTokenlessAuth()) {
-			JSONObject TokenlessAuth = new JSONObject();
-			TokenlessAuth.put("fieldName", "TokenlessAuth");
-			TokenlessAuth.put("defaultValue", "Checked");
-			fieldJsonArray.add(TokenlessAuth);
-			//output += "{ \"fieldName\": \"unixAddLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isHardTokenVPN()) {
-			JSONObject HardTokenVPN = new JSONObject();
-			HardTokenVPN.put("fieldName", "HardTokenVPN");
-			HardTokenVPN.put("defaultValue", "Checked");
-			fieldJsonArray.add(HardTokenVPN);
-			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isSoftwareToken()) {
-			JSONObject SoftwareToken = new JSONObject();
-			SoftwareToken.put("fieldName", "SoftwareToken");
-			SoftwareToken.put("defaultValue", "Checked");
-			fieldJsonArray.add(SoftwareToken);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
 		
 		JSONObject billingAccountNumber = new JSONObject();
 		billingAccountNumber.put("fieldName", "billingAccountNumber");
@@ -487,59 +327,8 @@ public class Agreements {
 		fieldJsonArray.add(billingAccountNumber);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
 
-		if (serviceRequest.isiOS()) {
-			JSONObject IOS = new JSONObject();
-			IOS.put("fieldName", "TokenlessAuth");
-			IOS.put("defaultValue", "Checked");
-			fieldJsonArray.add(IOS);
-			//output += "{ \"fieldName\": \"unixAddLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isAndroid()) {
-			JSONObject Android = new JSONObject();
-			Android.put("fieldName", "HardTokenVPN");
-			Android.put("defaultValue", "Checked");
-			fieldJsonArray.add(Android);
-			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isComputer()) {
-			JSONObject Computer = new JSONObject();
-			Computer.put("fieldName", "SoftwareToken");
-			Computer.put("defaultValue", "Checked");
-			fieldJsonArray.add(Computer);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
 		
-		if (serviceRequest.isEmployeeWorkforce()) {
-			JSONObject EmployeeWorkforce = new JSONObject();
-			EmployeeWorkforce.put("fieldName", "EmployeeWorkforce");
-			EmployeeWorkforce.put("defaultValue", "Checked");
-			fieldJsonArray.add(EmployeeWorkforce);
-			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isContractorWorkforce1()) {
-			JSONObject ContractorWorkforce1 = new JSONObject();
-			ContractorWorkforce1.put("fieldName", "ContractorWorkforce1");
-			ContractorWorkforce1.put("defaultValue", "Checked");
-			fieldJsonArray.add(ContractorWorkforce1);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		
-		JSONObject ContractorCompanyName = new JSONObject();
-		ContractorCompanyName.put("fieldName", "ContractorCompanyName");
-		ContractorCompanyName.put("defaultValue", serviceRequest.getContractorCompanyName());
-		fieldJsonArray.add(ContractorCompanyName);
-		
-		JSONObject ContractorWorkOrder = new JSONObject();
-		ContractorWorkOrder.put("fieldName", "ContractorWorkOrder");
-		ContractorWorkOrder.put("defaultValue", serviceRequest.getContractorWorkOrder());
-		fieldJsonArray.add(ContractorWorkOrder);
-		
-		JSONObject ContractorExperationDate = new JSONObject();
-		ContractorExperationDate.put("fieldName", "ContractorExperationDate");
-		ContractorExperationDate.put("defaultValue", serviceRequest.getContractorExperationDate());
-		fieldJsonArray.add(ContractorExperationDate);
-		
-		if (serviceRequest.isO365Email()) {
+		if (serviceRequest.isO360Email()) {
 			JSONObject O365Email = new JSONObject();
 			O365Email.put("fieldName", "O365Email");
 			O365Email.put("defaultValue", "Checked");
@@ -547,28 +336,14 @@ public class Agreements {
 			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
 		
-		if (serviceRequest.isLacMobile()) {
-			JSONObject LACMobile = new JSONObject();
-			LACMobile.put("fieldName", "LACMobile");
-			LACMobile.put("defaultValue", "Checked");
-			fieldJsonArray.add(LACMobile);
-			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isLaCounty()) {
-			JSONObject LACounty = new JSONObject();
-			LACounty.put("fieldName", "LACounty");
-			LACounty.put("defaultValue", "Checked");
-			fieldJsonArray.add(LACounty);
-			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
-		}
-		if (serviceRequest.isCountywidePolicyB()) {
+		if (serviceRequest.isCountyWidePolicyB()) {
 			JSONObject CountywidePolicyB = new JSONObject();
 			CountywidePolicyB.put("fieldName", "CountywidePolicyB");
 			CountywidePolicyB.put("defaultValue", "Checked");
 			fieldJsonArray.add(CountywidePolicyB);
 			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
-		if (serviceRequest.isCountywidePolicyA()) {
+		if (serviceRequest.isCountyWidePolicyA()) {
 			JSONObject CountywidePolicyA = new JSONObject();
 			CountywidePolicyA.put("fieldName", "CountywidePolicyA");
 			CountywidePolicyA.put("defaultValue", "Checked");
@@ -582,9 +357,9 @@ public class Agreements {
 			fieldJsonArray.add(allWebmail);
 			//output += "{ \"fieldName\": \"unixChangeLogonId\", \"defaultValue\": \"Checked\"}, ";
 		}
-		if (serviceRequest.isStreamingMedia()) {
+		if (serviceRequest.isStreamMedia()) {
 			JSONObject StreamingMedia = new JSONObject();
-			StreamingMedia.put("fieldName", "CountywidePolicyA");
+			StreamingMedia.put("fieldName", "StreamingMedia");
 			StreamingMedia.put("defaultValue", "Checked");
 			fieldJsonArray.add(StreamingMedia);
 			//output += "{ \"fieldName\": \"unixDeleteLogonId\", \"defaultValue\": \"Checked\"}, ";
@@ -592,7 +367,7 @@ public class Agreements {
 		
 		JSONObject businessJustification = new JSONObject();
 		businessJustification.put("fieldName", "businessJustification");
-		businessJustification.put("defaultValue", serviceRequest.getBusinessJustification());
+		businessJustification.put("defaultValue", serviceRequest.getJustification());
 		fieldJsonArray.add(businessJustification);
 		//output += "{ \"fieldName\": \"businessJustification\", \"defaultValue\": \"" + serviceRequest.getBusinessJustification() + "\"}, ";
 		
@@ -894,13 +669,7 @@ public class Agreements {
 			managerPhone.put("defaultValue", serviceRequest.getManagerPhone());
 			fieldJsonArray.add(managerPhone);
 		}
-		
-		if (serviceRequest.getManagerTitle() != null) {
-			JSONObject managerTitle = new JSONObject();
-			managerTitle.put("fieldName", "managerTitle");
-			managerTitle.put("defaultValue", serviceRequest.getManagerTitle());
-			fieldJsonArray.add(managerTitle);
-		}
+	
 		
 		if (serviceRequest.getDivChiefManagerEmail() != null) {
 			JSONObject divChiefManagerEmail = new JSONObject();
