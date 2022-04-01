@@ -31,8 +31,6 @@ public class ServiceRequest {
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
 	
-	private boolean employeeCheck;
-	private boolean contractorCheck;
 	
 	@Column(length = 5000) 
 	private ArrayList<String> eventHistory;
@@ -275,22 +273,7 @@ public class ServiceRequest {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-	
-	public boolean isEmployeeCheck() {
-		return employeeCheck;
-	}
 
-	public void setEmployeeCheck(boolean employeeCheck) {
-		this.employeeCheck = employeeCheck;
-	}
-
-	public boolean isContractorCheck() {
-		return contractorCheck;
-	}
-
-	public void setContractorCheck(boolean contractorCheck) {
-		this.contractorCheck = contractorCheck;
-	}
 
 	public String getSubmitDate() {
 		return submitDate;
