@@ -25,15 +25,12 @@ public class ServiceRequest {
 	private boolean isEmployee;
 	private String requestStatus;
 	private boolean isComplete;
+
 	private String agreementId;
-	private boolean newRegistration;
-	private boolean deletePriorRegistration;
-	private boolean updatePriorRegistration;
 	private boolean replaceLostToken;
 	private boolean addLogonId;
 	private boolean changeLogonId;
 	private boolean deleteLogonId;
-	
 	
 	@Column(length = 5000) 
 	private ArrayList<String> eventHistory;
@@ -47,11 +44,13 @@ public class ServiceRequest {
 	@Column(length = 50)
 	private String employeeNumber;
 	@Column(length = 100)
-	private String departmentName;
+	// IRV new entry
+	private String countyDepartmentName;
 	@Column(length = 50)
-	private String departmentNumber;
+	// IRV new entry
+	private String countyDepartmentNumber;
 	@Column(length = 100)
-	private String ContractorCompanyName;
+	private String companyName;
 	@Column(length = 100)
 	private String companyEmailAddress;
 	@Column(length = 100)
@@ -67,7 +66,7 @@ public class ServiceRequest {
 	@Column(length = 20)
 	private String businessZip;
 	@Column(length = 20)
-	private String businessPhoneNumber;
+	private String phoneNumber;
 	@Column(length = 150)
 	private String workMailingAddress;
 	@Column(length = 100)
@@ -79,13 +78,12 @@ public class ServiceRequest {
 	@Column(length = 20)
 	private String companyZip;
 	@Column(length = 20)
-	private String companyPhoneNumber;
-	@Column(length = 20)
-	private String countyPhoneNumber;
+	private String workPhoneNumber;
 	@Column(length = 50)
-	private String ContractorWorkOrder;
+	private String contractWorkOrderNumber;
+	// IRV edited field
 	@Column(length = 20)
-	private String ContractorExperationDate;
+	private String expirationDate;
 	@Column(length = 50)
 	private String ibmLogOnId;
 	@Column(length = 150)
@@ -94,7 +92,7 @@ public class ServiceRequest {
 	private String lsoGroupCode;
 	@Column(length = 250)
 	private String securityAuthorization;
-//	private boolean tsoAccess;
+	private boolean tsoAccess;
 	@Column(length = 150)
 	private String tsoGroupCode;
 	@Column(length = 50)
@@ -105,13 +103,19 @@ public class ServiceRequest {
 	private String subGroup2;
 	@Column(length = 150)
 	private String subGroup3;
-//	private boolean onlineAccess;
+	private boolean onlineAccess;
 	@Column(length = 250)
 	private String systemApplication;
 	@Column(length = 150)
 	private String groupName;
 	@Column(length = 150)
 	private String oldGroup;
+	@Column(length = 150)
+	private String APS_AO;
+	@Column(length = 150)
+	private String DMV_SYSTEM_CODE;
+	@Column(length = 150)
+	private String JAI_SYSTEM_LOCATION;
 	private boolean unixAddLogonId;
 	private boolean unixChangeLogonId;
 	private boolean unixDeleteLogonId;
@@ -121,36 +125,40 @@ public class ServiceRequest {
 	private String unixApplication;
 	@Column(length = 150)
 	private String unixAccessGroup;
+	private boolean newToken;
+	private boolean replaceLostStolenToken;
+	private boolean replaceDefectiveToken;
+	private boolean renewToken;
 	@Column(length = 150)
-	private String unixAccountNumber;
+	private String experationDate;
+	private boolean tokenlessAuth;
+	private boolean hardTokenVPN;
+	private boolean softwareToken;
 	@Column(length = 150)
-	private String BillingAccount;
-	private boolean securIdVpn;
-	private boolean adaptiveAuthenticationVpn;
-	private boolean internetApplication;
-	private boolean exchangeEmail;
-	private boolean emailEncryption;
-	private boolean laCountyGovAccess;
-	private boolean tokenlessAuthentication;
-	private boolean lacMobileWifiAccess;
-	private boolean cherwellSms;
-	private boolean windowsRightsMgmt;
-	private boolean gmailAccess;
-	private boolean yahooMailAccess;
-	private boolean otherEmailAccess;
-	@Column(length = 100)
-	private String otherEmailDomain;
+	private String billingAccountNumber;
+	private boolean iOS;
+	private boolean android;
+	private boolean computer;
+	private boolean newRegistration;
+	private boolean deletePriorRegistration;
+	private boolean updatePriorRegistration;
+	private boolean employeeWorkforce;
+	private boolean contractorWorkforce1;
+	@Column(length = 150)
+	private String contractorCompanyName;
+	@Column(length = 150)
+	private String contractorWorkOrder;
+	@Column(length = 150)
+	private String contractorExperationDate;
+	private boolean O365Email;
+	private boolean lacMobile;
+	private boolean laCounty;
+	private boolean countywidePolicyB;
+	private boolean countywidePolicyA;
+	private boolean allWebmail;
+	private boolean StreamingMedia;
 	@Column(length = 250)
-	private String BusinessJustification1;
-	private boolean defaultCountyWidePolicy;
-	private boolean departmentPolicyRule0;
-	private boolean departmentPolicyRule1;
-	private boolean departmentPolicyRule2;
-	private boolean departmentPolicyRule3;
-	private boolean departmentPolicyRule4;
-	private boolean socialNetworkingFacebook;
-	private boolean socialNetworkingTwitter;
-	private boolean socialNetworkingLinkedIn;
+	private String businessJustification;
 	
 	// Added boolean to determine if request is submitted. 
 	// Note: This differs from isComplete. User first submits request, then
@@ -197,183 +205,18 @@ public class ServiceRequest {
 	private String applicationCoordinatorEmail;
 	@Column(length = 20)
 	private String applicationCoordinatorPhone;
-	
-	//Newly added
-	private boolean AllWebmail;
-	private boolean Android;
-	private boolean Computer;
-	private boolean ContractorWorkforce1;
-	private boolean CountywidePolicyA;
-	private boolean CountywidePolicyB;
-	private boolean DeleteRequest;
-	private boolean EmployeeContractor;
-	private boolean EmployeeWorkforce;
-	private boolean HardTokenVPN;
-	private boolean IOS;
-	private boolean LACMobile;
-	private boolean LACounty;
-	private boolean NewRequest;
-	private boolean NewToken;
-	private boolean O365Email;
-	private boolean OnlineAccess;
-	private boolean RenewToken;
-	private boolean ReplaceDefectiveToken;
-	private boolean ReplaceLostStolenToken;
-	private boolean SoftwareToken;
-	private boolean StreamingMedia;
-	private boolean TokenlessAuth;
-	private boolean TsoAccess;
-	private boolean UpdateRequest;
-	private boolean addNewLoginId;
-	private boolean deleteLoginId1;
-	private boolean deleteLoginId2;
-	private boolean newLoginId;
-	private boolean updateLoginId1;
-	private boolean updateLoginId2;
-	
-	@Column(length = 250)
-	private String businessJustification2;
-	@Column(length = 150)
-	private String CountyDepartmentName;
-	@Column(length = 50)
-	private String CountyWorkforceId1;
-	@Column(length = 150)
-	private String CountyWorkforceName1;
-	@Column(length = 150)
-	private String CustomerName2;
-	@Column(length = 150)
-	private String DepartmentCoord1;
-	@Column(length = 150)
-	private String DepartmentInfo;
-	@Column(length = 150)
-	private String EmailAddress;
-	@Column(length = 20)
-	private String ExperationDate;
-	@Column(length = 150)
-	private String ManagerName1;
-	@Column(length = 150)
-	private String ManagerName2;
-	@Column(length = 150)
-	private String ManagerName3;
-	@Column(length = 150)
-	private String ManagerTitle1;
-	@Column(length = 150)
-	private String Name1;
-	@Column(length = 20)
-	private String Phone1;
-	@Column(length = 20)
-	private String Phone2;
-	@Column(length = 20)
-	private String Phone3;
-	@Column(length = 20)
-	private String Phone4;
-	@Column(length = 20)
-	private String Phone5;
-	@Column(length = 20)
-	private String Phone6;
-	@Column(length = 150)
-	private String accessGroup1;
-	@Column(length = 150)
-	private String application1;
-	@Column(length = 50)
-	private String countyDepartmentNumber;
-	private String dateOfRequest;
-	@Column(length = 150)
-	private String digitLSOGroupCode;
-	@Column(length = 150)
-	private String digitMajorGroupCode;
-	@Column(length = 150)
-	private String digitTSOGrpCode;
-	@Column(length = 50)
-	private String employeeContractor;
-	@Column(length = 150)
-	private String grpName1;
-	@Column(length = 150)
-	private String grpName2;
-	@Column(length = 150)
-	private String grpName3;
-	@Column(length = 150)
-	private String lastNamefirstNameMi;
-	@Column(length = 50)
-	private String loginId1;
-	@Column(length = 50)
-	private String loginId2;
-	@Column(length = 150)
-	private String oldGrp1;
-	@Column(length = 150)
-	private String oldGrp2;
-	@Column(length = 150)
-	private String oldGrp3;
-	@Column(length = 250)
-	private String systemApplication1;
-	@Column(length = 250)
-	private String systemApplication2;
-	@Column(length = 250)
-	private String systemApplication3;
-	@Column(length = 20)
-	private String workPhoneNumber;
-	
-	//Unsure
-	@Column(length = 100)
-	private String jai;
-	@Column(length = 100)
-	private String dmv;
-	@Column(length = 100)
-	private String aps;
-	
-	
-	//Unsure Field Type is Signature
-//	@Column(length = 100)
-//	private String CountWorkforceSig1;
-//	@Column(length = 100)
-//	private String CustomerSig;
-//	@Column(length = 100)
-//	private String CustomerSig2;
-//	@Column(length = 100)
-//	private String DepartmentCoordSig1;
-//	@Column(length = 100)
-//	private String DepartmentInfoSig;
-//	@Column(length = 100)
-//	private String DepartmentInfoSig2;
-//	@Column(length = 100)
-//	private String ManagerSig1;
-//	@Column(length = 100)
-//	private String ManagerSig2;
-//	@Column(length = 100)
-//	private String ManagerSig3;
-//	@Column(length = 100)
-//	private String ManagerSig4;
-//	@Column(length = 100)
-//	private String ManagerSig5;
-	
-	
-	//Unsure Field Type Date
-//	@Column(length = 100)
-//	private String Date1;
-//	@Column(length = 100)
-//	private String Date2;
-//	@Column(length = 100)
-//	private String Date3;
-//	@Column(length = 100)
-//	private String Date4;
-//	@Column(length = 100)
-//	private String Date5;
-//	@Column(length = 100)
-//	private String Date6;
-//	@Column(length = 100)
-//	private String Date7;
-//	@Column(length = 100)
-//	private String Date8;
-	
 
-	
-
+	// IRV new fields
+	@Column(length = 150)
+	private String contractorName;
+	@Column(length = 50)
+	private String workOrderNumberInput;
+	@Column(length = 150)
+	private String unixAccountNumber;
 
 
 	
-	
-	
-	
+
 	public ServiceRequest() {
 		String pattern = "yyyy-MM-dd hh:mm:ss";
 		DateFormat d = new SimpleDateFormat(pattern);
@@ -388,9 +231,9 @@ public class ServiceRequest {
 		this.firstName = "";
 		this.middleInitial = "";
 		this.employeeNumber = "";
-		this.departmentName = "";
-		this.departmentNumber = "";
-		this.ContractorCompanyName = "";
+		this.countyDepartmentName = "";
+		this.countyDepartmentNumber = "";
+		this.companyName = "";
 		this.companyEmailAddress = "";
 		this.countyEmailAddress = "";
 		this.employeeEmailAddress = "";
@@ -398,16 +241,17 @@ public class ServiceRequest {
 		this.businessCity = "";
 		this.businessState = "";
 		this.businessZip = "";
-		this.businessPhoneNumber = "";
+		// IRV new entry
+		this.phoneNumber = "";
 		this.workMailingAddress = "";
 		this.companyStreetAddress = "";
 		this.companyCity = "";
 		this.companyState = "";
 		this.companyZip = "";
-		this.companyPhoneNumber = "";
-		this.countyPhoneNumber = "";
-		this.ContractorWorkOrder = "";
-		this.ContractorExperationDate = "";
+		// IRV new entry
+		this.workPhoneNumber = "";
+		this.contractWorkOrderNumber = "";
+		this.expirationDate = "";
 		this.ibmLogOnId = "";
 		this.majorGroupCode = "";
 		this.lsoGroupCode = "";
@@ -420,44 +264,52 @@ public class ServiceRequest {
 		this.systemApplication = "";
 		this.groupName = "";
 		this.oldGroup = "";
+		this.APS_AO = "";
+		this.DMV_SYSTEM_CODE = "";
+		this.JAI_SYSTEM_LOCATION = "";
 		this.unixLogOnId = "";
 		this.unixApplication = "";
 		this.unixAccessGroup = "";
+		this.experationDate = "";
+		this.billingAccountNumber = "";
+		this.businessJustification = "";
+		this.contractorCompanyName = "";
+		this.contractorWorkOrder = "";
+		this.contractorExperationDate = "";
+
+		// entries for new fields
+		this.contractorName = "";
+		this.workOrderNumberInput = "";
 		this.unixAccountNumber = "";
-		this.BillingAccount = "";
-		this.otherEmailDomain = "";
-		this.BusinessJustification1 = "";
-		this.businessJustification2 = "";
-		this.CountyDepartmentName = "";
-		this.CountyWorkforceId1 = "";
-		this.CountyWorkforceName1 = "";
-		this.EmailAddress = "";
-		this.ExperationDate = "";
-		this.Phone1= "";
-		this.Phone2= "";
-		this.Phone3= "";
-		this.Phone4= "";
-		this.Phone5= "";
-		this.Phone6= "";
-		this.accessGroup1 = "";
-		this.application1 = "";
-		this.countyDepartmentNumber = "";
-		this.grpName1 = "";
-		this.grpName2 = "";
-		this.grpName3 = "";
-		this.digitLSOGroupCode = "";
-		this.digitMajorGroupCode = "";
-		this.digitTSOGrpCode = "";
-		this.loginId1 = "";
-		this.loginId2 = "";
-		this.oldGrp1 = "";
-		this.oldGrp2 = "";
-		this.oldGrp3 = "";
-		this.systemApplication1 = "";
-		this.systemApplication2 = "";
-		this.systemApplication3 = "";
-		this.setWorkPhoneNumber("");
 	}
+
+	// IRV new field functions
+
+	public String setUnixAccountNumber() {
+		return unixAccessGroup;
+	}
+
+	public void setUnixAccountNumber(String unixAccountNumber) {
+		this.unixAccountNumber = unixAccountNumber;
+	}
+
+	public String getWorkOrderNumberInput() {
+		return workOrderNumberInput;
+	}
+
+	public void setWorkOrderNumberInput(String workOrderNumberInput) {
+		this.workOrderNumberInput = workOrderNumberInput;
+	}
+
+	public String getContractorName() {
+		return contractorName;
+	}
+
+	public void setContractorName(String contractorName) {
+		this.contractorName = contractorName;
+	}
+
+	// new field end
 
 	public String getCreateDate() {
 		return createDate;
@@ -466,6 +318,22 @@ public class ServiceRequest {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
+	
+//	public boolean isEmployeeCheck() {
+//		return employeeCheck;
+//	}
+//
+//	public void setEmployeeCheck(boolean employeeCheck) {
+//		this.employeeCheck = employeeCheck;
+//	}
+
+//	public boolean isContractorCheck() {
+//		return contractorCheck;
+//	}
+//
+//	public void setContractorCheck(boolean contractorCheck) {
+//		this.contractorCheck = contractorCheck;
+//	}
 
 	public String getSubmitDate() {
 		return submitDate;
@@ -521,14 +389,6 @@ public class ServiceRequest {
 
 	public void setUpdatePriorRegistration(boolean updatePriorRegistration) {
 		this.updatePriorRegistration = updatePriorRegistration;
-	}
-
-	public boolean isAllWebmail() {
-		return AllWebmail;
-	}
-
-	public void setAllWebmail(boolean allWebmail) {
-		this.AllWebmail = allWebmail;
 	}
 
 	public boolean isReplaceLostToken() {
@@ -595,28 +455,28 @@ public class ServiceRequest {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public String getDepartmentName() {
-		return departmentName;
+	public String getCountyDepartmentName() {
+		return countyDepartmentName;
 	}
 
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setCountyDepartmentName(String countyDepartmentName) {
+		this.countyDepartmentName = countyDepartmentName;
 	}
 
-	public String getDepartmentNumber() {
-		return departmentNumber;
+	public String getCountyDepartmentNumber() {
+		return countyDepartmentNumber;
 	}
 
-	public void setDepartmentNumber(String departmentNumber) {
-		this.departmentNumber = departmentNumber;
+	public void setCountyDepartmentNumber(String departmentNumber) {
+		this.countyDepartmentNumber = countyDepartmentNumber;
 	}
 
-	public String getContractorCompanyName() {
-		return ContractorCompanyName;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setContractorCompanyName(String ContractorCompanyName) {
-		this.ContractorCompanyName = ContractorCompanyName;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public String getCompanyEmailAddress() {
@@ -675,12 +535,12 @@ public class ServiceRequest {
 		this.businessZip = businessZip;
 	}
 
-	public String getBusinessPhoneNumber() {
-		return businessPhoneNumber;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setBusinessPhoneNumber(String businessPhoneNumber) {
-		this.businessPhoneNumber = businessPhoneNumber;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getWorkMailingAddress() {
@@ -723,36 +583,28 @@ public class ServiceRequest {
 		this.companyZip = companyZip;
 	}
 
-	public String getCompanyPhoneNumber() {
-		return companyPhoneNumber;
+	public String getWorkPhoneNumber() {
+		return workPhoneNumber;
 	}
 
-	public void setCompanyPhoneNumber(String companyPhoneNumber) {
-		this.companyPhoneNumber = companyPhoneNumber;
+	public void setWorkPhoneNumber(String workPhoneNumber) {
+		this.workPhoneNumber = workPhoneNumber;
 	}
 
-	public String getCountyPhoneNumber() {
-		return countyPhoneNumber;
+	public String getContractWorkOrderNumber() {
+		return contractWorkOrderNumber;
 	}
 
-	public void setCountyPhoneNumber(String countyPhoneNumber) {
-		this.countyPhoneNumber = countyPhoneNumber;
+	public void setContractWorkOrderNumber(String contractWorkOrderNumber) {
+		this.contractWorkOrderNumber = contractWorkOrderNumber;
 	}
 
-	public String getContractorWorkOrder() {
-		return ContractorWorkOrder;
+	public String getExpirationDate() {
+		return expirationDate;
 	}
 
-	public void setContractorWorkOrder(String ContractorWorkOrder) {
-		this.ContractorWorkOrder = ContractorWorkOrder;
-	}
-
-	public String getContractorExperationDate() {
-		return ContractorExperationDate;
-	}
-
-	public void setContractorExperationDate(String ContractorExperationDate) {
-		this.ContractorExperationDate = ContractorExperationDate;
+	public void setExpirationDate(String contractExpirationDate) {
+		this.expirationDate = expirationDate;
 	}
 
 	public String getIbmLogOnId() {
@@ -787,13 +639,13 @@ public class ServiceRequest {
 		this.securityAuthorization = securityAuthorization;
 	}
 
-//	public boolean isTsoAccess() {
-//		return tsoAccess;
-//	}
-//
-//	public void setTsoAccess(boolean tsoAccess) {
-//		this.tsoAccess = tsoAccess;
-//	}
+	public boolean isTsoAccess() {
+		return tsoAccess;
+	}
+
+	public void setTsoAccess(boolean tsoAccess) {
+		this.tsoAccess = tsoAccess;
+	}
 
 	public String getTsoGroupCode() {
 		return tsoGroupCode;
@@ -835,13 +687,13 @@ public class ServiceRequest {
 		this.subGroup3 = subGroup3;
 	}
 
-//	public boolean isOnlineAccess() {
-//		return onlineAccess;
-//	}
-//
-//	public void setOnlineAccess(boolean onlineAccess) {
-//		this.onlineAccess = onlineAccess;
-//	}
+	public boolean isOnlineAccess() {
+		return onlineAccess;
+	}
+
+	public void setOnlineAccess(boolean onlineAccess) {
+		this.onlineAccess = onlineAccess;
+	}
 
 	public String getSystemApplication() {
 		return systemApplication;
@@ -915,212 +767,230 @@ public class ServiceRequest {
 		this.unixAccessGroup = unixAccessGroup;
 	}
 
-	public String getUnixAccountNumber() {
-		return unixAccountNumber;
+	public String getExperationDate() {
+		return experationDate;
 	}
 
-	public void setUnixAccountNumber(String unixAccountNumber) {
-		this.unixAccountNumber = unixAccountNumber;
+	public void setExperationDate(String experationDate) {
+		this.experationDate = experationDate;
 	}
 
-	public String getBillingAccount() {
-		return BillingAccount;
+
+	public String getAPS_AO() {
+		return APS_AO;
 	}
 
-	public void setBillingAccount(String BillingAccount) {
-		this.BillingAccount = BillingAccount;
+	public void setAPS_AO(String aPS_AO) {
+		APS_AO = aPS_AO;
 	}
 
-	public boolean isSecurIdVpn() {
-		return securIdVpn;
+	public String getDMV_SYSTEM_CODE() {
+		return DMV_SYSTEM_CODE;
 	}
 
-	public void setSecurIdVpn(boolean securIdVpn) {
-		this.securIdVpn = securIdVpn;
+	public void setDMV_SYSTEM_CODE(String dMV_SYSTEM_CODE) {
+		DMV_SYSTEM_CODE = dMV_SYSTEM_CODE;
 	}
 
-	public boolean isAdaptiveAuthenticationVpn() {
-		return adaptiveAuthenticationVpn;
+	public String getJAI_SYSTEM_LOCATION() {
+		return JAI_SYSTEM_LOCATION;
 	}
 
-	public void setAdaptiveAuthenticationVpn(boolean adaptiveAuthenticationVpn) {
-		this.adaptiveAuthenticationVpn = adaptiveAuthenticationVpn;
+	public void setJAI_SYSTEM_LOCATION(String jAI_SYSTEM_LOCATION) {
+		JAI_SYSTEM_LOCATION = jAI_SYSTEM_LOCATION;
 	}
 
-	public boolean isInternetApplication() {
-		return internetApplication;
+	public boolean isNewToken() {
+		return newToken;
 	}
 
-	public void setInternetApplication(boolean internetApplication) {
-		this.internetApplication = internetApplication;
+	public void setNewToken(boolean newToken) {
+		this.newToken = newToken;
 	}
 
-	public boolean isExchangeEmail() {
-		return exchangeEmail;
+	public boolean isReplaceLostStolenToken() {
+		return replaceLostStolenToken;
 	}
 
-	public void setExchangeEmail(boolean exchangeEmail) {
-		this.exchangeEmail = exchangeEmail;
+	public void setReplaceLostStolenToken(boolean replaceLostStolenToken) {
+		this.replaceLostStolenToken = replaceLostStolenToken;
 	}
 
-	public boolean isEmailEncryption() {
-		return emailEncryption;
+	public boolean isReplaceDefectiveToken() {
+		return replaceDefectiveToken;
 	}
 
-	public void setEmailEncryption(boolean emailEncryption) {
-		this.emailEncryption = emailEncryption;
+	public void setReplaceDefectiveToken(boolean replaceDefectiveToken) {
+		this.replaceDefectiveToken = replaceDefectiveToken;
 	}
 
-	public boolean isLaCountyGovAccess() {
-		return laCountyGovAccess;
+	public boolean isRenewToken() {
+		return renewToken;
 	}
 
-	public void setLaCountyGovAccess(boolean laCountyGovAccess) {
-		this.laCountyGovAccess = laCountyGovAccess;
+	public void setRenewToken(boolean renewToken) {
+		this.renewToken = renewToken;
 	}
 
-	public boolean isTokenlessAuthentication() {
-		return tokenlessAuthentication;
+
+	public boolean isTokenlessAuth() {
+		return tokenlessAuth;
 	}
 
-	public void setTokenlessAuthentication(boolean tokenlessAuthentication) {
-		this.tokenlessAuthentication = tokenlessAuthentication;
+	public void setTokenlessAuth(boolean tokenlessAuth) {
+		this.tokenlessAuth = tokenlessAuth;
 	}
 
-	public boolean isLacMobileWifiAccess() {
-		return lacMobileWifiAccess;
+	public boolean isHardTokenVPN() {
+		return hardTokenVPN;
 	}
 
-	public void setLacMobileWifiAccess(boolean lacMobileWifiAccess) {
-		this.lacMobileWifiAccess = lacMobileWifiAccess;
+	public void setHardTokenVPN(boolean hardTokenVPN) {
+		this.hardTokenVPN = hardTokenVPN;
 	}
 
-	public boolean isCherwellSms() {
-		return cherwellSms;
+	public boolean isSoftwareToken() {
+		return softwareToken;
 	}
 
-	public void setCherwellSms(boolean cherwellSms) {
-		this.cherwellSms = cherwellSms;
+	public void setSoftwareToken(boolean softwareToken) {
+		this.softwareToken = softwareToken;
 	}
 
-	public boolean isWindowsRightsMgmt() {
-		return windowsRightsMgmt;
+	public boolean isiOS() {
+		return iOS;
 	}
 
-	public void setWindowsRightsMgmt(boolean windowsRightsMgmt) {
-		this.windowsRightsMgmt = windowsRightsMgmt;
+	public void setiOS(boolean iOS) {
+		this.iOS = iOS;
 	}
 
-	public boolean isGmailAccess() {
-		return gmailAccess;
+	public boolean isAndroid() {
+		return android;
 	}
 
-	public void setGmailAccess(boolean gmailAccess) {
-		this.gmailAccess = gmailAccess;
+	public void setAndroid(boolean android) {
+		this.android = android;
 	}
 
-	public boolean isYahooMailAccess() {
-		return yahooMailAccess;
+	public boolean isComputer() {
+		return computer;
 	}
 
-	public void setYahooMailAccess(boolean yahooMailAccess) {
-		this.yahooMailAccess = yahooMailAccess;
+	public void setComputer(boolean computer) {
+		this.computer = computer;
 	}
 
-	public boolean isOtherEmailAccess() {
-		return otherEmailAccess;
+	public boolean isEmployeeWorkforce() {
+		return employeeWorkforce;
 	}
 
-	public void setOtherEmailAccess(boolean otherEmailAccess) {
-		this.otherEmailAccess = otherEmailAccess;
+	public void setEmployeeWorkforce(boolean employeeWorkforce) {
+		this.employeeWorkforce = employeeWorkforce;
 	}
 
-	public String getOtherEmailDomain() {
-		return otherEmailDomain;
+	public boolean isContractorWorkforce1() {
+		return contractorWorkforce1;
 	}
 
-	public void setOtherEmailDomain(String otherEmailDomain) {
-		this.otherEmailDomain = otherEmailDomain;
+	public void setContractorWorkforce1(boolean contractorWorkforce1) {
+		this.contractorWorkforce1 = contractorWorkforce1;
 	}
 
-	public String getBusinessJustification1() {
-		return BusinessJustification1;
+	public boolean isLacMobile() {
+		return lacMobile;
 	}
 
-	public void setBusinessJustification1(String BusinessJustification1) {
-		this.BusinessJustification1 = BusinessJustification1;
+	public void setLacMobile(boolean lacMobile) {
+		this.lacMobile = lacMobile;
 	}
 
-	public boolean isDefaultCountyWidePolicy() {
-		return defaultCountyWidePolicy;
+	public boolean isLaCounty() {
+		return laCounty;
 	}
 
-	public void setDefaultCountyWidePolicy(boolean defaultCountyWidePolicy) {
-		this.defaultCountyWidePolicy = defaultCountyWidePolicy;
+	public void setLaCounty(boolean laCounty) {
+		this.laCounty = laCounty;
+	}
+	public boolean isO365Email() {
+		return O365Email;
 	}
 
-	public boolean isDepartmentPolicyRule0() {
-		return departmentPolicyRule0;
+	public void setO365Email(boolean o365Email) {
+		O365Email = o365Email;
+	}
+	public boolean isCountywidePolicyB() {
+		return countywidePolicyB;
 	}
 
-	public void setDepartmentPolicyRule0(boolean departmentPolicyRule0) {
-		this.departmentPolicyRule0 = departmentPolicyRule0;
+	public void setCountywidePolicyB(boolean countywidePolicyB) {
+		this.countywidePolicyB = countywidePolicyB;
 	}
 
-	public boolean isDepartmentPolicyRule1() {
-		return departmentPolicyRule1;
+	public boolean isCountywidePolicyA() {
+		return countywidePolicyA;
 	}
 
-	public void setDepartmentPolicyRule1(boolean departmentPolicyRule1) {
-		this.departmentPolicyRule1 = departmentPolicyRule1;
+	public void setCountywidePolicyA(boolean countywidePolicyA) {
+		this.countywidePolicyA = countywidePolicyA;
 	}
 
-	public boolean isDepartmentPolicyRule2() {
-		return departmentPolicyRule2;
+	public boolean isAllWebmail() {
+		return allWebmail;
 	}
 
-	public void setDepartmentPolicyRule2(boolean departmentPolicyRule2) {
-		this.departmentPolicyRule2 = departmentPolicyRule2;
+	public void setAllWebmail(boolean allWebmail) {
+		this.allWebmail = allWebmail;
+	}
+	
+
+	public boolean isStreamingMedia() {
+		return StreamingMedia;
 	}
 
-	public boolean isDepartmentPolicyRule3() {
-		return departmentPolicyRule3;
+	public void setStreamingMedia(boolean streamingMedia) {
+		StreamingMedia = streamingMedia;
+	}
+	// new privates
+	
+	public String getBillingAccountNumber() {
+		return billingAccountNumber;
 	}
 
-	public void setDepartmentPolicyRule3(boolean departmentPolicyRule3) {
-		this.departmentPolicyRule3 = departmentPolicyRule3;
+	public void setBillingAccountNumber(String billingAccountNumber) {
+		this.billingAccountNumber = billingAccountNumber;
 	}
 
-	public boolean isDepartmentPolicyRule4() {
-		return departmentPolicyRule4;
+	public String getContractorCompanyName() {
+		return contractorCompanyName;
 	}
 
-	public void setDepartmentPolicyRule4(boolean departmentPolicyRule4) {
-		this.departmentPolicyRule4 = departmentPolicyRule4;
+	public void setContractorCompanyName(String contractorCompanyName) {
+		this.contractorCompanyName = contractorCompanyName;
 	}
 
-	public boolean isSocialNetworkingFacebook() {
-		return socialNetworkingFacebook;
+	public String getContractorWorkOrder() {
+		return contractorWorkOrder;
 	}
 
-	public void setSocialNetworkingFacebook(boolean socialNetworkingFacebook) {
-		this.socialNetworkingFacebook = socialNetworkingFacebook;
+	public void setContractorWorkOrder(String contractorWorkOrder) {
+		this.contractorWorkOrder = contractorWorkOrder;
 	}
 
-	public boolean isSocialNetworkingTwitter() {
-		return socialNetworkingTwitter;
+	public String getContractorExperationDate() {
+		return contractorExperationDate;
 	}
 
-	public void setSocialNetworkingTwitter(boolean socialNetworkingTwitter) {
-		this.socialNetworkingTwitter = socialNetworkingTwitter;
+	public void setContractorExperationDate(String contractorExperationDate) {
+		this.contractorExperationDate = contractorExperationDate;
+	}
+	
+	public String getBusinessJustification() {
+		return businessJustification;
 	}
 
-	public boolean isSocialNetworkingLinkedIn() {
-		return socialNetworkingLinkedIn;
-	}
-
-	public void setSocialNetworkingLinkedIn(boolean socialNetworkingLinkedIn) {
-		this.socialNetworkingLinkedIn = socialNetworkingLinkedIn;
+	public void setBusinessJustification(String businessJustification) {
+		this.businessJustification = businessJustification;
 	}
 
 	public boolean isComplete() {
@@ -1291,757 +1161,5 @@ public class ServiceRequest {
 	public void setEventHistory(ArrayList<String> eventHistory) {
 		this.eventHistory = eventHistory;
 	}
-
-	public boolean isAndroid() {
-		return Android;
-	}
-
-	public void setAndroid(boolean android) {
-		this.Android = android;
-	}
-
-	public boolean isComputer() {
-		return Computer;
-	}
-
-	public void setComputer(boolean computer) {
-		this.Computer = computer;
-	}
-
-	public String getBusinessJustification2() {
-		return businessJustification2;
-	}
-
-	public void setBusinessJustification2(String businessJustification2) {
-		this.businessJustification2 = businessJustification2;
-	}
-
-	public boolean isContractorWorkforce1() {
-		return ContractorWorkforce1;
-	}
-
-	public void setContractorWorkforce1(boolean contractorWorkforce1) {
-		this.ContractorWorkforce1 = contractorWorkforce1;
-	}
-
-	public String getCountyDepartmentName() {
-		return CountyDepartmentName;
-	}
-
-	public void setCountyDepartmentName(String countyDepartmentName) {
-		this.CountyDepartmentName = countyDepartmentName;
-	}
-
-	public String getCountyWorkforceId1() {
-		return CountyWorkforceId1;
-	}
-
-	public void setCountyWorkforceId1(String countyWorkforceId1) {
-		this.CountyWorkforceId1 = countyWorkforceId1;
-	}
-
-	public String getCountyWorkforceName1() {
-		return CountyWorkforceName1;
-	}
-
-	public void setCountyWorkforceName1(String countyWorkforceName1) {
-		this.CountyWorkforceName1 = countyWorkforceName1;
-	}
-
-	public boolean isCountywidePolicyA() {
-		return CountywidePolicyA;
-	}
-
-	public void setCountywidePolicyA(boolean countywidePolicyA) {
-		this.CountywidePolicyA = countywidePolicyA;
-	}
-
-	public boolean isCountywidePolicyB() {
-		return CountywidePolicyB;
-	}
-
-	public void setCountywidePolicyB(boolean countywidePolicyB) {
-		this.CountywidePolicyB = countywidePolicyB;
-	}
-
-	public String getCustomerName2() {
-		return CustomerName2;
-	}
-
-	public void setCustomerName2(String customerName2) {
-		this.CustomerName2 = customerName2;
-	}
-
-	public boolean isDeleteRequest() {
-		return DeleteRequest;
-	}
-
-	public void setDeleteRequest(boolean deleteRequest) {
-		this.DeleteRequest = deleteRequest;
-	}
-
-	public String getDepartmentCoord1() {
-		return DepartmentCoord1;
-	}
-
-	public void setDepartmentCoord1(String departmentCoord1) {
-		this.DepartmentCoord1 = departmentCoord1;
-	}
-
-	public String getDepartmentInfo() {
-		return DepartmentInfo;
-	}
-
-	public void setDepartmentInfo(String departmentInfo) {
-		this.DepartmentInfo = departmentInfo;
-	}
-
-	public String getEmailAddress() {
-		return EmailAddress;
-	}
-
-	public void setEmailAddress(String emailAddress) {
-		this.EmailAddress = emailAddress;
-	}
-
-	public boolean isEmployeeContractor() {
-		return EmployeeContractor;
-	}
-
-	public void setEmployeeContractor(boolean employeeContractor) {
-		this.EmployeeContractor = employeeContractor;
-	}
-
-	public boolean isEmployeeWorkforce() {
-		return EmployeeWorkforce;
-	}
-
-	public void setEmployeeWorkforce(boolean employeeWorkforce) {
-		this.EmployeeWorkforce = employeeWorkforce;
-	}
-
-	public String getExperationDate() {
-		return ExperationDate;
-	}
-
-	public void setExperationDate(String experationDate) {
-		this.ExperationDate = experationDate;
-	}
-
-	public boolean isHardTokenVPN() {
-		return HardTokenVPN;
-	}
-
-	public void setHardTokenVPN(boolean hardTokenVPN) {
-		this.HardTokenVPN = hardTokenVPN;
-	}
-
-	public boolean isIOS() {
-		return IOS;
-	}
-
-	public void setIOS(boolean iOS) {
-		this.IOS = iOS;
-	}
-
-	public boolean isLACMobile() {
-		return LACMobile;
-	}
-
-	public void setLACMobile(boolean lACMobile) {
-		this.LACMobile = lACMobile;
-	}
-
-	public boolean isLACounty() {
-		return LACounty;
-	}
-
-	public void setLACounty(boolean lACounty) {
-		this.LACounty = lACounty;
-	}
-
-	public String getManagerName1() {
-		return ManagerName1;
-	}
-
-	public void setManagerName1(String managerName1) {
-		this.ManagerName1 = managerName1;
-	}
-
-	public String getManagerName2() {
-		return ManagerName2;
-	}
-
-	public void setManagerName2(String managerName2) {
-		this.ManagerName2 = managerName2;
-	}
-
-	public String getManagerName3() {
-		return ManagerName3;
-	}
-
-	public void setManagerName3(String managerName3) {
-		this.ManagerName3 = managerName3;
-	}
-
-	public String getManagerTitle1() {
-		return ManagerTitle1;
-	}
-
-	public void setManagerTitle1(String managerTitle1) {
-		this.ManagerTitle1 = managerTitle1;
-	}
-
-	public String getName1() {
-		return Name1;
-	}
-
-	public void setName1(String name1) {
-		this.Name1 = name1;
-	}
-
-	public boolean isNewRequest() {
-		return NewRequest;
-	}
-
-	public void setNewRequest(boolean newRequest) {
-		this.NewRequest = newRequest;
-	}
-
-	public boolean isNewToken() {
-		return NewToken;
-	}
-
-	public void setNewToken(boolean newToken) {
-		this.NewToken = newToken;
-	}
-
-	public boolean isO365Email() {
-		return O365Email;
-	}
-
-	public void setO365Email(boolean o365Email) {
-		this.O365Email = o365Email;
-	}
-
-	public boolean isOnlineAccess() {
-		return OnlineAccess;
-	}
-
-	public void setOnlineAccess(boolean onlineAccess) {
-		this.OnlineAccess = onlineAccess;
-	}
-
-	public String getPhone1() {
-		return Phone1;
-	}
-
-	public void setPhone1(String phone1) {
-		this.Phone1 = phone1;
-	}
-
-	public String getPhone2() {
-		return Phone2;
-	}
-
-	public void setPhone2(String phone2) {
-		this.Phone2 = phone2;
-	}
-
-	public String getPhone3() {
-		return Phone3;
-	}
-
-	public void setPhone3(String phone3) {
-		this.Phone3 = phone3;
-	}
-
-	public String getPhone4() {
-		return Phone4;
-	}
-
-	public void setPhone4(String phone4) {
-		this.Phone4 = phone4;
-	}
-
-	public String getPhone5() {
-		return Phone5;
-	}
-
-	public void setPhone5(String phone5) {
-		this.Phone5 = phone5;
-	}
-
-	public String getPhone6() {
-		return Phone6;
-	}
-
-	public void setPhone6(String phone6) {
-		this.Phone6 = phone6;
-	}
-
-	public boolean isRenewToken() {
-		return RenewToken;
-	}
-
-	public void setRenewToken(boolean renewToken) {
-		this.RenewToken = renewToken;
-	}
-
-	public boolean isReplaceDefectiveToken() {
-		return ReplaceDefectiveToken;
-	}
-
-	public void setReplaceDefectiveToken(boolean replaceDefectiveToken) {
-		this.ReplaceDefectiveToken = replaceDefectiveToken;
-	}
-
-	public boolean isReplaceLostStolenToken() {
-		return ReplaceLostStolenToken;
-	}
-
-	public void setReplaceLostStolenToken(boolean replaceLostStolenToken) {
-		this.ReplaceLostStolenToken = replaceLostStolenToken;
-	}
-
-	public boolean isSoftwareToken() {
-		return SoftwareToken;
-	}
-
-	public void setSoftwareToken(boolean softwareToken) {
-		this.SoftwareToken = softwareToken;
-	}
-
-	public boolean isStreamingMedia() {
-		return StreamingMedia;
-	}
-
-	public void setStreamingMedia(boolean streamingMedia) {
-		this.StreamingMedia = streamingMedia;
-	}
-
-	public boolean isTokenlessAuth() {
-		return TokenlessAuth;
-	}
-
-	public void setTokenlessAuth(boolean tokenlessAuth) {
-		this.TokenlessAuth = tokenlessAuth;
-	}
-
-	public boolean isTsoAccess() {
-		return TsoAccess;
-	}
-
-	public void setTsoAccess(boolean tsoAccess) {
-		this.TsoAccess = tsoAccess;
-	}
-
-	public boolean isUpdateRequest() {
-		return UpdateRequest;
-	}
-
-	public void setUpdateRequest(boolean updateRequest) {
-		this.UpdateRequest = updateRequest;
-	}
-
-	public String getAccessGroup1() {
-		return accessGroup1;
-	}
-
-	public void setAccessGroup1(String accessGroup1) {
-		this.accessGroup1 = accessGroup1;
-	}
-
-	public boolean isAddNewLoginId() {
-		return addNewLoginId;
-	}
-
-	public void setAddNewLoginId(boolean addNewLoginId) {
-		this.addNewLoginId = addNewLoginId;
-	}
-
-	public String getApplication1() {
-		return application1;
-	}
-
-	public void setApplication1(String application1) {
-		this.application1 = application1;
-	}
-
-	public String getAps() {
-		return aps;
-	}
-
-	public void setAps(String aps) {
-		this.aps = aps;
-	}
-
-	public String getCountyDepartmentNumber() {
-		return countyDepartmentNumber;
-	}
-
-	public void setCountyDepartmentNumber(String countyDepartmentNumber) {
-		this.countyDepartmentNumber = countyDepartmentNumber;
-	}
-
-	public String getDateOfRequest() {
-		return dateOfRequest;
-	}
-
-	public void setDateOfRequest(String dateOfRequest) {
-		this.dateOfRequest = dateOfRequest;
-	}
-
-	public boolean isDeleteLoginId1() {
-		return deleteLoginId1;
-	}
-
-	public void setDeleteLoginId1(boolean deleteLoginId1) {
-		this.deleteLoginId1 = deleteLoginId1;
-	}
-
-	public boolean isDeleteLoginId2() {
-		return deleteLoginId2;
-	}
-
-	public void setDeleteLoginId2(boolean deleteLoginId2) {
-		this.deleteLoginId2 = deleteLoginId2;
-	}
-
-	public String getDigitLSOGroupCode() {
-		return digitLSOGroupCode;
-	}
-
-	public void setDigitLSOGroupCode(String digitLSOGroupCode) {
-		this.digitLSOGroupCode = digitLSOGroupCode;
-	}
-
-	public String getDigitMajorGroupCode() {
-		return digitMajorGroupCode;
-	}
-
-	public void setDigitMajorGroupCode(String digitMajorGroupCode) {
-		this.digitMajorGroupCode = digitMajorGroupCode;
-	}
-
-	public String getDigitTSOGrpCode() {
-		return digitTSOGrpCode;
-	}
-
-	public void setDigitTSOGrpCode(String digitTSOGrpCode) {
-		this.digitTSOGrpCode = digitTSOGrpCode;
-	}
-
-	public String getDmv() {
-		return dmv;
-	}
-
-	public void setDmv(String dmv) {
-		this.dmv = dmv;
-	}
-
-	public String getEmployeeContractor() {
-		return employeeContractor;
-	}
-
-	public void setEmployeeContractor(String employeeContractor) {
-		this.employeeContractor = employeeContractor;
-	}
-
-	public String getGrpName1() {
-		return grpName1;
-	}
-
-	public void setGrpName1(String grpName1) {
-		this.grpName1 = grpName1;
-	}
-
-	public String getGrpName2() {
-		return grpName2;
-	}
-
-	public void setGrpName2(String grpName2) {
-		this.grpName2 = grpName2;
-	}
-
-	public String getGrpName3() {
-		return grpName3;
-	}
-
-	public void setGrpName3(String grpName3) {
-		this.grpName3 = grpName3;
-	}
-
-	public String getJai() {
-		return jai;
-	}
-
-	public void setJai(String jai) {
-		this.jai = jai;
-	}
-
-	public String getLastNamefirstNameMi() {
-		return lastNamefirstNameMi;
-	}
-
-	public void setLastNamefirstNameMi(String lastNamefirstNameMi) {
-		this.lastNamefirstNameMi = lastNamefirstNameMi;
-	}
-
-	public String getLoginId1() {
-		return loginId1;
-	}
-
-	public void setLoginId1(String loginId1) {
-		this.loginId1 = loginId1;
-	}
-
-	public String getLoginId2() {
-		return loginId2;
-	}
-
-	public void setLoginId2(String loginId2) {
-		this.loginId2 = loginId2;
-	}
-
-	public boolean isNewLoginId() {
-		return newLoginId;
-	}
-
-	public void setNewLoginId(boolean newLoginId) {
-		this.newLoginId = newLoginId;
-	}
-
-	public String getOldGrp1() {
-		return oldGrp1;
-	}
-
-	public void setOldGrp1(String oldGrp1) {
-		this.oldGrp1 = oldGrp1;
-	}
-
-	public String getOldGrp2() {
-		return oldGrp2;
-	}
-
-	public void setOldGrp2(String oldGrp2) {
-		this.oldGrp2 = oldGrp2;
-	}
-
-	public String getOldGrp3() {
-		return oldGrp3;
-	}
-
-	public void setOldGrp3(String oldGrp3) {
-		this.oldGrp3 = oldGrp3;
-	}
-
-	public String getSystemApplication1() {
-		return systemApplication1;
-	}
-
-	public void setSystemApplication1(String systemApplication1) {
-		this.systemApplication1 = systemApplication1;
-	}
-
-	public String getSystemApplication2() {
-		return systemApplication2;
-	}
-
-	public void setSystemApplication2(String systemApplication2) {
-		this.systemApplication2 = systemApplication2;
-	}
-
-	public String getSystemApplication3() {
-		return systemApplication3;
-	}
-
-	public void setSystemApplication3(String systemApplication3) {
-		this.systemApplication3 = systemApplication3;
-	}
-
-	public boolean isUpdateLoginId1() {
-		return updateLoginId1;
-	}
-
-	public void setUpdateLoginId1(boolean updateLoginId1) {
-		this.updateLoginId1 = updateLoginId1;
-	}
-
-	public boolean isUpdateLoginId2() {
-		return updateLoginId2;
-	}
-
-	public void setUpdateLoginId2(boolean updateLoginId2) {
-		this.updateLoginId2 = updateLoginId2;
-	}
-
-	public String getWorkPhoneNumber() {
-		return workPhoneNumber;
-	}
-
-	public void setWorkPhoneNumber(String workPhoneNumber) {
-		this.workPhoneNumber = workPhoneNumber;
-	}
-
-
-
-
-	
-	
-	//Dates
-
-//	public String getDate1() {
-//		return Date1;
-//	}
-//
-//	public void setDate1(String date1) {
-//		this.Date1 = date1;
-//	}
-//
-//	public String getDate2() {
-//		return Date2;
-//	}
-//
-//	public void setDate2(String date2) {
-//		this.Date2 = date2;
-//	}
-//
-//	public String getDate3() {
-//		return Date3;
-//	}
-//
-//	public void setDate3(String date3) {
-//		this.Date3 = date3;
-//	}
-//
-//	public String getDate4() {
-//		return Date4;
-//	}
-//
-//	public void setDate4(String date4) {
-//		this.Date4 = date4;
-//	}
-//
-//	public String getDate5() {
-//		return Date5;
-//	}
-//
-//	public void setDate5(String date5) {
-//		this.Date5 = date5;
-//	}
-//
-//	public String getDate6() {
-//		return Date6;
-//	}
-//
-//	public void setDate6(String date6) {
-//		this.Date6 = date6;
-//	}
-//
-//	public String getDate7() {
-//		return Date7;
-//	}
-//
-//	public void setDate7(String date7) {
-//		this.Date7 = date7;
-//	}
-//
-//	public String getDate8() {
-//		return Date8;
-//	}
-//
-//	public void setDate8(String date8) {
-//		this.Date8 = date8;
-//	}
-
-	//Signatures
-//	public String getCustomerSig() {
-//		return CustomerSig;
-//	}
-//
-//	public void setCustomerSig(String customerSig) {
-//		this.CustomerSig = customerSig;
-//	}
-//
-//	public String getCustomerSig2() {
-//		return CustomerSig2;
-//	}
-//
-//	public void setCustomerSig2(String customerSig2) {
-//		this.CustomerSig2 = customerSig2;
-//	}
-
-//	public String getCountWorkforceSig1() {
-//		return CountWorkforceSig1;
-//	}
-//
-//	public void setCountWorkforceSig1(String countWorkforceSig1) {
-//		this.CountWorkforceSig1 = countWorkforceSig1;
-//	}
-//	public String getDepartmentCoordSig1() {
-//		return DepartmentCoordSig1;
-//	}
-//
-//	public void setDepartmentCoordSig1(String departmentCoordSig1) {
-//		this.DepartmentCoordSig1 = departmentCoordSig1;
-//	}
-//	public String getDepartmentInfoSig() {
-//		return DepartmentInfoSig;
-//	}
-//
-//	public void setDepartmentInfoSig(String departmentInfoSig) {
-//		DepartmentInfoSig = departmentInfoSig;
-//	}
-//
-//	public String getDepartmentInfoSig2() {
-//		return DepartmentInfoSig2;
-//	}
-//
-//	public void setDepartmentInfoSig2(String departmentInfoSig2) {
-//		DepartmentInfoSig2 = departmentInfoSig2;
-//	}
-//
-//	public String getManagerSig1() {
-//		return ManagerSig1;
-//	}
-//
-//	public void setManagerSig1(String managerSig1) {
-//		ManagerSig1 = managerSig1;
-//	}
-//
-//	public String getManagerSig2() {
-//		return ManagerSig2;
-//	}
-//
-//	public void setManagerSig2(String managerSig2) {
-//		ManagerSig2 = managerSig2;
-//	}
-//
-//	public String getManagerSig3() {
-//		return ManagerSig3;
-//	}
-//
-//	public void setManagerSig3(String managerSig3) {
-//		ManagerSig3 = managerSig3;
-//	}
-//
-//	public String getManagerSig4() {
-//		return ManagerSig4;
-//	}
-//
-//	public void setManagerSig4(String managerSig4) {
-//		ManagerSig4 = managerSig4;
-//	}
-//
-//	public String getManagerSig5() {
-//		return ManagerSig5;
-//	}
-//
-//	public void setManagerSig5(String managerSig5) {
-//		ManagerSig5 = managerSig5;
-//	}
-
-
 
 }

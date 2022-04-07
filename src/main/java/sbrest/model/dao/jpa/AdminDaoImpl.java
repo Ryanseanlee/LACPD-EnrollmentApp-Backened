@@ -30,6 +30,18 @@ public class AdminDaoImpl implements AdminDao{
 		return entityManager.createQuery("from Admin", Admin.class)
                 .getResultList();
     }
+	
+	@Override
+	@Transactional
+	public void createAdmin(String email, String password, String firstName, String middleName, String lastName) {
+		Admin newAdmin = new Admin();
+		newAdmin.setPassword(password);
+		newAdmin.setEmail(email);
+		newAdmin.setFirstName(firstName);
+		newAdmin.setMiddleName(middleName);
+		newAdmin.setLastName(lastName);
+		entityManager.merge(newAdmin);
+	}
 
 	//TO SAVE CHANGES TO PASSWORD
 	@Override
