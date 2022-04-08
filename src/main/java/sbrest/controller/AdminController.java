@@ -54,6 +54,29 @@
 		@Autowired
 		private ServiceRequestDao serviceRequestDao;
 		
+		//Gets admin details
+		@CrossOrigin(origins= "*")
+		@GetMapping("/details")
+		public List<String> getAdminInformation(
+				@RequestHeader("email") String email,
+				@RequestHeader("password") String password){
+			List<String> adminDetails = new ArrayList<String>();
+			
+ 			String dbPassword = adminDao.getAdmin(email).getPassword();
+			String dbUsername = adminDao.getAdmin(email).getEmail();
+			String dbFirstName = adminDao.getAdmin(email).getFirstname();
+			String dbMiddleName = adminDao.getAdmin(email).getMiddleName();
+			String dbLastName = adminDao.getAdmin(email).getLastName();
+			
+			if (dbPassword.equals(password) && dbUsername.equals(email)) {
+				adminDetails.add(dbFirstName);
+				adminDetails.add(dbMiddleName);
+				adminDetails.add(dbLastName);
+			}
+			
+			return adminDetails;
+		}
+		
 		//Gets some details of all specified Service Request if user is admin
 		@CrossOrigin(origins= "*")
 		@GetMapping("/service_requests")
@@ -1339,5 +1362,7 @@
 						"User does not have authorization to view this page");
 	    
 	    }
+	    
+	   
 		
 	}
