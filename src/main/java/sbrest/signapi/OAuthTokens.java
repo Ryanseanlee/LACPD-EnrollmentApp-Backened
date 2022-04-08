@@ -29,7 +29,7 @@ public class OAuthTokens {
 	 * a refresh token in OAUTH_REFRESH_TOKEN variable below to refresh the OAuth
 	 * access token.
 	 */
-	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhAJSC8vAMBE89OxxFTDfM4uTBt9WskqBittE8HR89pW3-kmt-w-rhI9_mqTUPKSS1WQaOEK1cDCj9hYLAGJEh8K";
+	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhBonLi8N70kcR6ASg2GBJC45TKvA7etoQN9YgTnwpAqWflBgp7Tws91y3al-6XOd3lxwZ-FnAkPHqOK_9iH3uoJ";
 
 	/**
 	 * TODO Provide refresh token here. This will be used to refresh the OAuth
