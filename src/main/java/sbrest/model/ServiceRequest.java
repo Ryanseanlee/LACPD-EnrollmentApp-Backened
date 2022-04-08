@@ -272,6 +272,7 @@ public class ServiceRequest {
 		this.unixAccessGroup = "";
 		this.experationDate = "";
 		this.billingAccountNumber = "";
+<<<<<<< HEAD
 		this.businessJustification = "";
 		this.contractorCompanyName = "";
 		this.contractorWorkOrder = "";
@@ -281,6 +282,9 @@ public class ServiceRequest {
 		this.contractorName = "";
 		this.workOrderNumberInput = "";
 		this.unixAccountNumber = "";
+=======
+		
+>>>>>>> parent of 73895d7 (agreement and admincontroller fix with new names)
 	}
 
 	// IRV new field functions

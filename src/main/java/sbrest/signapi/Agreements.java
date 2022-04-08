@@ -20,6 +20,7 @@ public class Agreements {
 		String workflowId = "";
 		String fileLabel = "";
 		if (serviceRequest.isEmployee()) {
+<<<<<<< HEAD
 			email = serviceRequest.getEmployeeEmailAddress();
 			agreementName = "PD Employee Agreement";
 			documentId = "CBJCHBCAABAA0pFVPoxF34OjYxufbH42-pwMBVNbkE4L";
@@ -32,6 +33,20 @@ public class Agreements {
 			documentId = "CBJCHBCAABAA1fprefTPFkmJwDbNeEIYvRWebof8Eb8B";
 			workflowId = "CBJCHBCAABAAs8I5FBkEK7YwAbFT3thhIR7cqfXJs39Q";
 			fileLabel = "PD Contractor Forms";
+=======
+			email = serviceRequest.getEmailAddress();
+			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
+			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
+			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+			fileLabel = "[NEW FORMS] Employee/Contractor";
+		}
+		else {
+			email = serviceRequest.getEmailAddress();
+			agreementName = "[NEW FORMS] Employee/Contractor Agreement";
+			documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
+			workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+			fileLabel = "[NEW FORMS] Employee/Contractor";
+>>>>>>> parent of 73895d7 (agreement and admincontroller fix with new names)
 		}
 		
 
@@ -455,7 +470,11 @@ public class Agreements {
 		
 		JSONObject ExperationDate = new JSONObject();
 		ExperationDate.put("fieldName", "billingAccountNumber");
+<<<<<<< HEAD
 		ExperationDate.put("defaultValue", serviceRequest.getExperationDate());
+=======
+		ExperationDate.put("defaultValue", serviceRequest.getExpirationDate());
+>>>>>>> parent of 73895d7 (agreement and admincontroller fix with new names)
 		fieldJsonArray.add(ExperationDate);
 		//output += "{ \"fieldName\": \"billingAccountNumber\", \"defaultValue\": \"" + serviceRequest.getBillingAccountNumber() + "\"}, ";
 		

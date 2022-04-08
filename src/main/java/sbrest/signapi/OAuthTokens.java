@@ -29,7 +29,11 @@ public class OAuthTokens {
 	 * a refresh token in OAUTH_REFRESH_TOKEN variable below to refresh the OAuth
 	 * access token.
 	 */
+<<<<<<< HEAD
 	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhBonLi8N70kcR6ASg2GBJC45TKvA7etoQN9YgTnwpAqWflBgp7Tws91y3al-6XOd3lxwZ-FnAkPHqOK_9iH3uoJ";
+=======
+	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhDE_Xd1dYpbWE9U7HHSyHQYbCHcDbU9gfMRd30UlLk8jRIRiKGvOOpfbfaNA3wbeSSbeY5vDC49OZWyRV3PTsgA";
+>>>>>>> parent of 73895d7 (agreement and admincontroller fix with new names)
 
 	/**
 	 * TODO Provide refresh token here. This will be used to refresh the OAuth
