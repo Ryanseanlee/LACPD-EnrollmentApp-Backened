@@ -70,13 +70,13 @@ public class AgreementEvents {
 				String participant = "";
 				
 				if (s.isEmployee()) {
-					if (participantEmail.equalsIgnoreCase(s.getEmailAddress())) {
+					if (participantEmail.equalsIgnoreCase(s.getEmployeeEmailAddress())) {
 						matchesFound++;
 						participant = "Employee";
 					}
 				}
 				else {
-					if (participantEmail.equalsIgnoreCase(s.getEmailAddress())) {
+					if (participantEmail.equalsIgnoreCase(s.getCompanyEmailAddress())) {
 						matchesFound++;
 						participant = "Contractor";
 					}

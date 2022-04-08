@@ -1,4 +1,4 @@
-package sbrest.controller;
+	package sbrest.controller;
 
 	import java.util.ArrayList;
 	import java.util.List;
@@ -176,7 +176,11 @@ package sbrest.controller;
 		@RequestHeader("email") String email,
 		@RequestHeader("password") String password,
         @RequestHeader("newemail") String newEmail,
-        @RequestHeader("newpassword") String newPassword
+        @RequestHeader("newpassword") String newPassword,
+        // IRV new headers for first Name, middle name, and last name.
+        @RequestHeader("firstName") String firstName,
+        @RequestHeader("middleName") String middleName,
+        @RequestHeader("lastName") String lastName
         ) {
 
             // get password from database, then compare to user input
@@ -184,7 +188,7 @@ package sbrest.controller;
             String dbPassword = adminDao.getAdmin(email).getPassword(); //database
 
             if (dbPassword.equals(password)) {
-                adminDao.createAdmin(newEmail, newPassword);
+                adminDao.createAdmin(newEmail, newPassword, firstName, middleName, lastName);
             }else {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN,
                         "User does not have authorization to view this page");
@@ -245,7 +249,7 @@ package sbrest.controller;
 					break;
 //				      employeeEmailAddress: data.personalInformation.emailAddress,
 				case "employeeEmailAddress":
-					s.setEmailAddress((String) patch.get(key));
+					s.setEmployeeEmailAddress((String) patch.get(key));
 					break;
 //				      phoneNumber: data.personalInformation.phoneNumber,
 				case "phoneNumber":
@@ -283,29 +287,29 @@ package sbrest.controller;
 //				      // Address Information
 //				      businessStreetAddress: data.addressInformation.address,
 				case "businessStreetAddress":
-					s.setAddress((String) patch.get(key));
+					s.setBusinessStreetAddress((String) patch.get(key));
 					break;
 //				      businessCity: data.addressInformation.city,
 				case "businessCity":
-					s.setCity((String) patch.get(key));
+					s.setBusinessCity((String) patch.get(key));
 					break;
 //				      businessState: data.addressInformation.state,
 				case "businessState":
-					s.setState((String) patch.get(key));
+					s.setBusinessState((String) patch.get(key));
 					break;
 //				      businessZip: data.addressInformation.zipCode,
 				case "businessZip":
-					s.setZipCode((String) patch.get(key));
+					s.setBusinessZip((String) patch.get(key));
 					break;
 //
 //				      // Internet Access
 //				      countyWidePolicyA: data.internetAccess.countyWidePolicyA,
 				case "countyWidePolicyA":
-					s.setCountyWidePolicyA((boolean) patch.get(key));
+					s.setCountywidePolicyA((boolean) patch.get(key));
 					break;
 //				      countyWidePolicyB: data.internetAccess.countyWidePolicyB,
 				case "countyWidePolicyB":
-					s.setCountyWidePolicyB((boolean) patch.get(key));
+					s.setCountywidePolicyB((boolean) patch.get(key));
 					break;
 //				      allWebmail: data.internetAccess.allWebmail,
 				case "allWebmail":
@@ -314,12 +318,12 @@ package sbrest.controller;
 //				      streamMedia: data.internetAccess.streamMedia,
 						// note: did not change this to setStreamMedia 
 				case "streamMedia":
-					s.setStreamMedia((boolean) patch.get(key));
+					s.setStreamingMedia((boolean) patch.get(key));
 					break;
 //				      justification: data.internetAccess.justification,
 					// note: did not change this to justification
 				case "justification":
-					s.setJustification((String) patch.get(key));
+					s.setBusinessJustification((String) patch.get(key));
 					break;
 					// boolean???
 //				      // defaultCountyWidePolicy: data.internetAccess.applyDefaultCountyWidePolicy,
@@ -337,7 +341,7 @@ package sbrest.controller;
 //				      // Access Information
 //				      ibmLogOnId: data.accessInformation.ibmLogonId,
 				case "ibmLogOnId":
-					s.setIbmLogonId((String) patch.get(key));
+					s.setIbmLogOnId((String) patch.get(key));
 					break;
 //				      majorGroupCode: data.accessInformation.majorGroupCode,
 				case "majorGroupCode":
@@ -353,20 +357,20 @@ package sbrest.controller;
 					break;
 //				      unixLogOnId: data.accessInformation.unixLogonId,
 				case "unixLogOnId":
-					s.setUnixLogonId((String) patch.get(key));
+					s.setUnixLogOnId((String) patch.get(key));
 					break;
 //				      unixApplication: data.accessInformation.application,
 				case "unixApplication":
-					s.setApplication((String) patch.get(key));
+					s.setUnixApplication((String) patch.get(key));
 					break;
 //				      unixAccessGroup: data.accessInformation.accessGroup,
 				case "unixAccessGroup":
-					s.setAccessGroup((String) patch.get(key));
+					s.setUnixAccessGroup((String) patch.get(key));
 					break;
-////				      unixAccountNumber: data.accessInformation.accountNumber,
-//				case "unixAccountNumber":
-//					s.setUnixAccountNumber((String) patch.get(key));
-//					break;
+//				      unixAccountNumber: data.accessInformation.accountNumber,
+				case "unixAccountNumber":
+					s.setUnixAccountNumber((String) patch.get(key));
+					break;
 //				      billingAccountNumber: data.accessInformation.billingAccountNumber,
 				case "billingAccountNumber":
 					s.setBillingAccountNumber((String) patch.get(key));
@@ -378,15 +382,15 @@ package sbrest.controller;
 				// did not fix these to a different name // Assuming these are Boolean
 //				      laCountyGovAccess: data.additionalInformation.laCountyGovAccess,
 				case "laCountGovAccess":
-					s.setLaCountyGovAccess((boolean) patch.get(key));
+					s.setLaCounty((boolean) patch.get(key));
 					break;
 //				      lacMobileWifiAccess: data.additionalInformation.lacMobileWifiAccess,
 				case "lacMobileWifiAccess":
-					s.setLacMobileWifiAccess((boolean) patch.get(key));
+					s.setLacMobile((boolean) patch.get(key));
 					break;
 //				      o365Email: data.additionalInformation.o365Email,
 				case "o365Email":
-					s.setO360Email((boolean) patch.get(key));
+					s.setO365Email((boolean) patch.get(key));
 					break;
 				
 				
