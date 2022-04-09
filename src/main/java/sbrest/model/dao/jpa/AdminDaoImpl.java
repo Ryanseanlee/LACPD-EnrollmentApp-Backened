@@ -33,13 +33,10 @@ public class AdminDaoImpl implements AdminDao{
 	
 	@Override
 	@Transactional
-	public void createAdmin(String email, String password, String firstName, String middleName, String lastName) {
+	public void createAdmin(String email, String password) {
 		Admin newAdmin = new Admin();
 		newAdmin.setPassword(password);
 		newAdmin.setEmail(email);
-		newAdmin.setFirstName(firstName);
-		newAdmin.setMiddleName(middleName);
-		newAdmin.setLastName(lastName);
 		entityManager.merge(newAdmin);
 	}
 
