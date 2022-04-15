@@ -9,7 +9,7 @@ public interface AdminDao {
 
     List<Admin> getAdmin();
 	
-    void createAdmin(String email, String password, String firstName, String middleName, String lastName);
+    void createAdmin(String email, String password);
     
     Admin saveAdmin(Admin admin);
     
