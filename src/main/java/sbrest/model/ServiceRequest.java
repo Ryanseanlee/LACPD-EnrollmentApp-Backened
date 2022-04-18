@@ -164,6 +164,7 @@ public class ServiceRequest {
 		
 		this.agreementId = "";
 		//personal 
+		this.isComplete = false;
 		this.lastName = "";
 		this.firstName = "";
 		this.middleInitial = "";
