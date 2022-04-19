@@ -22,7 +22,7 @@ public class Agreements {
 		email = serviceRequest.getEmailAddress();
 		agreementName = "[NEW FORMS] Employee/Contractor Agreement";
 		documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
-		workflowId = "CBJCHBCAABAAh3hMxZFhpeJBtJe44-pFu1ArylULHop-";
+		workflowId = "CBJCHBCAABAAoEnQIif24PS9Jf7yQJ2mGNFZlYhdX2Z-";
 		fileLabel = "[NEW FORMS] Employee/Contractor";
 		
 		
@@ -145,6 +145,8 @@ public class Agreements {
 		ArrayList<JSONObject> mergeFieldInfo = populateTemplate(serviceRequest);
 
 		requestJson.put("mergeFieldInfo", mergeFieldInfo);
+		
+		System.out.println("Request" + requestJson.toJSONString());
 
 		responseJson = (JSONObject) OAuthTokens.makeApiCall(url, "POST", headers, requestJson.toJSONString());
 

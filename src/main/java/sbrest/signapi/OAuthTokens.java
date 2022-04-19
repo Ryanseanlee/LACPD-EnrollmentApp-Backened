@@ -29,7 +29,7 @@ public class OAuthTokens {
 	 * a refresh token in OAUTH_REFRESH_TOKEN variable below to refresh the OAuth
 	 * access token.
 	 */
-	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhDnBmGUTIqLK2absr0aGe__jO7FIx3-pVaxguTsU73yNM9FIBYDx1bqh2GEoZ50McKHKXIzjikvMixb91hsEWNi";
+	private final static String OAUTH_ACCESS_TOKEN = "3AAABLblqZhD6biUC-OguOlqVTBlzTYyiPMoaVPzPPL196NoAI46xoVJTA5wDN3-92w38p8wHEHMWdC0kHnp23zKUUwJ2Kaxj";
 
 	/**
 	 * TODO Provide refresh token here. This will be used to refresh the OAuth
@@ -117,10 +117,12 @@ public class OAuthTokens {
 
 		// Open an HTTPS connection in preparation for the call.
 		HttpsURLConnection conn = createRequest(apiUrl, method, headers, body);
+		System.out.println("connection" +conn);
 		if (conn != null) {
 			try {
 				// Make the call over the opened connection.
 				response = executeRequest(conn);
+				System.out.println("response" +response);
 			} finally {
 				// Irrespective of success or failure, close the connection.
 				conn.disconnect();

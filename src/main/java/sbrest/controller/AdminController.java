@@ -244,7 +244,7 @@ package sbrest.controller;
 					break;
 //				      firstName: data.personalInformation.firstName,
 				case "firstName":
-					s.setLastName((String) patch.get(key));
+					s.setFirstName((String) patch.get(key));
 					break;
 //				      middleInitial: data.personalInformation.middleInitial,
 				case "middleInitial":
