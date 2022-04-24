@@ -1,13 +1,19 @@
 package sbrest.controller;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
@@ -26,17 +32,23 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.box.sdk.BoxCCGAPIConnection;
+import com.box.sdk.BoxFile;
+import com.box.sdk.BoxFolder;
+import com.box.sdk.BoxItem;
+
 import sbrest.model.ServiceRequest;
 import sbrest.model.dao.AdminDao;
 import sbrest.model.dao.ServiceRequestDao;
 import sbrest.service.SendEmail;
 import sbrest.signapi.AgreementEvents;
 import sbrest.signapi.Agreements;
+import sbrest.signapi.OAuthTokens;
 
 @RestController
 @RequestMapping("/service_requests")
 public class ServiceRequestsController {
-
+	
 	@Autowired
     private AdminDao adminDao;
 	
@@ -392,14 +404,83 @@ public class ServiceRequestsController {
 		return false;
 	}
 	
+	//cron = "0 1 1 * * ?"
 	@Async
-	@Scheduled(cron = "0 1 1 * * ?")
+	@Scheduled(cron = "0 0/1 * * ?")
 	public void updateRequestStatuses() throws Exception {
 		List<ServiceRequest> serviceRequests = serviceRequestDao.getServiceRequests();
 		for (ServiceRequest s : serviceRequests) {
 			s = AgreementEvents.updateRequestStatus(s);
+			
+			
+			if(s.getRequestStatus().startsWith("Signed")) {
+				String url = getUrl(s.getAgreementId()).toString();
+				boxUpload(parseUrl(url), s.getRequestNumber());
+				s.setRequestStatus("Uploaded to Box");
+			}
+			
+			
+			
 			serviceRequestDao.saveServiceRequest(s);
 		}
+	}
+	
+	public JSONObject getUrl (String agreementId) throws Exception {
+		String accessToken = OAuthTokens.getOauthAccessToken();
+		String url = "https://api.na3.adobesign.com:443/api/rest/v6/agreements/" + agreementId + "/combinedDocument/url";
+		HashMap<String, String> headers = new HashMap<String, String>();
+		headers.put("Content-Type", "application/json;charset=UTF-8");
+		headers.put("Authorization", accessToken);
+
+		JSONObject responseJson = (JSONObject) OAuthTokens.makeApiCall(url, "GET", headers, null);
+		
+		return responseJson;
+		
+	}
+	
+	public String parseUrl(String responseJson) {
+		String substring = responseJson.substring(8, responseJson.length() - 2);
+		String url = "";
+		
+		
+		
+		for(int i = 0; i < substring.length(); i++) {
+			if(substring.charAt(i) != '\\') {
+				url += substring.charAt(i);
+			}
+		}
+		
+		return url;
+	}
+	
+	public void boxUpload(String url, int requestNumber) throws IOException {    
+	        
+		   BoxCCGAPIConnection api = BoxCCGAPIConnection.applicationServiceAccountConnection(
+	        	    "ffc823n3uuf15g5vooj45xg3eri29ukn",
+	        	    "I9r7ZIFUpEUiNpTlDpfE9WVz4Wro4qrt",
+	        	    "873161760"
+	        	);
+	        
+	        api.asUser("18429209010");
+	        
+	        BoxFolder folder = new BoxFolder(api, "155054681560");
+	        BoxFolder rootFolder = BoxFolder.getRootFolder(api);
+	        
+	        BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
+	        
+	        
+	        for (BoxItem.Info itemInfo : rootFolder) {
+	            System.out.format("[%s] %s\n", itemInfo.getID(), itemInfo.getName());
+	        }
+	        
+//	        FileInputStream stream = new FileInputStream("./input/test.txt");
+//	        BoxFile.Info newFileInfo = folder.uploadFile(stream, "test.txt");
+	        
+	        FileInputStream stream = new FileInputStream("SignedAgreement.pdf");
+	        BoxFile.Info newFileInfo = folder.uploadFile(in, "SignedAgreement" + requestNumber + ".pdf");
+	        
+	        stream.close();
+	
 	}
 	
 	

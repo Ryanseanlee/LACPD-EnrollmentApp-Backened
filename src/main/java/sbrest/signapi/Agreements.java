@@ -22,7 +22,7 @@ public class Agreements {
 		email = serviceRequest.getEmailAddress();
 		agreementName = "[NEW FORMS] Employee/Contractor Agreement";
 		documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
-		workflowId = "CBJCHBCAABAAEqCs3Cn9gtrYqxXmA4_VoyrmHd_TJyjp";
+		workflowId = "CBJCHBCAABAAoEnQIif24PS9Jf7yQJ2mGNFZlYhdX2Z-";
 		fileLabel = "[NEW FORMS] Employee/Contractor";
 		
 		
