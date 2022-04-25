@@ -15,8 +15,11 @@ import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,6 +49,8 @@ import sbrest.signapi.Agreements;
 import sbrest.signapi.OAuthTokens;
 
 @RestController
+@Configuration
+@EnableScheduling
 @RequestMapping("/service_requests")
 public class ServiceRequestsController {
 	
@@ -406,14 +411,14 @@ public class ServiceRequestsController {
 	
 	//cron = "0 1 1 * * ?"
 	@Async
-	@Scheduled(cron = "0 0/1 * * ?")
+	@Scheduled(fixedRate = 10000)
 	public void updateRequestStatuses() throws Exception {
 		List<ServiceRequest> serviceRequests = serviceRequestDao.getServiceRequests();
 		for (ServiceRequest s : serviceRequests) {
 			s = AgreementEvents.updateRequestStatus(s);
 			
 			
-			if(s.getRequestStatus().startsWith("Signed")) {
+			if(s.getRequestStatus().startsWith("Signed") && !s.getRequestStatus().equals("Uploaded to Box")) {
 				String url = getUrl(s.getAgreementId()).toString();
 				boxUpload(parseUrl(url), s.getRequestNumber());
 				s.setRequestStatus("Uploaded to Box");
@@ -480,8 +485,5 @@ public class ServiceRequestsController {
 	        BoxFile.Info newFileInfo = folder.uploadFile(in, "SignedAgreement" + requestNumber + ".pdf");
 	        
 	        stream.close();
-	
 	}
-	
-	
 }

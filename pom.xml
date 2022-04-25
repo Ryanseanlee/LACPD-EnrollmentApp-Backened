@@ -81,6 +81,12 @@
       		<artifactId>box-java-sdk</artifactId>
       		<version>3.1.1</version>
    		</dependency>
+   		<dependency>
+		  <groupId>org.awaitility</groupId>
+		  <artifactId>awaitility</artifactId>
+		  <version>3.1.2</version>
+		  <scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
