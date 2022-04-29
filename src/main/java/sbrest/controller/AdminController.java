@@ -207,7 +207,7 @@ package sbrest.controller;
 			else
 				s = serviceRequestDao.getServiceRequest(requestNumber);
 			 
-			
+			System.out.println("request number: "+ requestNumber);
 			// get password from user input and database, then compare
 			// If password matches one in the database, the admin user
 			//can edit field values, else 403 error forbidden
@@ -289,19 +289,19 @@ package sbrest.controller;
 //
 //				      // Address Information
 //				      businessStreetAddress: data.addressInformation.address,
-				case "businessStreetAddress":
+				case "address":
 					s.setAddress((String) patch.get(key));
 					break;
 //				      businessCity: data.addressInformation.city,
-				case "businessCity":
+				case "city":
 					s.setCity((String) patch.get(key));
 					break;
 //				      businessState: data.addressInformation.state,
-				case "businessState":
+				case "state":
 					s.setState((String) patch.get(key));
 					break;
 //				      businessZip: data.addressInformation.zipCode,
-				case "businessZip":
+				case "zipCode":
 					s.setZipCode((String) patch.get(key));
 					break;
 //
