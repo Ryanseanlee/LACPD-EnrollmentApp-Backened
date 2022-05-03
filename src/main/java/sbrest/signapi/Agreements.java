@@ -424,6 +424,51 @@ public class Agreements {
 		managerName3.put("defaultValue", managerFullName);
 		fieldJsonArray.add(managerName3);
 		
+		JSONObject o356 = new JSONObject();
+		o356.put("fieldName", "O365Email");
+		o356.put("defaultValue", serviceRequest.isO360Email());
+		fieldJsonArray.add(o356);
+		
+		JSONObject lacMobile = new JSONObject();
+		lacMobile.put("fieldName", "LACMobile");
+		lacMobile.put("defaultValue", serviceRequest.isLacMobileWifiAccess());
+		fieldJsonArray.add(lacMobile);
+		
+		JSONObject laCounty = new JSONObject();
+		laCounty.put("fieldName", "LACMobile");
+		laCounty.put("defaultValue", serviceRequest.isLaCountyGovAccess());
+		fieldJsonArray.add(laCounty);
+		
+		JSONObject policyB = new JSONObject();
+		policyB.put("fieldName", "CountywidePolicyB");
+		policyB.put("defaultValue", serviceRequest.isCountyWidePolicyB());
+		fieldJsonArray.add(policyB);
+		
+		JSONObject policyA = new JSONObject();
+		policyA.put("fieldName", "CountywidePolicyA");
+		policyA.put("defaultValue", serviceRequest.isCountyWidePolicyA());
+		fieldJsonArray.add(policyA);
+		
+		JSONObject allWeb = new JSONObject();
+		allWeb.put("fieldName", "AllWebmail");
+		allWeb.put("defaultValue", serviceRequest.isAllWebmail());
+		fieldJsonArray.add(allWeb);
+		
+		JSONObject streamingMedia = new JSONObject();
+		streamingMedia.put("fieldName", "StreamingMedia");
+		streamingMedia.put("defaultValue", serviceRequest.isStreamMedia());
+		fieldJsonArray.add(streamingMedia);
+		
+		JSONObject justification = new JSONObject();
+		justification.put("fieldName", "businessJustification2");
+		justification.put("defaultValue", serviceRequest.getJustification());
+		fieldJsonArray.add(justification);
+		
+		JSONObject manname = new JSONObject();
+		manname.put("fieldName", "Custom Field 1");
+		manname.put("defaultValue", managerFullName);
+		fieldJsonArray.add(manname);
+		
 		if (serviceRequest.getManagerPhone() != null) {
 			JSONObject managerPhone = new JSONObject();
 			managerPhone.put("fieldName", "managerPhone");
@@ -441,14 +486,14 @@ public class Agreements {
 		
 		if (serviceRequest.getDepartmentHeadName() != null) {
 			JSONObject departmentHeadName = new JSONObject();
-			departmentHeadName.put("fieldName", "departmentHeadName");
+			departmentHeadName.put("fieldName", "applicationCoordinatorName");
 			departmentHeadName.put("defaultValue", serviceRequest.getDepartmentHeadName());
 			fieldJsonArray.add(departmentHeadName);
 		}
 		
 		if (serviceRequest.getDepartmentHeadPhone() != null) {
 			JSONObject departmentHeadPhone = new JSONObject();
-			departmentHeadPhone.put("fieldName", "departmentHeadPhone");
+			departmentHeadPhone.put("fieldName", "applicationCoordinatorPhone");
 			departmentHeadPhone.put("defaultValue", serviceRequest.getDepartmentHeadPhone());
 			fieldJsonArray.add(departmentHeadPhone);
 		}
@@ -462,14 +507,14 @@ public class Agreements {
 		
 		if (serviceRequest.getDeptInfoSecurityOfficerName() != null) {
 			JSONObject deptInfoSecurityOfficerName = new JSONObject();
-			deptInfoSecurityOfficerName.put("fieldName", "deptInfoSecurityOfficerName");
+			deptInfoSecurityOfficerName.put("fieldName", "DepartmentInfo");
 			deptInfoSecurityOfficerName.put("defaultValue", serviceRequest.getDeptInfoSecurityOfficerName());
 			fieldJsonArray.add(deptInfoSecurityOfficerName);
 		}
 		
 		if (serviceRequest.getDeptInfoSecurityOfficerPhone() != null) {
 			JSONObject deptInfoSecurityOfficerPhone = new JSONObject();
-			deptInfoSecurityOfficerPhone.put("fieldName", "deptInfoSecurityOfficerPhone");
+			deptInfoSecurityOfficerPhone.put("fieldName", "Phone3");
 			deptInfoSecurityOfficerPhone.put("defaultValue", serviceRequest.getDeptInfoSecurityOfficerPhone());
 			fieldJsonArray.add(deptInfoSecurityOfficerPhone);
 		}
