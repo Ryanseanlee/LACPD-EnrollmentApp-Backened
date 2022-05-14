@@ -177,7 +177,10 @@ public class AgreementEvents {
 						s.setRequestStatus("Out for signature (" + participant + ")");
 						break;
 					case "ACTION_COMPLETED":
-						s.setRequestStatus("Signed by " + participant);
+						if(!s.getRequestStatus().equals("Uploaded to Box")) {
+							s.setRequestStatus("Signed by " + participant);
+						}
+						
 						//boxUpload(downloadAgreements(new URL(getUrl("CBJCHBCAABAAprK6W-ka1gwrz00FTa7AnZSwgJh9JrNG"))));
 
 						break;

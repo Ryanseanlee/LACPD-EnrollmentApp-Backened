@@ -15,7 +15,6 @@ import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
@@ -410,15 +409,20 @@ public class ServiceRequestsController {
 	}
 	
 	//cron = "0 1 1 * * ?"
+	//ccron = "0 0/5 * * * ?"
+	//fixedRate = 10000
 	@Async
 	@Scheduled(fixedRate = 10000)
 	public void updateRequestStatuses() throws Exception {
 		List<ServiceRequest> serviceRequests = serviceRequestDao.getServiceRequests();
 		for (ServiceRequest s : serviceRequests) {
 			s = AgreementEvents.updateRequestStatus(s);
+			System.out.println(s.getRequestStatus());
+			
 			
 			
 			if(s.getRequestStatus().startsWith("Signed") && !s.getRequestStatus().equals("Uploaded to Box")) {
+				System.out.println(s.getRequestStatus() + " " +  s.getFirstName() + " " + s.getLastName());
 				String url = getUrl(s.getAgreementId()).toString();
 				boxUpload(parseUrl(url), s.getRequestNumber());
 				s.setRequestStatus("Uploaded to Box");
