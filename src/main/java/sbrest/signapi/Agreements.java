@@ -22,7 +22,7 @@ public class Agreements {
 		email = serviceRequest.getEmailAddress();
 		agreementName = "[NEW FORMS] Employee/Contractor Agreement";
 		documentId = "CBJCHBCAABAAVz2rFlj7cDFElyaLVB6-vuf14BML9WTs";
-		workflowId = "CBJCHBCAABAAoEnQIif24PS9Jf7yQJ2mGNFZlYhdX2Z-";
+		workflowId = "CBJCHBCAABAAs39_RUgLpEU8rQ7Tcwn1J-hKbTGPxqml";
 		fileLabel = "[NEW FORMS] Employee/Contractor";
 		
 		
@@ -424,40 +424,7 @@ public class Agreements {
 		managerName3.put("defaultValue", managerFullName);
 		fieldJsonArray.add(managerName3);
 		
-		JSONObject o356 = new JSONObject();
-		o356.put("fieldName", "O365Email");
-		o356.put("defaultValue", serviceRequest.isO360Email());
-		fieldJsonArray.add(o356);
-		
-		JSONObject lacMobile = new JSONObject();
-		lacMobile.put("fieldName", "LACMobile");
-		lacMobile.put("defaultValue", serviceRequest.isLacMobileWifiAccess());
-		fieldJsonArray.add(lacMobile);
-		
-		JSONObject laCounty = new JSONObject();
-		laCounty.put("fieldName", "LACMobile");
-		laCounty.put("defaultValue", serviceRequest.isLaCountyGovAccess());
-		fieldJsonArray.add(laCounty);
-		
-		JSONObject policyB = new JSONObject();
-		policyB.put("fieldName", "CountywidePolicyB");
-		policyB.put("defaultValue", serviceRequest.isCountyWidePolicyB());
-		fieldJsonArray.add(policyB);
-		
-		JSONObject policyA = new JSONObject();
-		policyA.put("fieldName", "CountywidePolicyA");
-		policyA.put("defaultValue", serviceRequest.isCountyWidePolicyA());
-		fieldJsonArray.add(policyA);
-		
-		JSONObject allWeb = new JSONObject();
-		allWeb.put("fieldName", "AllWebmail");
-		allWeb.put("defaultValue", serviceRequest.isAllWebmail());
-		fieldJsonArray.add(allWeb);
-		
-		JSONObject streamingMedia = new JSONObject();
-		streamingMedia.put("fieldName", "StreamingMedia");
-		streamingMedia.put("defaultValue", serviceRequest.isStreamMedia());
-		fieldJsonArray.add(streamingMedia);
+	
 		
 		JSONObject justification = new JSONObject();
 		justification.put("fieldName", "businessJustification2");

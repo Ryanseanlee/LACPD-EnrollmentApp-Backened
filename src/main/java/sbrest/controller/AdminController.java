@@ -108,7 +108,7 @@ package sbrest.controller;
 		@CrossOrigin(origins= "*")
 		@GetMapping("/service_requests/{requestNumber}")
 		public ServiceRequest get(
-				// @RequestHeader("email") String email, // check if email passes IRV
+				@RequestHeader("email") String email, // check if email passes IRV
 				@RequestHeader("password") String password, 
 				@PathVariable Integer requestNumber) throws Exception {
 			ServiceRequest s = serviceRequestDao.getServiceRequest(requestNumber);
@@ -116,7 +116,7 @@ package sbrest.controller;
 			// get password from user input and database, then compare
 			//If password matches one in database return request status, else 403 error forbidden
 			
-			String dbPassword = adminDao.getAdmin("ivalen13@calstatela.edu").getPassword();
+			String dbPassword = adminDao.getAdmin(email).getPassword();
 
 			if (dbPassword.equals(password)) {
 				if (s == null)

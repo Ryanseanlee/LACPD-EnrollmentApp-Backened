@@ -89,9 +89,9 @@ public class ServiceRequestsController {
 	public ServiceRequest update(@PathVariable Integer requestNumber, @RequestBody ServiceRequest s) throws Exception {
 
 		ServiceRequest originalServiceRequest = serviceRequestDao.getServiceRequest(requestNumber);
-
 		originalServiceRequest.setCreateDate(s.getCreateDate());
 		originalServiceRequest.setSubmitDate(s.getSubmitDate());
+		//employee
 		originalServiceRequest.setEmployee(s.isEmployee());
 		originalServiceRequest.setRequestStatus(s.getRequestStatus());
 		
